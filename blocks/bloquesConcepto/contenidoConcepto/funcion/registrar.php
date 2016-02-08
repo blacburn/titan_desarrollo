@@ -1,10 +1,6 @@
 <?php
-
 namespace bloquesConcepto\contenidoConcepto\funcion;
-
-
 include_once('Redireccionador.php');
-
 class FormProcessor {
     
     var $miConfigurador;
@@ -23,12 +19,10 @@ class FormProcessor {
     }
     
     function procesarFormulario() {    
-
         //Aquí va la lógica de procesamiento
         
         $conexion = 'estructura';
         $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
-        
         
         
         //***************************VALIDAR Formula*****************************************************************
@@ -146,7 +140,6 @@ class FormProcessor {
         	$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
         	
         	//-------------------------------------------------------------------------------------------------------
-
         	$count++;
         }
         
@@ -173,8 +166,5 @@ class FormProcessor {
     }
     
 }
-
 $miProcesador = new FormProcessor ( $this->lenguaje, $this->sql );
-
 $resultado= $miProcesador->procesarFormulario ();
-
