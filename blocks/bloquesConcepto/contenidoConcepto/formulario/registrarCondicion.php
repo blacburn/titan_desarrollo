@@ -378,9 +378,15 @@ class Formulario {
 						echo "<input type=\"button\" id=\"btOper6C\" value=\"÷\" class=\"btn btn-primary\" />";
 						echo "<input type=\"button\" id=\"btOper7C\" value=\"√\" class=\"btn btn-primary\"/>";
 						echo "<input type=\"button\" id=\"btOper8C\" value=\"^\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper9C\" value=\"&&\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper10C\" value=\"||\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper11C\" value=\"Borrar\" class=\"btn btn-danger\" />";
+                                                echo "<input type=\"button\" id=\"btOper9C\" value=\"<\" class=\"btn btn-primary\" />";
+						echo "<input type=\"button\" id=\"btOper10C\" value=\"<=\" class=\"btn btn-primary\"/>";
+						echo "<input type=\"button\" id=\"btOper11C\" value=\">\" class=\"btn btn-primary\" />";
+                                                echo "<input type=\"button\" id=\"btOper12C\" value=\">=\" class=\"btn btn-primary\" />";
+						echo "<input type=\"button\" id=\"btOper13C\" value=\"=\" class=\"btn btn-primary\"/>";
+						echo "<input type=\"button\" id=\"btOper14C\" value=\"!=\" class=\"btn btn-primary\" />";
+                                                echo "<input type=\"button\" id=\"btOper15C\" value=\"&&\" class=\"btn btn-primary\" />";
+                                                echo "<input type=\"button\" id=\"btOper16C\" value=\"||\" class=\"btn btn-primary\" />";
+						echo "<input type=\"button\" id=\"btOper17C\" value=\"Borrar\" class=\"btn btn-danger\" />";
 					}
 					echo $this->miFormulario->division ( "fin" );
 					
@@ -676,7 +682,8 @@ class Formulario {
         echo $this->miFormulario->campoCuadroTexto ( $atributos );
         // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
         
-         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+
+        // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
         $esteCampo = 'cantidadCondicionesConcepto';
         $atributos ['id'] = $esteCampo;
         $atributos ['nombre'] = $esteCampo;
@@ -695,6 +702,8 @@ class Formulario {
         $atributos = array_merge ( $atributos, $atributosGlobales );
         echo $this->miFormulario->campoCuadroTexto ( $atributos );
         // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+        
+        
         //***********************************************************************************************
         //***********************************************************************************************
         
