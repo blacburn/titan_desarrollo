@@ -1,5 +1,78 @@
 <?php
 
+
+// URL base
+$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
+$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+$url .= "/index.php?";
+//Variables
+$cadenaACodificar16 = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar16 .= "&procesarAjax=true";
+$cadenaACodificar16 .= "&action=index.php";
+$cadenaACodificar16 .= "&bloqueNombre=" . $esteBloque ["nombre"];
+$cadenaACodificar16 .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+$cadenaACodificar16 .= $cadenaACodificar16 . "&funcion=consultarParametroAjax";
+$cadenaACodificar16 .= "&tiempo=" . $_REQUEST ['tiempo'];
+// Codificar las variables
+$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+$cadena16 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar16, $enlace );
+// URL definitiva
+$urlFinal16 = $url . $cadena16;
+//echo $urlFinal16; exit;
+// URL base
+$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
+$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+$url .= "/index.php?";
+//Variables
+$cadenaACodificar17 = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar17 .= "&procesarAjax=true";
+$cadenaACodificar17 .= "&action=index.php";
+$cadenaACodificar17 .= "&bloqueNombre=" . $esteBloque ["nombre"];
+$cadenaACodificar17 .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+$cadenaACodificar17 .= $cadenaACodificar17 . "&funcion=consultarValorParametroAjax";
+$cadenaACodificar17 .= "&tiempo=" . $_REQUEST ['tiempo'];
+// Codificar las variables
+$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+$cadena17 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar17, $enlace );
+// URL definitiva
+$urlFinal17 = $url . $cadena17;
+//echo $urlFinal16; exit;
+// URL base
+$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
+$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+$url .= "/index.php?";
+//Variables
+$cadenaACodificar18 = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar18 .= "&procesarAjax=true";
+$cadenaACodificar18 .= "&action=index.php";
+$cadenaACodificar18 .= "&bloqueNombre=" . $esteBloque ["nombre"];
+$cadenaACodificar18 .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+$cadenaACodificar18 .= $cadenaACodificar18 . "&funcion=consultarConceptoAjax";
+$cadenaACodificar18 .= "&tiempo=" . $_REQUEST ['tiempo'];
+// Codificar las variables
+$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+$cadena18 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar18, $enlace );
+// URL definitiva
+$urlFinal18 = $url . $cadena18;
+//echo $urlFinal16; exit;
+// URL base
+$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
+$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+$url .= "/index.php?";
+//Variables
+$cadenaACodificar19 = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+$cadenaACodificar19 .= "&procesarAjax=true";
+$cadenaACodificar19 .= "&action=index.php";
+$cadenaACodificar19 .= "&bloqueNombre=" . $esteBloque ["nombre"];
+$cadenaACodificar19 .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+$cadenaACodificar19 .= $cadenaACodificar19 . "&funcion=consultarValorConceptoAjax";
+$cadenaACodificar19 .= "&tiempo=" . $_REQUEST ['tiempo'];
+// Codificar las variables
+$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+$cadena19 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar19, $enlace );
+// URL definitiva
+$urlFinal19 = $url . $cadena19;
+//echo $urlFinal16; exit;
 ?>
 
 <script>
@@ -9,35 +82,28 @@
  
  $('#<?php echo $this->campoSeguro('operadores')?>').width(120);
  $("#<?php echo $this->campoSeguro('operadores')?>").select2();
-
  $('#<?php echo $this->campoSeguro('concepto')?>').width(140);
  $("#<?php echo $this->campoSeguro('concepto')?>").select2();
-
  $('#<?php echo $this->campoSeguro('parametro')?>').width(140);
  $("#<?php echo $this->campoSeguro('parametro')?>").select2();
  
  $('#<?php echo $this->campoSeguro('tipoSueldoRegistroMod')?>').width(250);
  $('#<?php echo $this->campoSeguro('tipoSueldoRegistroMod')?>').select2(); 
-
  $('#<?php echo $this->campoSeguro('ley')?>').width(250);
  $('#<?php echo $this->campoSeguro('ley')?>').select2(); 
-
  $('#<?php echo $this->campoSeguro('naturaleza')?>').width(200);
  $('#<?php echo $this->campoSeguro('naturaleza')?>').select2();  
  
  
  $('#<?php echo $this->campoSeguro('estadoRegistro')?>').width(200);
  $("#<?php echo $this->campoSeguro('estadoRegistro')?>").select2();
-
  $('#<?php echo $this->campoSeguro('categoriaConceptos')?>').width(250);
  $("#<?php echo $this->campoSeguro('categoriaConceptos')?>").select2();
  
  $('#<?php echo $this->campoSeguro('categoriaConceptosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").select2();
-
  $('#<?php echo $this->campoSeguro('categoriaParametrosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").select2();
-
 $( '#<?php echo $this->campoSeguro('ley')?>' ).change(function() {
 		$("#<?php echo $this->campoSeguro('leyRegistros') ?>").val($("#<?php echo $this->campoSeguro('ley') ?>").val());
 });
@@ -47,13 +113,11 @@ $( '#<?php echo $this->campoSeguro('formula')?>' ).keypress(function(tecla) {
 	    tecla.charCode != 45 && tecla.charCode != 47 && 
 	    tecla.charCode != 40 && tecla.charCode != 41) return false;
 });
-
 $( '#<?php echo $this->campoSeguro('valorConcepto')?>' ).keypress(function(tecla) {
 	 if(tecla.charCode != 0  && tecla.charCode != 42 && tecla.charCode != 43 && 
 	    tecla.charCode != 45 && tecla.charCode != 47 && 
 	    tecla.charCode != 40 && tecla.charCode != 41) return false;
 });
-
 $(function () {
 	    $("#parametros").draggable({
 	        revert: true,
@@ -65,7 +129,6 @@ $(function () {
 	            $(this).fadeTo(0, 1);
 	        }
 	    });
-
 	    $('#<?php echo $this->campoSeguro('formula')?>').droppable({
 	        hoverClass: 'active',
 	        drop: function (event, ui) {
@@ -73,7 +136,6 @@ $(function () {
 	        }
 	    });
 });
-
 $(function () {
     $("#conceptos").draggable({
         revert: true,
@@ -85,7 +147,6 @@ $(function () {
             $(this).fadeTo(0, 1);
         }
     });
-
     $('#<?php echo $this->campoSeguro('formula')?>').droppable({
         hoverClass: 'active',
         drop: function (event, ui) {
@@ -93,44 +154,31 @@ $(function () {
         }
     });
 });
-
 $( '#<?php echo $this->campoSeguro('categoriaConceptosList')?>' ).change(function() {
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').attr("readonly","readonly");
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').addClass("readOnly");
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val("");
-
 	$("#editarBotonesConcepto").show("slow");
 	$("#ingresoBotonesConcepto").hide("fast");
-
 	$("#<?php echo $this->campoSeguro('seccionConceptos')?>").removeAttr('disabled');
     $("#<?php echo $this->campoSeguro('seccionConceptos')?>").select2();
 });
-
 $( '#<?php echo $this->campoSeguro('seccionConceptos')?>' ).change(function() {
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').attr("readonly","readonly");
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').addClass("readOnly");
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val("");
-
 	$("#editarBotonesConcepto").show("slow");
 	$("#ingresoBotonesConcepto").hide("fast");
 });
-
-
 $( '#<?php echo $this->campoSeguro('categoriaParametrosList')?>' ).change(function() {
-
 	$("#<?php echo $this->campoSeguro('seccionParametros')?>").removeAttr('disabled');
     $("#<?php echo $this->campoSeguro('seccionParametros')?>").select2();
 });
-
-
 //***********************************************************************************************************
 //***********************************************************************************************************
-
 //Codigo AGREGAR y QUITAR Campos Dinamicos
-
 var limite = 20; //Se define el Limite de Paneles de Condiciones que se pueden Generar
 				 //No requiere que se cambie en otro lugar
-
 				 
 var iCnt = 0;
 var numId = 0;
@@ -139,18 +187,14 @@ var numId = 0;
 var container = $(document.createElement('div')).css({
 	padding: '5px'
 });
-
 $(container).attr('class', 'col-md-12')
 $(container).attr('id', 'pushDina')
-
 $( document ).ready(function() {
 	if($('#<?php echo $this->campoSeguro('estadoPagina')?>').val() == 'modificarCondiciones'){
 		var cantidad = $('#<?php echo $this->campoSeguro('cantidadCargaCond')?>').val();
 		$("#<?php echo $this->campoSeguro('cantidadCondicionesConcepto') ?>").val(cantidad)
-
 		var entonces = $('#<?php echo $this->campoSeguro('cargaCondEntonces')?>').val();
 		var cadenasEntonces = entonces.split("|");
-
 		var si = $('#<?php echo $this->campoSeguro('cargaCondSi')?>').val();
 		var cadenasSi = si.split("|");
 		
@@ -167,13 +211,13 @@ $( document ).ready(function() {
 					'<div id=lab1'+iCnt+' class="col-md-2">'+
 						'<label> Si </label> ' + 
 					'</div>'+
-                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos('+iCnt+')"/>'+
+                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="' + cadenasSi[indice] + '" onBlur="devPos('+iCnt+')"/>'+
                                         '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt+' class="col-md-2">'+
 							'<label> Entonces </label> ' + 
 						'</div>'+
-					'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt+')"/>'+
+					'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="' + cadenasEntonces[indice] + '" onBlur="devPos2('+iCnt+')"/>'+
                                         '</textarea>'+	
 					'</div>'+ 
 					'</fieldset>');
@@ -190,7 +234,6 @@ $( document ).ready(function() {
 	              
                       arrastreConcepto('tb1' + iCnt);
                       arrastreConcepto('tb2' + iCnt);
-
 	        indice++;
 	   
 		}
@@ -589,5 +632,121 @@ function GetTextValue() {
 	});
 	
 }
+
+function consultarParametro(elem, request, response){
+	  $.ajax({
+	    url: "<?php echo $urlFinal16?>",
+	    dataType: "json",
+	    data: { valor:$("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").val()},
+	    success: function(data){ 
+	        if(data[0]!=" "){
+	            $("#<?php echo $this->campoSeguro('seccionParametros')?>").html('');
+	            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('seccionParametros')?>");
+	            $.each(data , function(indice,valor){
+	            	$("<option value='"+data[ indice ].id_categoria+"'>"+data[ indice ].simbolo+"</option>").appendTo("#<?php echo $this->campoSeguro('seccionParametros')?>");
+	            	
+	            });
+	            
+	            $("#<?php echo $this->campoSeguro('seccionParametros')?>").removeAttr('disabled');
+	            
+	            //$('#<?php echo $this->campoSeguro('seccionParametros')?>').width(250);
+	            $("#<?php echo $this->campoSeguro('seccionParametros')?>").select2();
+	            
+	            $("#<?php echo $this->campoSeguro('seccionParametros')?>").removeClass("validate[required]");
+	            
+		        }
+	    			
+	    }
+		                    
+	   });
+	};
+	function consultarConcepto(elem, request, response){
+		  $.ajax({
+		    url: "<?php echo $urlFinal18?>",
+		    dataType: "json",
+		    data: { valor:$("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").val()},
+		    success: function(data){ 
+		        if(data[0]!=" "){
+		            $("#<?php echo $this->campoSeguro('seccionConceptos')?>").html('');
+		            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('seccionConceptos')?>");
+		            $.each(data , function(indice,valor){
+		            	$("<option value='"+data[ indice ].id+"'>"+data[ indice ].simbolo+"</option>").appendTo("#<?php echo $this->campoSeguro('seccionConceptos')?>");
+		            	
+		            });
+		            
+		            $("#<?php echo $this->campoSeguro('seccionConceptos')?>").removeAttr('disabled');
+		            
+		            //$('#<?php echo $this->campoSeguro('seccionConceptos')?>').width(250);
+		            $("#<?php echo $this->campoSeguro('seccionConceptos')?>").select2();
+		            
+		            $("#<?php echo $this->campoSeguro('seccionConceptos')?>").removeClass("validate[required]");
+		            
+			        }
+		    			
+		    }
+			                    
+		   });
+		};
+		function consultarValorParametro(elem, request, response){
+			  $.ajax({
+			    url: "<?php echo $urlFinal17?>",
+			    dataType: "json",
+			    data: { valor:$("#<?php echo $this->campoSeguro('seccionParametros')?>").val()},
+			    success: function(data){ 
+			        if(data[0]!=" "){
+			            $("#<?php echo $this->campoSeguro('valorParametro')?>").val(data[0].valor);
+			            
+				    }
+			    			
+			    }
+				                    
+			   });
+			};
+			function consultarValorConcepto(elem, request, response){
+				  $.ajax({
+				    url: "<?php echo $urlFinal19?>",
+				    dataType: "json",
+				    data: { valor:$("#<?php echo $this->campoSeguro('seccionConceptos')?>").val()},
+				    success: function(data){ 
+				    	if(data[0]!=" "){
+				            $("#<?php echo $this->campoSeguro('valorConcepto')?>").val(data[0].formula);
+				            
+					    }
+				    			
+				    }
+					                    
+				   });
+				};
+		$("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").change(function(){
+		    
+			if($("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").val()!=''){
+		    	consultarParametro();
+			}else{
+				$("#<?php echo $this->campoSeguro('seccionParametros')?>").attr('disabled','');
+			}
+			$("#<?php echo $this->campoSeguro('valorParametro')?>").val('');
+		});
+		$("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").change(function(){
+			if($("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").val()!=''){
+		    	consultarConcepto();
+			}else{
+				$("#<?php echo $this->campoSeguro('seccionConceptos')?>").attr('disabled','');
+				$("#<?php echo $this->campoSeguro('valorConcepto')?>").val('');
+			}
+		});
+		$("#<?php echo $this->campoSeguro('seccionParametros')?>").change(function(){
+			if($("#<?php echo $this->campoSeguro('seccionParametros')?>").val()!=''){
+		    	consultarValorParametro();
+			}else{
+				$("#<?php echo $this->campoSeguro('valorParametro')?>").val('');
+			}
+		});
+		$("#<?php echo $this->campoSeguro('seccionConceptos')?>").change(function(){
+			if($("#<?php echo $this->campoSeguro('seccionConceptos')?>").val()!=''){
+		    	consultarValorConcepto();
+			}else{
+				$("#<?php echo $this->campoSeguro('valorConcepto')?>").val('');
+			}
+		});
 
 </script>

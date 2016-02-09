@@ -1,22 +1,15 @@
 <?php
-
 namespace bloquesConcepto\contenidoConcepto;
-
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");
     exit ();
 }
-
 include_once ("core/manager/Configurador.class.php");
 include_once ("core/connection/Sql.class.php");
-
 /**
  * IMPORTANTE: Se recomienda que no se borren registros. Utilizar mecanismos para - independiente del motor de bases de datos,
  * poder realizar rollbacks gestionados por el aplicativo.
  */
-
-
-
 class Sql extends \Sql {
     
     var $miConfigurador;
@@ -126,6 +119,26 @@ class Sql extends \Sql {
 				$cadenaSql .= 'estado != \'Inactivo\';';
 				break;
 				
+			case 'buscarCategoriaConcepto' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.categoria ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'estado != \'Inactivo\';';
+				break;
+				
+			case 'buscarCategoriaParametro' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_categoria as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.categoria_parametro ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'estado != \'Inactivo\';';
+				break;
+				
 			case 'buscarParametroAjax' :
 				$cadenaSql = 'SELECT ';
 				$cadenaSql .= 'id as ID_CATEGORIA, ';
@@ -144,6 +157,24 @@ class Sql extends \Sql {
 				$cadenaSql .= 'concepto.concepto ';
 				$cadenaSql .= 'WHERE ';
 				$cadenaSql .= 'id = ' . $variable . ';';
+				break;
+				
+			case 'buscarValorParametroAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'valor as VALOR ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.parametro_liquidacion ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id = ' . $variable . ';';
+				break;
+			
+			case 'buscarValorConceptoAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'formula as FORMULA ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.concepto ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'codigo = ' . $variable . ';';
 				break;
 				
 			case 'buscarRegistrosDeConceptos' :
