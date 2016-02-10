@@ -1,5 +1,5 @@
 <?php
-namespace bloquesConcepto\contenidoConcepto;
+namespace bloquesNovedad\gestionNovedad;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");
@@ -56,34 +56,34 @@ class Funcion {
         if (isset ( $_REQUEST ['procesarAjax'] )) {
             $this->procesarAjax ();
         } else{
+        
             
-           
-
-            
-           
-        	
         	switch ($_REQUEST['opcion']){
+                   
         		case "mostrar":
-                            include_once ($this->ruta."funcion/registrar.php");
-        		 break;
-                         case "registrar":
                              
-        		      include_once ($this->ruta."funcion/registrar.php");
-        	         break; 
-                         case "modificarRegistro":
-        		      include_once ($this->ruta."funcion/modificar.php");
-        	         break; 
-                         case "inactivarRegistro":
-        		      include_once ($this->ruta."funcion/inactivar.php");
-        	         break; 
-                     
-                     case "opciones" :
-					include_once ($this->ruta . "/funcion/opciones.php");
-                             break;
-                     
+                            include_once ($this->ruta."funcion/registrar.php");
+        		
+        			break;
+                            
+                             case "registrar":
+                          
+                            include_once ($this->ruta."funcion/opciones.php");
+        		
+        			break;
+                            case "modificar":
+                              
+                            include_once ($this->ruta."funcion/modificar.php");
+        		
+        			break;
+                             case "inactivar":
+                              
+                            include_once ($this->ruta."funcion/inactivar.php");
+        		
+        			break;
         	}
             
-
+//            $resultado = $this->procesarFormulario ();
         }
         
         return $resultado;
