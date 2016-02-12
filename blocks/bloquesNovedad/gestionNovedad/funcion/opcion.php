@@ -20,31 +20,22 @@ class FormProcessor {
     }
     
     function procesarFormulario() {    
-        //Aquí va la lógica de procesamiento
         
         
         //Al final se ejecuta la redirección la cual pasará el control a otra página
-        
-        
-         $i=0;
-            while($i<$_REQUEST['tamaño']){
-                if($_REQUEST['botonModificar'.$i] == 'true'){
-                 Redireccionador::redireccionar('modificar',$i); 
-                  break; 
-                }
-                if($_REQUEST['botonVerDetalle'.$i] == 'true'){
-                  Redireccionador::redireccionar('verdetalle',$i);
-                  break;
-                }
-                if($_REQUEST['botonInactivar'.$i] == 'true'){
-                    
-                  Redireccionador::redireccionar('inactivar',$i);
-                  break;
-                }
-                
-                $i+=1;
-            }
        
+            
+                if($_REQUEST['tipoNovedad'] == 1){
+                    
+                 Redireccionador::redireccionar('periodica'); 
+                
+                }
+                else{
+                 Redireccionador::redireccionar('esporadica'); 
+                 
+                }
+              
+           
     	
 					
 						    

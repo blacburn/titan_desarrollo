@@ -128,8 +128,8 @@ class Formulario {
 	        $atributos ['validar'] = 'required';
 	        
 	        $naturaleza = array( 
-    			array(1,' Periódica'), 
-    			array(2,'Esporádica'), 
+    			array(1,'Periodica'), 
+    			array(2,'Esporadica'), 
    
 			); 
 	        
@@ -463,12 +463,12 @@ class Formulario {
 
         // Paso 1: crear el listado de variables
 
-        //$valorCodificado = "actionBloque=" . $esteBloque ["nombre"]; //Ir pagina Funcionalidad
-        $valorCodificado = "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );//Frontera mostrar formulario
+        $valorCodificado = "actionBloque=" . $esteBloque ["nombre"]; //Ir pagina Funcionalidad
+        $valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );//Frontera mostrar formulario
         $valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
      
         $valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-        $valorCodificado .= "&opcion=registrar";
+        $valorCodificado .= "&opcion=opt";
         /**
          * SARA permite que los nombres de los campos sean dinámicos.
          * Para ello utiliza la hora en que es creado el formulario para

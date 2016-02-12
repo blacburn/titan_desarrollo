@@ -4,6 +4,7 @@ namespace bloquesConcepto\contenidoConcepto\funcion;
 
 
 include_once('Redireccionador.php');
+include_once('Interprete.php');
 
 class FormProcessor {
     
@@ -41,10 +42,10 @@ class FormProcessor {
         $_entradaFormulaCompilador = $_REQUEST['formulaConcepto'];
         
       
+        var_dump(Interprete::evaluarSentencia($_entradaFormulaCompilador));
         
         
-        
-        
+        exit;
         
         //----------------------------------------------------------------------------------------------------------
         //------------------------ Codigo A Ejecutar Una Vez VALIDADA la Formula -----------------------------------

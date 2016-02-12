@@ -72,6 +72,17 @@ class Redireccionador {
 				$variable .= "&opcion=mensaje";
                                 $variable .= '&mensaje=nomodifico';
                             break;
+                         case "periodica" :
+                                
+				$variable = 'pagina='.$miPaginaActual;                                
+				$variable .= "&opcion=periodica";
+                              
+                            break;    
+                         case "esporadica" :
+                                
+				$variable = 'pagina='.$miPaginaActual;                                
+				$variable .= "&opcion=esporadica";
+                            break;
 			
 		}
 		foreach ( $_REQUEST as $clave => $valor ) {
