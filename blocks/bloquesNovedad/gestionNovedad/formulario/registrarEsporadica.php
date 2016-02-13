@@ -105,8 +105,48 @@ class Formulario {
 		$atributos ['tipoEtiqueta'] = 'inicio';
 		$atributos ["leyenda"] = "Formulario y Estructura de la novedad Esporádica";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+                {
         // --------------------------------------------------------------------------------------------------
-        
+                        $atributos ["id"] = "camposDinamicosCont";
+			$atributos ["estilo"] = "col-md-8";
+			echo $this->miFormulario->division ( "inicio", $atributos );
+			{
+				unset ( $atributos );
+				$atributos ["id"] = "camposDinamicos";
+				$atributos ["estilo"] = "col-md-12";
+				echo $this->miFormulario->division ( "inicio", $atributos );
+				{
+				
+				}
+				echo $this->miFormulario->division ( "fin" );
+				
+			}
+			echo $this->miFormulario->division ( "fin" );
+                        unset ($atributos);
+			$atributos ["id"] = "opcionesCamposDinamicos";
+			$atributos ["estilo"] = "col-md-4";
+			echo $this->miFormulario->division ( "inicio", $atributos );
+			{
+                            $atributos ["id"] = "blocBotn";
+			    $atributos ["estilo"] = "col-md-12";
+                            echo $this->miFormulario->division ( "inicio", $atributos );
+                            {
+                                        echo "<center>";
+					echo "<input type=\"button\" id=\"btAgregar\" value=\"Añadir Campo\" class=\"btn btn-success btn-block\" />";
+					echo "<input type=\"button\" id=\"btRemove\" value=\"Eliminar Campo\" class=\"btn btn-danger btn-block\" />";
+					echo "<input type=\"button\" id=\"btRemoveAll\" value=\"Eliminar Todo\" class=\"btn btn-warning btn-block\" /><br />";
+					echo "</center>";
+				
+				// ---------------- CONTROL: Select --------------------------------------------------------
+				
+			
+                            }   
+                            echo $this->miFormulario->division ( "fin" );
+                            
+                        }
+			echo $this->miFormulario->division ( "fin" );
+			
+			unset($atributos);	
         
    
         	
@@ -145,6 +185,9 @@ class Formulario {
 
         // ------------------Fin Division para los botones-------------------------
         echo $this->miFormulario->division ( "fin" );
+        
+        
+       }
         echo $this->miFormulario->marcoAgrupacion ( 'fin' );
         // ------------------- SECCION: Paso de variables ------------------------------------------------
      
