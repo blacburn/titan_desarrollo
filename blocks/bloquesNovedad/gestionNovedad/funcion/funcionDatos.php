@@ -1,6 +1,6 @@
 <?php
 
-namespace bloquesConceto\asociacionConcepto\funcion;
+namespace bloquesNovedad\gestionNovedad\funcion;
 
 
 class Formulario {

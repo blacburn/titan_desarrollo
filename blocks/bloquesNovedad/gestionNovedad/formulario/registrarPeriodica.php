@@ -1,5 +1,5 @@
 <?php 
-namespace bloquesConcepto\asociacionConcepto\formulario;
+namespace bloquesNovedad\gestionNovedad\formulario;
 
 
 

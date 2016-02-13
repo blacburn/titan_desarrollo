@@ -1,6 +1,6 @@
 <?php
 
-namespace bloquesConcepto\asociacionConcepto\funcion;
+namespace bloquesNovedad\gestionNovedad\funcion;
                         
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");
