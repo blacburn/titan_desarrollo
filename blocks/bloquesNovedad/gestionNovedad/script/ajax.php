@@ -24,7 +24,7 @@ $(document).ready(function() {
 	                 
 			// Añadir elementos Dinamicos en el DOM
 			
-			$(container).append('<fieldset id=panel '+iCnt+' class="ui-widget ui-widget-content">'+
+			$(container).append('<fieldset id=panel'+iCnt+' class="ui-widget ui-widget-content">'+
 					'<legend class="ui-state-default ui-corner-all"> CAMPO'+iCnt+'</legend>'+
 					'<div id=lab1'+iCnt+' class="col-md-2">'+
 						'<label> Nombre del Campo:  </label> ' + 
@@ -75,6 +75,11 @@ $(document).ready(function() {
                         $('#requerido'+iCnt).select2();
                         $('#formulacionCampo'+iCnt).width(250);
                         $('#formulacionCampo'+iCnt).select2(); 
+                        
+                        if(iCnt>1){
+                            var num=iCnt-1;
+                            $('#panel'+num).remove();     
+                        }
                  
 	});
 	
