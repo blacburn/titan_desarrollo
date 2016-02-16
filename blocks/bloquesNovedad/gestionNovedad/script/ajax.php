@@ -19,17 +19,23 @@ $(document).ready(function() {
 	 
 	$('#btAgregar').click(function() {
 		        
-                      	                 
+                      	       var validacion=0;          
 			iCnt = iCnt + 1;
-	                 
+	                 if(iCnt>1){
+                             var n=iCnt-1;
+                            if($('#tb1'+n).val()==''){
+                                alert('ingese nombre de campo');
+                                validacion=1;
+                            }
+                        }
 			// Añadir elementos Dinamicos en el DOM
-			
-			$(container).append('<fieldset id=panel'+iCnt+' class="ui-widget ui-widget-content">'+
+			if(validacion==0){
+                            $(container).append('<fieldset id=panel'+iCnt+' class="ui-widget ui-widget-content">'+
 					'<legend class="ui-state-default ui-corner-all"> CAMPO'+iCnt+'</legend>'+
 					'<div id=lab1'+iCnt+' class="col-md-2">'+
 						'<label> Nombre del Campo:  </label> ' + 
 					'</div>'+
-                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="30" value="""/>'+
+                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="30" value="" required/>'+
                                         '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt+' class="col-md-2">'+
@@ -77,11 +83,17 @@ $(document).ready(function() {
                         $('#formulacionCampo'+iCnt).select2(); 
                         
                         if(iCnt>1){
-                            
                             var num=iCnt-1;
+                            $("#<?php echo $this->campoSeguro('listaCampo')?>").append('<li>'+($('#tb1'+num).val())+'</li>');
+                            $('#tablaCampos').append('<tr><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td></tr>');
                             $('#panel'+num).remove();     
                             
                         }
+                        }
+                        else{
+                        iCnt = iCnt - 1;
+                        }
+			
                  
 	});
 	

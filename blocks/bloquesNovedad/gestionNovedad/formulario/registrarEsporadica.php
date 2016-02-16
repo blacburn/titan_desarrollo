@@ -105,10 +105,29 @@ class Formulario {
 		$atributos ['tipoEtiqueta'] = 'inicio';
 		$atributos ["leyenda"] = "Formulario y Estructura de la novedad Esporádica";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-                {
+                {           $atributos ["id"] = "blocBotn";
+			    $atributos ["estilo"] = "col-md-5";
+                            echo $this->miFormulario->division ( "inicio", $atributos );
+                            {
+                                
+                            }   
+                            echo $this->miFormulario->division ( "fin" );
+                            $atributos ["id"] = "blocBotn";
+			    $atributos ["estilo"] = "col-md-2";
+                            echo $this->miFormulario->division ( "inicio", $atributos );
+                            {
+                                        echo "<center>";
+					echo "<input type=\"button\" id=\"btAgregar\" value=\"Añadir Campo\" class=\"btn btn-success btn-block\" />";
+					echo "</center>";
+				
+				// ---------------- CONTROL: Select --------------------------------------------------------
+				
+			
+                            }   
+                            echo $this->miFormulario->division ( "fin" );
         // --------------------------------------------------------------------------------------------------
                         $atributos ["id"] = "camposDinamicosCont";
-			$atributos ["estilo"] = "col-md-8";
+			$atributos ["estilo"] = "col-md-12";
 			echo $this->miFormulario->division ( "inicio", $atributos );
 			{
 				unset ( $atributos );
@@ -122,51 +141,53 @@ class Formulario {
 				
                                 unset($atributos);
                                   // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-        $esteCampo = 'lista';
-        $atributos ['id'] = $esteCampo;
-        $atributos ['nombre'] = $esteCampo;
-        $atributos ['estilo'] = 'jqueryui';
-        $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-        $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-        $atributos ['deshabilitado'] = false;
-        $atributos ['tamanno'] = 20;
-        $atributos ['maximoTamanno'] = '';
-        $atributos ['items']='';
-        $tab ++;
+                                $esteCampo = "marcoDatosBasicos";
+                                $atributos ['id'] = $esteCampo;
+                                $atributos ["estilo"] = "jqueryui";
+                                $atributos ["leyenda"] = "Campos Creados";
+                                echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+                                { 
+       echo '<table id="tablaCampos" class="display" cellspacing="0" width="100%"> '
+                 . '<thead style="display: table-row-group"><tr><th>'."NOMBRE".'</th><th>'."LABEL".'</th> <th>'."TIPO DATO".'</th><th>'."REQUERIDO".'</th><th>'."FORMULA".'</th></tr></thead>
+                    <tbody>'; 
+      echo '</tbody></table>';  
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                $atributos ["id"] = "divLista";
+				$atributos ["estilo"] = "col-md-12";
+				echo $this->miFormulario->division ( "inicio", $atributos );
+				{
+				                                $esteCampo = 'listaCampo';
+                                                                $atributos ['id'] = $esteCampo;
+                                                                $atributos ['nombre'] = $esteCampo;
+                                                                $atributos ['estilo'] = 'jqueryui';
+                                                                $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+                                                                $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+                                                                $atributos ['deshabilitado'] = false;
+                                                                $atributos ['tamanno'] = 20;
+                                                                $atributos ['maximoTamanno'] = '';
+                                                                $atributos ['items']='';
+                                                                $tab ++;
         
-        // Aplica atributos globales al control
-        $atributos = array_merge ( $atributos, $atributosGlobales );
-        echo $this->miFormulario->listaNoOrdenada($atributos);
+                                                                    // Aplica atributos globales al control
+                                                                    $atributos = array_merge ( $atributos, $atributosGlobales );
+                                                                    echo $this->miFormulario->listaNoOrdenada($atributos);
+				}
+				echo $this->miFormulario->division ( "fin" );
+         }
+        echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+        
+
         // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
         unset($atributos);
-			}
-			echo $this->miFormulario->division ( "fin" );
-                        unset ($atributos);
-			$atributos ["id"] = "opcionesCamposDinamicos";
-			$atributos ["estilo"] = "col-md-4";
-			echo $this->miFormulario->division ( "inicio", $atributos );
-			{
-                            $atributos ["id"] = "blocBotn";
-			    $atributos ["estilo"] = "col-md-12";
-                            echo $this->miFormulario->division ( "inicio", $atributos );
-                            {
-                                        echo "<center>";
-					echo "<input type=\"button\" id=\"btAgregar\" value=\"Añadir Campo\" class=\"btn btn-success btn-block\" />";
-					echo "<input type=\"button\" id=\"btRemove\" value=\"Eliminar Campo\" class=\"btn btn-danger btn-block\" />";
-					echo "<input type=\"button\" id=\"btRemoveAll\" value=\"Eliminar Todo\" class=\"btn btn-warning btn-block\" /><br />";
-					echo "</center>";
-				
-				// ---------------- CONTROL: Select --------------------------------------------------------
-				
 			
-                            }   
-                            echo $this->miFormulario->division ( "fin" );
-                            
-                        }
-			echo $this->miFormulario->division ( "fin" );
-			
-			unset($atributos);	
-        
+                       
    
         	
               
@@ -204,7 +225,8 @@ class Formulario {
 
         // ------------------Fin Division para los botones-------------------------
         echo $this->miFormulario->division ( "fin" );
-        
+        }
+			echo $this->miFormulario->division ( "fin" );
         
        }
         echo $this->miFormulario->marcoAgrupacion ( 'fin' );
