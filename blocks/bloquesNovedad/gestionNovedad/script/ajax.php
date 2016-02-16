@@ -77,8 +77,10 @@ $(document).ready(function() {
                         $('#formulacionCampo'+iCnt).select2(); 
                         
                         if(iCnt>1){
+                            
                             var num=iCnt-1;
                             $('#panel'+num).remove();     
+                            
                         }
                  
 	});

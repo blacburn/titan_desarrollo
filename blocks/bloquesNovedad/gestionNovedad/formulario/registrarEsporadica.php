@@ -120,6 +120,25 @@ class Formulario {
 				}
 				echo $this->miFormulario->division ( "fin" );
 				
+                                unset($atributos);
+                                  // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+        $esteCampo = 'lista';
+        $atributos ['id'] = $esteCampo;
+        $atributos ['nombre'] = $esteCampo;
+        $atributos ['estilo'] = 'jqueryui';
+        $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+        $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+        $atributos ['deshabilitado'] = false;
+        $atributos ['tamanno'] = 20;
+        $atributos ['maximoTamanno'] = '';
+        $atributos ['items']='';
+        $tab ++;
+        
+        // Aplica atributos globales al control
+        $atributos = array_merge ( $atributos, $atributosGlobales );
+        echo $this->miFormulario->listaNoOrdenada($atributos);
+        // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+        unset($atributos);
 			}
 			echo $this->miFormulario->division ( "fin" );
                         unset ($atributos);

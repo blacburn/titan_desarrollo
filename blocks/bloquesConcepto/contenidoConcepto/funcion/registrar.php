@@ -5,6 +5,7 @@ namespace bloquesConcepto\contenidoConcepto\funcion;
 
 include_once('Redireccionador.php');
 include_once('Interprete.php');
+include_once('NodoConcepto.php');
 
 class FormProcessor {
     
@@ -42,10 +43,21 @@ class FormProcessor {
         $_entradaFormulaCompilador = $_REQUEST['formulaConcepto'];
         
       
-        var_dump(Interprete::evaluarSentencia($_entradaFormulaCompilador));
+  
         
-        
-        exit;
+//        Interprete::evaluarSentencia($_entradaFormulaCompilador);
+       $interprete = new Interprete();
+
+//    $sentencia = 'IVAAA+((2+3)*RESRD)/+4-5';
+
+$aceptado = $interprete->evaluarSentencia($_entradaFormulaCompilador);
+
+echo "<br>".$aceptado."<br>";
+
+var_dump($aceptado);
+exit;
+
+//$arbol = $interprete->generarArbol($_entradaFormulaCompilador);
         
         //----------------------------------------------------------------------------------------------------------
         //------------------------ Codigo A Ejecutar Una Vez VALIDADA la Formula -----------------------------------
