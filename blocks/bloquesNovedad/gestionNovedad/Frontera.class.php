@@ -70,22 +70,22 @@ class Frontera {
                                    
 					include_once ($this->ruta . "/formulario/form.php");
 					break;
-                                 
+                                 case "registrarInfo":
+					include_once ($this->ruta . "/formulario/registrarInfoBasica.php");
+					break;	 
                                  case "inactivar":
 					include_once ($this->ruta . "/formulario/inactivar.php");
 					break;	 
                                 case "detalle":
 					include_once ($this->ruta . "/formulario/detalle.php");
-					break;	
-                                    
-                                     case "verdetalle":
+				 case "verdetalle":
                                          
                                         include_once ($this->ruta . "/formulario/verDetalle.php");
 					break;
         		}
 		}else{
                     
-			include_once ($this->ruta . "/formulario/registrarInfoBasica.php");
+			include_once ($this->ruta . "/formulario/form.php");
 		}
 	}
 }
