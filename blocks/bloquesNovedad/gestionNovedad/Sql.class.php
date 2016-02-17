@@ -434,6 +434,18 @@ class Sql extends \Sql {
                 $cadenaSql .= $variable ['fdpCiudad'] . '';
                 $cadenaSql .= ') ';
 				break;  
+                  case 'buscarRegistrosDeNovedades' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'nombre as NOMBRE, ';
+				$cadenaSql .= 'simbolo as SIMBOLO, ';
+				$cadenaSql .= 'descripcion as DESCRIPCION, ';
+				$cadenaSql .= 'simbolo as SIMBOLO, ';
+				$cadenaSql .= 'naturaleza as NATURALEZA, ';
+				$cadenaSql .= 'estado as ESTADO, ';
+				$cadenaSql .= 'codigo as ID ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.novedad';
+		break;
         }
         
         return $cadenaSql;

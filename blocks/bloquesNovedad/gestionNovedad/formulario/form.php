@@ -147,7 +147,7 @@ class Formulario {
                         
         // ---------------- CONTROL: Tabla Cargos sin Sara -----------------------------------------------                
                         
-        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarRegistrosDeConceptos");
+        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarRegistrosDeNovedades");
         $matrizItems=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
         $longitud = count($matrizItems);
         
