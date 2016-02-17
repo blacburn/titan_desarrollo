@@ -33,7 +33,7 @@ $(function() {
 		event.preventDefault();
 	});
 });
-
+$("#tablaCampos").dataTable().fnDestroy();
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
     

@@ -11,20 +11,21 @@ var container = $(document.createElement('div')).css({
 $(container).attr('class', 'col-md-12')
 $(container).attr('id', 'pushDina')
 $(document).ready(function() {
-    
-    
-    
-	
-                      
-	 
-	$('#btAgregar').click(function() {
+    var t = $('#tablaCampos').DataTable();
+                    $('#btAgregar').click(function() {
 		        
-                      	       var validacion=0;          
+                      	var validacion=0;          
 			iCnt = iCnt + 1;
 	                 if(iCnt>1){
                              var n=iCnt-1;
-                            if($('#tb1'+n).val()==''){
-                                alert('ingese nombre de campo');
+                            if($('#tb1'+n).val()=='' || $('#tb2'+n).val()==''){
+                                if($('#tb1'+n).val()==''){
+                                    alert('ingese nombre de campo');
+                                }
+                                if($('#tb2'+n).val()==''){
+                                    alert('ingese label del campo');
+                                }    
+                                
                                 validacion=1;
                             }
                         }
@@ -84,23 +85,43 @@ $(document).ready(function() {
                         
                         if(iCnt>1){
                             var num=iCnt-1;
-                            $("#<?php echo $this->campoSeguro('listaCampo')?>").append('<li>'+($('#tb1'+num).val())+'</li>');
-                            $('#tablaCampos').append('<tr><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td><td>'+($('#tb1'+num).val())+'</td></tr>');
+                           
+                           
+                                 t.row.add( [ ($('#tb1'+num).val()),
+                                      ($('#tb2'+num).val()),
+                                      ($('#tipoDato'+num).val()),
+                                      ($('#requerido'+num).val()),
+                                      ($('#formulacionCampo'+num).val())] ).draw( false );
                             $('#panel'+num).remove();     
-                            
                         }
                         }
                         else{
                         iCnt = iCnt - 1;
                         }
-			
-                 
 	});
-	
-         
         
         
-        
-        
+ 
+          $('#tablaCampos tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            t.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+        $('#btRemove').click(function() { // Elimina un panel de condiciones del DOM
+		
+ 
+   
+        t.row('.selected').remove().draw( false );
+    
+	});
 });
+
+
+
+
+
 </script>

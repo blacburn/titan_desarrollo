@@ -118,13 +118,14 @@ class Formulario {
                             {
                                         echo "<center>";
 					echo "<input type=\"button\" id=\"btAgregar\" value=\"Añadir Campo\" class=\"btn btn-success btn-block\" />";
-					echo "</center>";
+                                        echo "</center>";
 				
 				// ---------------- CONTROL: Select --------------------------------------------------------
 				
 			
                             }   
                             echo $this->miFormulario->division ( "fin" );
+                            echo '<br>';
         // --------------------------------------------------------------------------------------------------
                         $atributos ["id"] = "camposDinamicosCont";
 			$atributos ["estilo"] = "col-md-12";
@@ -140,6 +141,26 @@ class Formulario {
 				echo $this->miFormulario->division ( "fin" );
 				
                                 unset($atributos);
+                                $atributos ["id"] = "blocBotn";
+			    $atributos ["estilo"] = "col-md-5";
+                            echo $this->miFormulario->division ( "inicio", $atributos );
+                            {
+                                
+                            }   
+                            echo $this->miFormulario->division ( "fin" );
+                            $atributos ["id"] = "blocBotn";
+			    $atributos ["estilo"] = "col-md-2";
+                            echo $this->miFormulario->division ( "inicio", $atributos );
+                            {
+                                        echo "<center>";
+					echo "<input type=\"button\" id=\"btRemove\" value=\"Eliminar Campo\" class=\"btn btn-danger btn-block\" />";
+					echo "</center>";
+				
+				// ---------------- CONTROL: Select --------------------------------------------------------
+				
+			
+                            }   
+                            echo $this->miFormulario->division ( "fin" );
                                   // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
                                 $esteCampo = "marcoDatosBasicos";
                                 $atributos ['id'] = $esteCampo;
@@ -149,8 +170,8 @@ class Formulario {
                                 { 
        echo '<table id="tablaCampos" class="display" cellspacing="0" width="100%"> '
                  . '<thead style="display: table-row-group"><tr><th>'."NOMBRE".'</th><th>'."LABEL".'</th> <th>'."TIPO DATO".'</th><th>'."REQUERIDO".'</th><th>'."FORMULA".'</th></tr></thead>
-                    <tbody>'; 
-      echo '</tbody></table>';  
+                    '; 
+      echo '</table>';  
                                     
                                     
                                     
