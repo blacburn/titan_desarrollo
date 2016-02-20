@@ -283,7 +283,25 @@ class Sql extends \Sql {
                 $cadenaSql .= 'FROM ';
                 $cadenaSql .= 'parametro.tipo_vinculacion';
                 break;
-            
+            case 'buscarCategoriaConcepto' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.categoria ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'estado != \'Inactivo\';';
+				break;
+				
+			case 'buscarCategoriaParametro' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_categoria as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.categoria_parametro ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'estado != \'Inactivo\';';
+				break;
            case 'buscarIdTipoVinculacion':
                 $cadenaSql = 'SELECT ';
                 $cadenaSql .= 'id as ID ';

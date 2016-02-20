@@ -65,4 +65,6 @@ $this->idioma["agregarCondicion"]="Agregar Condición";
 
 $this->idioma["enviarRegistro"]="Guardar";
 
+
+
 ?>
