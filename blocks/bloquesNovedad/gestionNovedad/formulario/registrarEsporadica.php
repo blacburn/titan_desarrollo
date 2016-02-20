@@ -180,27 +180,7 @@ class Formulario {
                                     
                                     
                                     
-                                $atributos ["id"] = "divLista";
-				$atributos ["estilo"] = "col-md-12";
-				echo $this->miFormulario->division ( "inicio", $atributos );
-				{
-				                                $esteCampo = 'listaCampo';
-                                                                $atributos ['id'] = $esteCampo;
-                                                                $atributos ['nombre'] = $esteCampo;
-                                                                $atributos ['estilo'] = 'jqueryui';
-                                                                $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-                                                                $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-                                                                $atributos ['deshabilitado'] = false;
-                                                                $atributos ['tamanno'] = 20;
-                                                                $atributos ['maximoTamanno'] = '';
-                                                                $atributos ['items']='';
-                                                                $tab ++;
-        
-                                                                    // Aplica atributos globales al control
-                                                                    $atributos = array_merge ( $atributos, $atributosGlobales );
-                                                                    echo $this->miFormulario->listaNoOrdenada($atributos);
-				}
-				echo $this->miFormulario->division ( "fin" );
+                               
          }
         echo $this->miFormulario->marcoAgrupacion ( 'fin' );
         
@@ -285,12 +265,12 @@ class Formulario {
 
         // Paso 1: crear el listado de variables
 
-        $valorCodificado = "actionBloque=" . $esteBloque ["nombre"]; //Ir pagina Funcionalidad
-        $valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );//Frontera mostrar formulario
+//        $valorCodificado = "actionBloque=" . $esteBloque ["nombre"]; //Ir pagina Funcionalidad
+        $valorCodificado = "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );//Frontera mostrar formulario
         $valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
      
         $valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-        $valorCodificado .= "&opcion=opt";
+        $valorCodificado .= "&opcion=formulacion";
         /**
          * SARA permite que los nombres de los campos sean dinámicos.
          * Para ello utiliza la hora en que es creado el formulario para
