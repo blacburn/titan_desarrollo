@@ -110,3 +110,88 @@ $(document).ready(function() {
 //        } );
 //    } );
 } );
+
+
+$("#ingresoBotonesConcepto").hide("fast");
+$("#editarBotonesConcepto").hide("fast");
+
+$("#btEditB").click(function(){
+	$("#editarBotonesConcepto").hide("fast");
+	$("#ingresoBotonesConcepto").show("slow");
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').removeAttr("readonly");
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').removeClass("readOnly");
+});
+$("#btOper1B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + "(";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper2B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + ")";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper3B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + "+";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper4B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + "-";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper5B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + "*";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper6B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + "/";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper7B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + "√";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper8B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	var post = actual + "^";
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val(post);
+});
+
+$("#btOper9B").click(function(){
+	$('#<?php echo $this->campoSeguro('valorConcepto')?>').val("");
+});
+
+$("#btOper10B").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + $('#<?php echo $this->campoSeguro('valorConcepto')?>').val();
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+
+$("#confirmarDina").click(function(){
+	$("#confirmar").hide("fast");
+	$("#cancelar").show("fast");
+	$("#camposDinamicosCont").hide("slow");
+	$("#blocBotn").hide("slow");
+	$('#<?php echo $this->campoSeguro('botones')?>').show("fast");
+});
+
+$("#cancelarDina").click(function(){
+	$("#confirmar").show("fast");
+	$("#cancelar").hide("fast");
+	$("#camposDinamicosCont").show("slow");
+	$("#blocBotn").show("slow");
+	$('#<?php echo $this->campoSeguro('botones')?>').hide("fast");
+});

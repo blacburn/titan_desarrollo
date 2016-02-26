@@ -20,6 +20,7 @@ $this->idioma["botonRegresarConsulta"]="Regresar";
 
 $this->idioma["enviarRegistroCon"]="Guardar Concepto";
 $this->idioma["siguiente"]="Siguiente";
+$this->idioma["siguienteBasica"]="Siguiente";
 $this->idioma["modificarRegistro"]="Guardar Cambios";
 $this->idioma["verdetalleRegistro"]="Aceptar";
 $this->idioma["agregarCondicion"]="Agregar Condiciones";

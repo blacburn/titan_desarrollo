@@ -302,10 +302,47 @@ class Sql extends \Sql {
 				$cadenaSql .= 'WHERE ';
 				$cadenaSql .= 'estado != \'Inactivo\';';
 				break;
+                            case 'buscarParametroAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id as ID_CATEGORIA, ';
+				$cadenaSql .= 'simbolo as SIMBOLO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.parametro_liquidacion ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id_categoria = ' . $variable . ';';
+				break;
+				
+			case 'buscarConceptoAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'codigo as ID, ';
+				$cadenaSql .= 'simbolo as SIMBOLO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.concepto ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id = ' . $variable . ';';
+				break;
+				
+			case 'buscarValorParametroAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'valor as VALOR ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.parametro_liquidacion ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id = ' . $variable . ';';
+				break;
+			
+			case 'buscarValorConceptoAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'formula as FORMULA ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.concepto ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'codigo = ' . $variable . ';';
+				break;
+                            
            case 'buscarIdTipoVinculacion':
                 $cadenaSql = 'SELECT ';
                 $cadenaSql .= 'id as ID ';
-            
                 $cadenaSql .= 'FROM ';
                 $cadenaSql .= 'parametro.tipo_vinculacion ';
                 $cadenaSql .= 'WHERE ';
