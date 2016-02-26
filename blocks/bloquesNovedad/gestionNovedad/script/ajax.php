@@ -386,4 +386,411 @@ $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").change(function(
 				$("#<?php echo $this->campoSeguro('valorConcepto')?>").val('');
 			}
 		});               
+                
+ //***********************************************************************************************************
+//***********************************************************************************************************
+//Codigo AGREGAR y QUITAR Campos Dinamicos
+var limite = 20; //Se define el Limite de Paneles de Condiciones que se pueden Generar
+				 //No requiere que se cambie en otro lugar
+				 
+var iCnt = 0;
+var numId = 0;
+ 
+// Crear un elemento div añadiendo estilos CSS
+var container = $(document.createElement('div')).css({
+	padding: '5px'
+});
+$(container).attr('class', 'col-md-12')
+$(container).attr('id', 'pushDina')
+
+
+$(function () {
+    
+    
+    
+	$("#cancelar").hide("fast");
+	$('#<?php echo $this->campoSeguro('botones')?>').hide("fast");
+                      
+	 
+	$('#btAdd').click(function() {
+		if (iCnt < limite) {
+	 
+			iCnt = iCnt + 1;
+	 
+			// Añadir elementos Dinamicos en el DOM
+			
+			$(container).append('<fieldset id=panel'+iCnt+' class="ui-widget ui-widget-content">'+
+					'<legend class="ui-state-default ui-corner-all"> CONDICIÓN #'+iCnt+'</legend>'+
+					'<div id=lab1'+iCnt+' class="col-md-2">'+
+						'<label> Si </label> ' + 
+					'</div>'+
+                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos('+iCnt+')"/>'+
+                                        '<br/><br/>'+
+					'<div>'+
+						'<div id=lab2'+iCnt+' class="col-md-2">'+
+							'<label> Entonces </label> ' + 
+						'</div>'+
+					'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt+')"/>'+
+                                        '</textarea>'+	
+					'</div>'+ 
+					'</fieldset>');
+			
+			$('#camposDinamicos').after(container);
+			$('#sel1'+iCnt).width(120);
+			$('#sel1'+iCnt).select2();
+			
+			$('#sel2'+iCnt).width(120);
+			$('#sel2'+iCnt).select2();
+                        
+                      arrastreParametro('tb1' + iCnt);
+                      arrastreParametro('tb2' + iCnt);
+	              
+                      arrastreConcepto('tb1' + iCnt);
+                      arrastreConcepto('tb2' + iCnt);
+       
+		}
+		else { //alerta y deshabilitar boton de agregar por alcanzar el limite
+	 
+			alert('Limite Alcanzado');
+			$('#btAdd').attr('disabled', 'disabled');
+	 
+		}
+		$("#<?php echo $this->campoSeguro('cantidadCondicionesConcepto') ?>").val(iCnt)
+	});
+	
+         
+        
+        
+        
+        
+	$('#btRemove').click(function() { // Elimina un panel de condiciones del DOM
+		if (iCnt != 0) {
+			$('#lab1' + iCnt).remove(); 
+			$('#tb1' + iCnt).remove();
+			$('#sel1' + iCnt).remove();
+			$('#tb2' + iCnt).remove();
+			$('#sel2' + iCnt).remove();
+			$('#lab2' + iCnt).remove(); 
+			$('#tb3' + iCnt).remove();
+			$('#panel' + iCnt).remove();    
+			iCnt = iCnt - 1; 
+			$('#btAdd').removeAttr('disabled');
+			$('#btAdd').attr('class', 'btn btn-success btn-block');
+		}
+	 
+		if (iCnt == 0) { $(container).empty(); 
+	 
+			$(container).remove();
+			$('#btAdd').removeAttr('disabled');
+			$('#btAdd').attr('class', 'btn btn-success btn-block')
+	 
+		}
+		$("#<?php echo $this->campoSeguro('cantidadCondicionesConcepto') ?>").val(iCnt)
+	});
+	 
+	$('#btRemoveAll').click(function() { //Quitar todos los paneles de condiciones Agregados
+	 
+		$(container).empty();
+		$(container).remove();
+		iCnt = 0;
+		$('#btAdd').removeAttr('disabled');
+		$('#btAdd').attr('class', 'btn btn-success btn-block');
+		$("#<?php echo $this->campoSeguro('cantidadCondicionesConcepto') ?>").val(iCnt)
+	});
+        
+        
+});
+function devPos(nombre){
+
+$("#btOper1C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+       	    var post = actual + "(";
+            $('#tb1'+nombre).val(post);
+            desactivarClick();
+        });
+$("#btOper2C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+	    var post = actual + ")";
+	    $('#tb1'+nombre).val(post);
+            desactivarClick();
+        });
+$("#btOper3C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+	    var post = actual + "+";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+        });
+$("#btOper4C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+            var post = actual + "-";
+	    $('#tb1'+nombre).val(post);
+            desactivarClick();
+       });
+$("#btOper5C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+            var post = actual + "*";
+	    $('#tb1'+nombre).val(post);
+            desactivarClick();
+        });
+$("#btOper6C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+	    var post = actual + "/";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper7C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "√";
+	   $('#tb1'+nombre).val(post);
+          desactivarClick();
+           });           
+$("#btOper8C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "^";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper9C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "<";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });    
+$("#btOper10C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "<=";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper11C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + ">";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper12C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + ">=";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper13C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "=";
+	    $('#tb1'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper14C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "!=";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper15C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "&&";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });  
+$("#btOper16C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "||";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });           
+$("#btOper17C").on("click",function(){
+           $('#tb1'+nombre).val("");
+          desactivarClick();
+           });
+}
+       
+           
+function devPos2(nombre){
+
+$("#btOper1C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+       	    var post = actual + "(";
+            $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper2C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+	    var post = actual + ")";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           }); 
+$("#btOper3C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+	    var post = actual + "+";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper4C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+            var post = actual + "-";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper5C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+            var post = actual + "*";
+	    $('#tb2'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper6C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+	    var post = actual + "/";
+	    $('#tb2'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper7C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "√";
+	   $('#tb2'+nombre).val(post);
+           desactivarClick();
+           });           
+$("#btOper8C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "^";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper9C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "<";
+	    $('#tb2'+nombre).val(post);
+           desactivarClick();
+           });    
+$("#btOper10C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "<=";
+	    $('#tb2'+nombre).val(post);
+         desactivarClick();
+           });
+$("#btOper11C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + ">";
+	    $('#tb2'+nombre).val(post);
+          desactivarClick();
+           });
+$("#btOper12C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + ">=";
+	    $('#tb2'+nombre).val(post);
+          desactivarClick();
+           });
+$("#btOper13C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "=";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper14C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "!=";
+	    $('#tb2'+nombre).val(post);
+          desactivarClick();
+           });
+$("#btOper15C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "&&";
+	    $('#tb2'+nombre).val(post);
+           desactivarClick();
+           });  
+$("#btOper16C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "||";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });           
+$("#btOper17C").on("click",function(){
+           $('#tb2'+nombre).val("");
+            desactivarClick();
+           });
+} 
+//Funciones de arrastre apara dinamicos
+//
+//
+function desactivarClick() {
+     $("#btOper1C").off("click");$("#btOper2C").off("click");$("#btOper3C").off("click");$("#btOper4C").off("click");
+            $("#btOper5C").off("click"); $("#btOper6C").off("click");$("#btOper7C").off("click");$("#btOper8C").off("click");
+            $("#btOper9C").off("click");$("#btOper10C").off("click");$("#btOper11C").off("click");$("#btOper12C").off("click");
+            $("#btOper13C").off("click");$("#btOper14C").off("click");$("#btOper15C").off("click");$("#btOper16C").off("click");
+            $("#btOper17C").off("click");
+}
+function arrastreParametro(nombre) {
+            $('#'+nombre ).keypress(function(tecla) {
+	    if(tecla.charCode != 0  && tecla.charCode != 42 && tecla.charCode != 43 && 
+	    tecla.charCode != 45 && tecla.charCode != 47 && tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179 &&
+            tecla.charCode != 60 && tecla.charCode != 61 && tecla.charCode != 62 && tecla.charCode != 33 &&
+            tecla.charCode != 48 && tecla.charCode != 49 && tecla.charCode != 50 && tecla.charCode != 51 &&
+            tecla.charCode != 52 && tecla.charCode != 53 && tecla.charCode != 54 && tecla.charCode != 55 &&
+            tecla.charCode != 56 && tecla.charCode != 57
+            ) return false;
+           });
+         
+          
+
+	    $("#parametros").draggable({
+	        revert: true,
+	        helper: 'clone',
+	        start: function (event, ui) {
+	            $(this).fadeTo('fast', 1.5);
+	        },
+	        stop: function (event, ui) {
+	            $(this).fadeTo(0, 1);
+	        }
+	    });
+	    $('#'+nombre).droppable({
+	        hoverClass: 'active',
+	        drop: function (event, ui) {
+	            this.value += $(ui.draggable).find('select option:selected').text();
+	        }
+	    });
+};
+
+function arrastreConcepto(nombre) {
+            
+	$("#conceptos").draggable({
+        revert: true,
+        helper: 'clone',
+        start: function (event, ui) {
+            $(this).fadeTo('fast', 1.5);
+        },
+        stop: function (event, ui) {
+            $(this).fadeTo(0, 1);
+        }
+    });
+    $('#'+nombre).droppable({
+        hoverClass: 'active',
+        drop: function (event, ui) {
+            this.value += $(ui.draggable).find('select option:selected').text();
+        }
+    });
+};		
+	 
+// Funcion que Obtiene los valores de los textbox y los select
+var values = '', condiciones = '', cantidad = 0;
+	 
+function GetTextValue() {
+	 
+	values = '';
+	 
+	var j = 0;
+	
+	while(j < iCnt){
+		j++;
+		values = values + $("#tb1"+j).val() + ',';
+		values = values + $("#tb2"+j).val() + ',';
+	}
+	$("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
+
+	condiciones = '';
+
+	$( "select option:selected" ).each(function() {
+	   condiciones += '['+ this.value + ']';
+	   $("#<?php echo $this->campoSeguro('condicionesRegistros') ?>").val(condiciones);
+	});
+	
+}
 </script>

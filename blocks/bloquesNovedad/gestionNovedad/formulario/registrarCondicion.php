@@ -372,30 +372,65 @@ class Formulario {
 					{
 						
 							
-						$atributos ["id"] = "botonesPanel2";
-					$atributos ["estilo"] = "col-md-8 btn-group btn-group-lg";
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
 					echo $this->miFormulario->division ( "inicio", $atributos );
 					{
+						echo "<input type=\"button\" id=\"btOper1C\" value=\"(\" class=\"btn btn-primary btn-block\"/>";
+			
+						echo "<input type=\"button\" id=\"btOper2C\" value=\")\" class=\"btn btn-primary btn-block\" />";
 						
-						echo "<input type=\"button\" id=\"btOper1C\" value=\"(\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper2C\" value=\")\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper3C\" value=\"+\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper4C\" value=\"-\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper5C\" value=\"*\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper6C\" value=\"÷\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper7C\" value=\"√\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper8C\" value=\"^\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper9C\" value=\"<\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper10C\" value=\"<=\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper11C\" value=\">\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper12C\" value=\">=\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper13C\" value=\"=\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper14C\" value=\"!=\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper15C\" value=\"&&\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper16C\" value=\"||\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper17C\" value=\"Borrar\" class=\"btn btn-danger\" />";
+						echo "<input type=\"button\" id=\"btOper3C\" value=\"+\" class=\"btn btn-primary btn-block\"/>";
+						
+						echo "<input type=\"button\" id=\"btOper4C\" value=\"-\" class=\"btn btn-primary btn-block\" />";
+						
+						
 					}
 					echo $this->miFormulario->division ( "fin" );
+					
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					{
+						echo "<input type=\"button\" id=\"btOper5C\" value=\"*\" class=\"btn btn-primary btn-block\"/>";
+						
+						echo "<input type=\"button\" id=\"btOper6C\" value=\"÷\" class=\"btn btn-primary btn-block\" />";
+						echo "<input type=\"button\" id=\"btOper7C\" value=\"√\" class=\"btn btn-primary btn-block\"/>";
+						echo "<input type=\"button\" id=\"btOper8C\" value=\"^\" class=\"btn btn-primary btn-block\" />";
+							
+					}
+					echo $this->miFormulario->division ( "fin" );
+					
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					{
+						echo "<input type=\"button\" id=\"btOper9C\" value=\"<\" class=\"btn btn-primary btn-block\" />";
+						echo "<input type=\"button\" id=\"btOper10C\" value=\"<=\" class=\"btn btn-primary btn-block\"/>";
+						echo "<input type=\"button\" id=\"btOper11C\" value=\">\" class=\"btn btn-primary btn-block\" />";
+						echo "<input type=\"button\" id=\"btOper12C\" value=\">=\" class=\"btn btn-primary btn-block\" />";
+						
+					
+					}
+					echo $this->miFormulario->division ( "fin" );
+					
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					{
+						echo "<input type=\"button\" id=\"btOper13C\" value=\"=\" class=\"btn btn-primary btn-block\"/>";
+						echo "<input type=\"button\" id=\"btOper14C\" value=\"!=\" class=\"btn btn-primary btn-block\" />";
+							
+						echo "<input type=\"button\" id=\"btOper15C\" value=\"&&\" class=\"btn btn-warning btn-block\" />";
+							
+						echo "<input type=\"button\" id=\"btOper16C\" value=\"||\" class=\"btn btn-warning btn-block\" />";
+						
+					
+					}
+					echo $this->miFormulario->division ( "fin" );
+					
+					echo "<input type=\"button\" id=\"btOper17C\" value=\"Borrar\" class=\"btn btn-danger btn-block\" />";
+					
 					
 					}
 					echo $this->miFormulario->marcoAgrupacion ( "fin" );
@@ -818,4 +853,3 @@ class Formulario {
 $miFormulario = new Formulario ( $this->lenguaje, $this->miFormulario, $this->sql );
 $miFormulario->formulario ();
 $miFormulario->mensaje ();
-?>

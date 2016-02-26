@@ -302,6 +302,13 @@ class Sql extends \Sql {
 				$cadenaSql .= 'WHERE ';
 				$cadenaSql .= 'estado != \'Inactivo\';';
 				break;
+                            case 'buscarRegistroxParametro' :      
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id as ID, ';
+                $cadenaSql .= 'simbolo as SIMBOLO ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'parametro.parametro_liquidacion';        
+                break;
                             case 'buscarParametroAjax' :
 				$cadenaSql = 'SELECT ';
 				$cadenaSql .= 'id as ID_CATEGORIA, ';
