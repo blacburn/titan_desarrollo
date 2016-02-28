@@ -367,31 +367,7 @@ class Formulario {
         // Aplica atributos globales al control
         $atributos = array_merge ( $atributos, $atributosGlobales );
         echo $this->miFormulario->campoTextArea( $atributos );
-        // --------------- FIN CONTROL : Cuadro de Texto ------------
-        unset($atributos);
-        // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-        $esteCampo = 'leyRegistros';
-        $atributos ['id'] = $esteCampo;
-        $atributos ['nombre'] = $esteCampo;
-        $atributos ['tipo'] = 'hidden';
-        $atributos ['estilo'] = 'jqueryui';
-        $atributos ['marco'] = true;
-        $atributos ['columnas'] = 1;
-        $atributos ['dobleLinea'] = false;
-        $atributos ['tabIndex'] = $tab;
-        	
-        $atributos ['valor'] = '';
-        $atributos ['deshabilitado'] = false;
-        $atributos ['tamanno'] = 30;
-        $atributos ['maximoTamanno'] = '';
-        $tab ++;
-        	
-        // Aplica atributos globales al control
-        $atributos = array_merge ( $atributos, $atributosGlobales );
-        echo $this->miFormulario->campoCuadroTexto ( $atributos );
-        // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-              
-           
+             
         // ------------------Division para los botones-------------------------
                         $atributos ["id"] = "botones";
                         $atributos ["estilo"] = "marcoBotones";
@@ -400,7 +376,7 @@ class Formulario {
    
 
         // -----------------CONTROL: Botón ----------------------------------------------------------------
-        $esteCampo = 'siguienteBasica';
+        $esteCampo = 'Aceptar';
         $atributos ["id"] = $esteCampo;
         $atributos ["tabIndex"] = $tab;
         $atributos ["tipo"] = 'boton';
@@ -425,6 +401,9 @@ class Formulario {
 
         // ------------------Fin Division para los botones-------------------------
         echo $this->miFormulario->division ( "fin" );
+        // --------------- FIN CONTROL : Cuadro de Texto ------------
+        
+      
         echo $this->miFormulario->marcoAgrupacion ( 'fin' );
         // ------------------- SECCION: Paso de variables ------------------------------------------------
      

@@ -74,13 +74,11 @@ $urlFinal19 = $url . $cadena19;
 ?>
 
 <script>
-
  $('#<?php echo $this->campoSeguro('categoriaConceptosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").select2();
  $('#<?php echo $this->campoSeguro('categoriaParametrosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").select2();
  
-
 $( '#<?php echo $this->campoSeguro('categoriaConceptosList')?>' ).change(function() {
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').attr("readonly","readonly");
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').addClass("readOnly");
@@ -101,7 +99,6 @@ $( '#<?php echo $this->campoSeguro('categoriaParametrosList')?>' ).change(functi
 	$("#<?php echo $this->campoSeguro('seccionParametros')?>").removeAttr('disabled');
     $("#<?php echo $this->campoSeguro('seccionParametros')?>").select2();
 });
-
 $( '#<?php echo $this->campoSeguro('formula')?>' ).keypress(function(tecla) {
 	 if(tecla.charCode != 0  && tecla.charCode != 42 && tecla.charCode != 43 && 
 	    tecla.charCode != 45 && tecla.charCode != 47 && 
@@ -134,7 +131,6 @@ $(function () {
 	        }
 	    });
 });
-
 $(function () {
     $("#conceptos").draggable({
         revert: true,
@@ -153,7 +149,6 @@ $(function () {
         }
     });
 });
-
 var iCnt2 = 0;   
 var container = $(document.createElement('div')).css({
 	padding: '5px'
@@ -267,8 +262,6 @@ $(document).ready(function() {
     
 	});
 });
-
-
 function consultarParametro(elem, request, response){
 	  $.ajax({
 	    url: "<?php echo $urlFinal16?>",
@@ -387,7 +380,7 @@ $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").change(function(
 			}
 		});               
                 
- //***********************************************************************************************************
+//***********************************************************************************************************
 //***********************************************************************************************************
 //Codigo AGREGAR y QUITAR Campos Dinamicos
 var limite = 20; //Se define el Limite de Paneles de Condiciones que se pueden Generar
@@ -404,12 +397,12 @@ $(container).attr('class', 'col-md-12')
 $(container).attr('id', 'pushDina')
 
 
-$(function () {
+$( document ).ready(function() {
     
     
     
 	$("#cancelar").hide("fast");
-	$('#<?php echo $this->campoSeguro('botones')?>').hide("fast");
+//	$('#<?php echo $this->campoSeguro('botones')?>').hide("fast");
                       
 	 
 	$('#btAdd').click(function() {
@@ -501,7 +494,6 @@ $(function () {
         
 });
 function devPos(nombre){
-
 $("#btOper1C").on("click",function(){
             var actual = $('#tb1'+nombre).val();
        	    var post = actual + "(";
@@ -606,7 +598,6 @@ $("#btOper17C").on("click",function(){
        
            
 function devPos2(nombre){
-
 $("#btOper1C").on("click",function(){
             var actual = $('#tb2'+nombre).val();
        	    var post = actual + "(";
@@ -730,7 +721,6 @@ function arrastreParametro(nombre) {
            });
          
           
-
 	    $("#parametros").draggable({
 	        revert: true,
 	        helper: 'clone',
@@ -748,7 +738,6 @@ function arrastreParametro(nombre) {
 	        }
 	    });
 };
-
 function arrastreConcepto(nombre) {
             
 	$("#conceptos").draggable({
@@ -784,9 +773,7 @@ function GetTextValue() {
 		values = values + $("#tb2"+j).val() + ',';
 	}
 	$("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
-
 	condiciones = '';
-
 	$( "select option:selected" ).each(function() {
 	   condiciones += '['+ this.value + ']';
 	   $("#<?php echo $this->campoSeguro('condicionesRegistros') ?>").val(condiciones);

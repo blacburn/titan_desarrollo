@@ -4,6 +4,7 @@ $this->idioma["noDefinido"]="No definido";
 
 $this->idioma["botonRegistrarCargo"]="Registrar Novedad";
 $this->idioma["botonGuardar"]="Aceptar";
+$this->idioma["Aceptar"]="Siguiente";
 $this->idioma["botonModificar"]="Modificar";
 $this->idioma["botonInactivar"]="Inactivar";
 $this->idioma["botonActivar"]="Activar";
