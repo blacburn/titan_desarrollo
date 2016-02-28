@@ -65,7 +65,10 @@ class Funcion {
                             include_once ($this->ruta."funcion/registrar.php");
         		
         			break;
-                            
+                         case "registrar":
+                             
+        		      include_once ($this->ruta."funcion/registrar.php");
+        	         break; 
                          case "opt":
                            include_once ($this->ruta."funcion/opcion.php");
         		

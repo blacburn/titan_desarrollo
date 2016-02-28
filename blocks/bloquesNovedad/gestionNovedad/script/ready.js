@@ -111,6 +111,67 @@ $(document).ready(function() {
 //    } );
 } );
 
+if($('#<?php echo $this->campoSeguro('estadoPagina')?>').val() == 'verDetalle' || $('#<?php echo $this->campoSeguro('estadoPagina')?>').val() == 'modificar'){
+	var values = $('#<?php echo $this->campoSeguro('cargaSelectMultiple')?>').val();
+	$.each(values.split(","), function(i,e){
+	    $("#<?php echo $this->campoSeguro('ley') ?>" + " option[value='" + e + "']").prop("selected", true);
+	    $("#<?php echo $this->campoSeguro('ley')?>").width(250);
+	    $("#<?php echo $this->campoSeguro('ley')?>").select2(); 
+	});
+}
+
+
+$("#btOper1").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + "(";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper2").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + ")";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper3").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + "+";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper4").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + "-";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper5").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + "*";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper6").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + "/";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper7").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + "√";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper8").click(function(){
+	var actual = $('#<?php echo $this->campoSeguro('formula')?>').val();
+	var post = actual + "^";
+	$('#<?php echo $this->campoSeguro('formula')?>').val(post);
+});
+
+$("#btOper9").click(function(){
+	$('#<?php echo $this->campoSeguro('formula')?>').val("");
+});
 
 $("#ingresoBotonesConcepto").hide("fast");
 $("#editarBotonesConcepto").hide("fast");

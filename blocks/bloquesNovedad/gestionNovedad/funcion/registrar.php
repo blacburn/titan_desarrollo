@@ -2,8 +2,9 @@
 
 namespace bloquesNovedad\gestionNovedad\funcion;
 
-
 include_once('Redireccionador.php');
+include_once('Interprete.php');
+include_once('NodoConcepto.php');
 
 class FormProcessor {
     
@@ -25,47 +26,151 @@ class FormProcessor {
     function procesarFormulario() {    
 
         //Aquí va la lógica de procesamiento
-      
-        $conexion = 'estructura';
-        $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ($conexion );
-       
-        $datos1 = array(
-             'tipo_vinculacion' => $_REQUEST ['tipoVinculacion'],
-            'tipo_nomina' => $_REQUEST ['tipoNomina']
-     );
-                   
-     
-        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscartipovinculacionnomina",$datos1);
-    
-              
-        $ubicacion=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
-    
-          
-       $datos = array(
-            'codigo_concepto' => $_REQUEST ['concepto'],
-            'tipo_vinculacion_nomina' => $ubicacion[0][0]
         
-            
-            
+        $conexion = 'estructura';
+        $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
+        
+        
+        
+        //***************************VALIDAR Formula*****************************************************************
+        
+        
+        
+        //-------------------------- Seccion Validar Formula ------------------------------------------------
+		//-------------------------------------------------------------------------------------------------------
+             
+        $_entradaFormulaCompilador = $_REQUEST['formulaConcepto'];
+        
+      
+  
+        
+//        Interprete::evaluarSentencia($_entradaFormulaCompilador);
+       $interprete = new Interprete();
+
+//    $sentencia = 'IVAAA+((2+3)*RESRD)/+4-5';
+
+$aceptado = $interprete->evaluarSentencia($_entradaFormulaCompilador);
+
+echo "<br>".$aceptado."<br>";
+
+var_dump($aceptado);
+exit;
+
+//$arbol = $interprete->generarArbol($_entradaFormulaCompilador);
+        
+        //----------------------------------------------------------------------------------------------------------
+        //------------------------ Codigo A Ejecutar Una Vez VALIDADA la Formula -----------------------------------
+        
+        if(isset($_REQUEST['naturalezaInfoConcepto'])){
+        	switch($_REQUEST['naturalezaInfoConcepto']){
+        		case 1 :
+        			$_REQUEST['naturalezaInfoConcepto']='Devenga';
+        			break;
+        		case 2 :
+        			$_REQUEST['naturalezaInfoConcepto']='Deduce';
+        			break;
+        	}
+        }
+        
+        $datosConcepto = array (
+        		'nombre' => $_REQUEST['nombreInfoConcepto'],
+        		'simbolo' => $_REQUEST['simboloInfoConcepto'],
+        		'categoria' => $_REQUEST['categoriaInfoConcepto'],
+        		'naturaleza' => $_REQUEST['naturalezaInfoConcepto'],
+        		'descripcion' => $_REQUEST['descripcionInfoConcepto'],
+        		'formula' => $_REQUEST['formulaConcepto']
         );
         
-       
-   $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("registrarAsociacion", $datos);
-   $resultado=  $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "acceso");
+        $cadenaSql = $this->miSql->getCadenaSql("insertarConcepto",$datosConcepto);
+        $id_concepto = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosConcepto, "insertarConcepto");
         
- 
-   if (!empty($resultado)) {
-            Redireccionador::redireccionar('inserto');
+        $arrayLeyes = explode(",", $_REQUEST['leyRegistrosInfoConcepto']);
+        $count = 0;
+        
+        while($count < count($arrayLeyes)){
+        	
+        	$datosLeyesConcepto = array(
+        			'fk_id_ley' => $arrayLeyes[$count],
+        			'fk_concepto' => $id_concepto[0][0]
+        	);
+        	
+        	$cadenaSql = $this->miSql->getCadenaSql("insertarLeyesConcepto",$datosLeyesConcepto);
+        	$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
+        	
+        	$count++;
+        
+        }
+        
+        //---------------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------
+        
+        
+        
+        
+        //***************************VALIDAR Condiciones*************************************************************
+        
+        
+        // ---------------- INICIO: Lista Variables Control--------------------------------------------------------
+        
+        $cantidadCondiciones = $_REQUEST['cantidadCondicionesConcepto'];
+        
+        // ---------------- FIN: Lista Variables Control--------------------------------------------------------
+        
+        // --------------------------------- n Condiciones ----------------------------------
+        
+    	$count = 0;
+    	$control = 0;
+    	$limite = 0;
+    	
+    	$arrayPartCondicion = explode(",", $_REQUEST['variablesRegistros']);
+    	
+    	while($control < $cantidadCondiciones){
+    		
+    		$arrayCondiciones[$control] = 'Si(' .$arrayPartCondicion[$limite++]. ') Entonces{'.$arrayPartCondicion[$limite++].'}'; 
+    		 
+    		$control++;
+    	}
+   
+        while($count < $cantidadCondiciones){
+        	
+        	//-------------------------- Seccion Validar Condiciones ------------------------------------------------
+        	//Formato:
+        	//					Si(condiciones) Entonces{Accion}
+        	//-------------------------------------------------------------------------------------------------------
+        	
+        	$_entradaCondicionCompilador = $arrayCondiciones[$count];
+        	
+        	
+        	
+        	
+        	
+        	
+        	//----------------------------------------------------------------------------------------------------------
+        	//------------------------ Codigo A Ejecutar Una Vez VALIDADA la Condicion -----------------------------------
+        	   
+        	$datosCondicion = array(
+        			'cadena' => $arrayCondiciones[$count],
+        			'fk_concepto' => $id_concepto[0][0]
+        	);
+        	
+        	$cadenaSql = $this->miSql->getCadenaSql("insertarCondicion",$datosCondicion);
+        	$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
+        	
+        	//-------------------------------------------------------------------------------------------------------
+
+        	$count++;
+        }
+        
+        
+        
+        if (!empty($id_concepto)) {
+           Redireccionador::redireccionar('inserto',$datosConcepto);
             exit();
         } else {
-           Redireccionador::redireccionar('noInserto');
+           Redireccionador::redireccionar('noInserto',$datosConcepto);
             exit();
         }
         
-        //Al final se ejecuta la redirección la cual pasará el control a otra página
-        
-       // Redireccionador::redireccionar('opcion1');
-      
     	        
     }
     

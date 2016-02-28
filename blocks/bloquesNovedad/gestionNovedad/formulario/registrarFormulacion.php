@@ -517,8 +517,39 @@ class Formulario {
 				//Campos atributos pagina anterior Info Basica
 				
 				unset($atributos);
+				 //***********************************************************************************************
+   //***********************************************************************************************
+   //  ***********************************************************************************************                     
+   //***********************************************************************************************
+   //***********************************************************************************************
+				
+				//Campos atributos pagina anterior Info Basica
+				
+				unset($atributos);
 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'nombreInfo';
+				$esteCampo = 'variablesCampo';
+				$atributos ['id'] = $esteCampo;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'hidden';
+				$atributos ['estilo'] = 'jqueryui';
+				$atributos ['marco'] = true;
+				$atributos ['columnas'] = 1;
+				$atributos ['dobleLinea'] = false;
+				$atributos ['tabIndex'] = $tab;
+				$atributos ['valor'] = '';
+				
+				$atributos ['deshabilitado'] = false;
+				$atributos ['maximoTamanno'] = '';
+				$tab ++;
+				 
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+				
+
+                                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+				$esteCampo = 'tipoNovedadInfo';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
 				$atributos ['tipo'] = 'hidden';
@@ -529,7 +560,7 @@ class Formulario {
 				$atributos ['tabIndex'] = $tab;
 				 
 				if (isset ( $_REQUEST ['nombre'] )) {
-					$atributos ['valor'] = $_REQUEST ['nombre'];
+					$atributos ['valor'] = $_REQUEST ['tipoNovedad'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -543,7 +574,7 @@ class Formulario {
 				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
 				
 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'simboloInfo';
+				$esteCampo = 'categoriaConceptosInfo';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
 				$atributos ['tipo'] = 'hidden';
@@ -554,6 +585,58 @@ class Formulario {
 				$atributos ['tabIndex'] = $tab;
 					
 				if (isset ( $_REQUEST ['simbolo'] )) {
+					$atributos ['valor'] = $_REQUEST ['categoriaConceptos'];
+				} else {
+					$atributos ['valor'] = '';
+				}
+				$atributos ['deshabilitado'] = false;
+				$atributos ['maximoTamanno'] = '';
+				$tab ++;
+					
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+				
+				
+				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+				$esteCampo = 'nombreInfo';
+				$atributos ['id'] = $esteCampo;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'hidden';
+				$atributos ['estilo'] = 'jqueryui';
+				$atributos ['marco'] = true;
+				$atributos ['columnas'] = 1;
+				$atributos ['dobleLinea'] = false;
+				$atributos ['tabIndex'] = $tab;
+				 
+				if (isset ( $_REQUEST ['categoriaConceptos'] )) {
+					$atributos ['valor'] = $_REQUEST ['nombre'];
+				} else {
+					$atributos ['valor'] = '';
+				}
+				$atributos ['deshabilitado'] = false;
+				$atributos ['maximoTamanno'] = '';
+				$tab ++;
+				 
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+				
+				
+				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+				$esteCampo = 'simboloInfo';
+				$atributos ['id'] = $esteCampo;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'hidden';
+				$atributos ['estilo'] = 'jqueryui';
+				$atributos ['marco'] = true;
+				$atributos ['columnas'] = 1;
+				$atributos ['dobleLinea'] = false;
+				$atributos ['tabIndex'] = $tab;
+					
+				if (isset ( $_REQUEST ['leyRegistros'] )) {
 					$atributos ['valor'] = $_REQUEST ['simbolo'];
 				} else {
 					$atributos ['valor'] = '';
@@ -569,59 +652,7 @@ class Formulario {
 				
 				
 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'categoriaInfo';
-				$atributos ['id'] = $esteCampo;
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['tipo'] = 'hidden';
-				$atributos ['estilo'] = 'jqueryui';
-				$atributos ['marco'] = true;
-				$atributos ['columnas'] = 1;
-				$atributos ['dobleLinea'] = false;
-				$atributos ['tabIndex'] = $tab;
-				 
-				if (isset ( $_REQUEST ['categoriaConceptos'] )) {
-					$atributos ['valor'] = $_REQUEST ['categoriaConceptos'];
-				} else {
-					$atributos ['valor'] = '';
-				}
-				$atributos ['deshabilitado'] = false;
-				$atributos ['maximoTamanno'] = '';
-				$tab ++;
-				 
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoCuadroTexto ( $atributos );
-				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-				
-				
-				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'leyRegistrosInfo';
-				$atributos ['id'] = $esteCampo;
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['tipo'] = 'hidden';
-				$atributos ['estilo'] = 'jqueryui';
-				$atributos ['marco'] = true;
-				$atributos ['columnas'] = 1;
-				$atributos ['dobleLinea'] = false;
-				$atributos ['tabIndex'] = $tab;
-					
-				if (isset ( $_REQUEST ['leyRegistros'] )) {
-					$atributos ['valor'] = $_REQUEST ['leyRegistros'];
-				} else {
-					$atributos ['valor'] = '';
-				}
-				$atributos ['deshabilitado'] = false;
-				$atributos ['maximoTamanno'] = '';
-				$tab ++;
-					
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoCuadroTexto ( $atributos );
-				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-				
-				
-				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'leyRegistrosInfo';
+				$esteCampo = 'leyInfo';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
 				$atributos ['tipo'] = 'hidden';
@@ -632,7 +663,7 @@ class Formulario {
 				$atributos ['tabIndex'] = $tab;
 				 
 				if (isset ( $_REQUEST ['leyRegistros'] )) {
-					$atributos ['valor'] = $_REQUEST ['leyRegistros'];
+					$atributos ['valor'] = $_REQUEST ['ley'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -700,6 +731,7 @@ class Formulario {
 				//***********************************************************************************************
 				//***********************************************************************************************
 				
+        			
 				
 			}
 			echo $this->miFormulario->division ( "fin" );

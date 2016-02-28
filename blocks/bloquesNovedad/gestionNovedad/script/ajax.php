@@ -759,20 +759,29 @@ function arrastreConcepto(nombre) {
 };		
 	 
 // Funcion que Obtiene los valores de los textbox y los select
-var values = '', condiciones = '', cantidad = 0;
+var values = '', condiciones = '', campos = '', cantidad = 0;
 	 
 function GetTextValue() {
 	 
 	values = '';
 	 
 	var j = 0;
-	
+	var l = 0;
 	while(j < iCnt){
 		j++;
 		values = values + $("#tb1"+j).val() + ',';
 		values = values + $("#tb2"+j).val() + ',';
 	}
-	$("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
+        $("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
+        while(l < iCnt2){
+		l++;
+		campos = campos + $("#tb1"+l).val() + ',';
+		campos = campos + $("#tb2"+l).val() + ',';
+                campos = campos + $("#tipoDato"+l).val() + ',';
+                campos = campos + $("#requerido"+l).val() + ',';
+                campos = campos + $("#formulacionCampo"+l).val() + ',';
+       }
+	$("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
 	condiciones = '';
 	$( "select option:selected" ).each(function() {
 	   condiciones += '['+ this.value + ']';
