@@ -53,38 +53,51 @@ $aceptado = $interprete->evaluarSentencia($_entradaFormulaCompilador);
 
 echo "<br>".$aceptado."<br>";
 
-var_dump($aceptado);
-exit;
+
 
 //$arbol = $interprete->generarArbol($_entradaFormulaCompilador);
         
         //----------------------------------------------------------------------------------------------------------
         //------------------------ Codigo A Ejecutar Una Vez VALIDADA la Formula -----------------------------------
         
-        if(isset($_REQUEST['naturalezaInfoConcepto'])){
-        	switch($_REQUEST['naturalezaInfoConcepto']){
+        if(isset($_REQUEST['naturalezaCon'])){
+        	switch($_REQUEST['naturalezaCon']){
         		case 1 :
-        			$_REQUEST['naturalezaInfoConcepto']='Devenga';
+        			$_REQUEST['naturalezaCon']='Devenga';
         			break;
         		case 2 :
-        			$_REQUEST['naturalezaInfoConcepto']='Deduce';
+        			$_REQUEST['naturalezaCon']='Deduce';
+        			break;
+        	}
+        }
+        if(isset($_REQUEST['tipoNovedadCon'])){
+        	switch($_REQUEST['tipoNovedadCon']){
+        		case 1 :
+        			$_REQUEST['tipoNovedadCon']='Periodica';
+        			break;
+        		case 2 :
+        			$_REQUEST['tipoNovedadCon']='Esporadica';
         			break;
         	}
         }
         
+        
+        
         $datosConcepto = array (
-        		'nombre' => $_REQUEST['nombreInfoConcepto'],
-        		'simbolo' => $_REQUEST['simboloInfoConcepto'],
-        		'categoria' => $_REQUEST['categoriaInfoConcepto'],
-        		'naturaleza' => $_REQUEST['naturalezaInfoConcepto'],
-        		'descripcion' => $_REQUEST['descripcionInfoConcepto'],
+            
+                        'nombre' => $_REQUEST['nombreCon'], 
+        		'tipo_novedad' => $_REQUEST['tipoNovedadCon'],
+        		'simbolo' => $_REQUEST['simboloCon'],
+        		'categoria' => $_REQUEST['categoriaConceptosCon'],
+        		'naturaleza' => $_REQUEST['naturalezaCon'],
+        		'descripcion' => $_REQUEST['descripcionCon'],
         		'formula' => $_REQUEST['formulaConcepto']
         );
         
         $cadenaSql = $this->miSql->getCadenaSql("insertarConcepto",$datosConcepto);
         $id_concepto = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosConcepto, "insertarConcepto");
         
-        $arrayLeyes = explode(",", $_REQUEST['leyRegistrosInfoConcepto']);
+        $arrayLeyes = explode(",", $_REQUEST['leyCon']);
         $count = 0;
         
         while($count < count($arrayLeyes)){
@@ -161,8 +174,7 @@ exit;
         	$count++;
         }
         
-        
-        
+   
         if (!empty($id_concepto)) {
            Redireccionador::redireccionar('inserto',$datosConcepto);
             exit();

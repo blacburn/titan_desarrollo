@@ -38,34 +38,58 @@ class Sql extends \Sql {
              * Clausulas específicas
              */
             
-            case 'buscarArl':
-                $cadenaSql = 'SELECT ';
-                $cadenaSql .= 'nit as NIT, ';
-                $cadenaSql .= 'nombre as NOMBRE, ';
-                $cadenaSql .= 'direccion as DIRECCION, ';
-                $cadenaSql .= 'telefono as TELEFONO, ';
-                $cadenaSql .= 'extencion_telefono as EXTENCION_TELEFONO, ';
-                $cadenaSql .= 'estado as ESTADO ';
-                $cadenaSql .= 'FROM ';
-                $cadenaSql .= 'parametro.arl';
+           case 'insertarConcepto' :
+                $cadenaSql = 'INSERT INTO ';
+                $cadenaSql .= 'concepto.novedad ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= 'id_categoria,';
+                $cadenaSql .= 'estado,';
+                $cadenaSql .= 'nombre,';
+                $cadenaSql .= 'simbolo,';
+                $cadenaSql .= 'naturaleza,';
+                $cadenaSql .= 'descripcion,';
+                $cadenaSql .= 'tipo_novedad,';
+                $cadenaSql .= 'formula';
+                $cadenaSql .= ') ';
+                $cadenaSql .= 'VALUES ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= $variable ['categoria'] . ', ';
+                $cadenaSql .= '\'Activo\', ';
+                $cadenaSql .= '\'' . $variable ['nombre']  . '\', ';
+                $cadenaSql .= '\'' . $variable ['simbolo']  . '\', ';
+                $cadenaSql .= '\'' . $variable ['naturaleza'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['descripcion'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['tipo_novedad'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['formula'] . '\' ';
+                $cadenaSql .= ') ';
+                $cadenaSql .= "RETURNING  codigo; ";
                 break;
-         case 'buscarArl1':
-                $cadenaSql = 'SELECT ';
-                $cadenaSql .= 'nit as NIT, ';
-                $cadenaSql .= 'nombre as NOMBRE, ';
-                $cadenaSql .= 'direccion as DIRECCION, ';
-                $cadenaSql .= 'telefono as TELEFONO, ';
-                $cadenaSql .= 'extencion_telefono as EXTENCION_TELEFONO, ';
-                $cadenaSql .= 'fax as FAX, ';
-                $cadenaSql .= 'extencion_fax as EXTENCION_FAX, ';
-                $cadenaSql .= 'lugar as LUGAR,';
-                $cadenaSql .= 'nombre_representante_legal as NOMBRE_REPRESENTANTE_LEGAL, ';
-                $cadenaSql .= 'email as EMAIL, ';
-                $cadenaSql .= 'estado as ESTADO ';
-                $cadenaSql .= 'FROM ';
-                $cadenaSql .= 'parametro.arl';
-                break;
-            
+          case 'insertarLeyesConcepto' :
+				$cadenaSql = 'INSERT INTO ';
+				$cadenaSql .= 'concepto.novedadxldn ';
+				$cadenaSql .= '( ';
+				$cadenaSql .= 'id_ldn,';
+				$cadenaSql .= 'codigo';
+				$cadenaSql .= ') ';
+				$cadenaSql .= 'VALUES ';
+				$cadenaSql .= '( ';
+				$cadenaSql .= $variable ['fk_id_ley'] . ', ';
+				$cadenaSql .= $variable ['fk_concepto'];
+				$cadenaSql .= '); ';
+				break; 
+                     case 'insertarCondicion' :
+				$cadenaSql = 'INSERT INTO ';
+				$cadenaSql .= 'concepto.condicion_novedad ';
+				$cadenaSql .= '( ';
+				$cadenaSql .= 'codigo,';
+				$cadenaSql .= 'cadena';
+				$cadenaSql .= ') ';
+				$cadenaSql .= 'VALUES ';
+				$cadenaSql .= '( ';
+				$cadenaSql .= $variable ['fk_concepto'] . ', ';
+				$cadenaSql .= '\'' . $variable ['cadena']  . '\' ';
+				$cadenaSql .= '); ';
+				break;       
               case 'modificarRegistro' :
                 $cadenaSql = 'UPDATE ';
                 $cadenaSql .= 'concepto.asociacion_concepto ';

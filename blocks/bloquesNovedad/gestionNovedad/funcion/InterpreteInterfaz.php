@@ -1,5 +1,7 @@
 <?php
 
+namespace bloquesNovedad\gestionNovedad\funcion;
+
 /**
 *	Interfaz para la construcción del interprete para la validacion de sentencias y construcción y evaluacion de arboles de operaciones
 */

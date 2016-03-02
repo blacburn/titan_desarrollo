@@ -61,13 +61,10 @@ class Funcion {
         	switch ($_REQUEST['opcion']){
                    
         		case "mostrar":
-                             
                             include_once ($this->ruta."funcion/registrar.php");
-        		
-        			break;
+        		break;
                          case "registrar":
-                             
-        		      include_once ($this->ruta."funcion/registrar.php");
+                             include_once ($this->ruta."funcion/registrar.php");
         	         break; 
                          case "opt":
                            include_once ($this->ruta."funcion/opcion.php");

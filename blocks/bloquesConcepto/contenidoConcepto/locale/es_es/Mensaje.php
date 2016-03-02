@@ -13,6 +13,7 @@ $this->idioma["cancelarInactivar"]="Cancelar";
 $this->idioma["botonAceptarRegistro"]="Aceptar";
 $this->idioma["botonRegresarConsulta"]="Regresar";
 $this->idioma["estadoRegistro"]="Estado:";
+$this->idioma["VariablesList"]="Variables:";
 
 
 

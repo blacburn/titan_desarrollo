@@ -19,18 +19,15 @@ class Redireccionador {
 				$variable = "pagina=" . $miPaginaActual;
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=inserto";
-				
 				break;
 			
 			case "noInserto" :
-                            $variable = "pagina=" . $miPaginaActual;
+                                $variable = "pagina=" . $miPaginaActual;
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=noInserto";
-                              
-				break;
+                                break;
 			
 			case "opcion1" :
-				
 				$variable = "pagina=" . $miPaginaActual;
 				$variable   = "&opcion=mensaje";
                                 $variable   = "&mensaje=error";
@@ -82,6 +79,13 @@ class Redireccionador {
                                 
 				$variable = 'pagina='.$miPaginaActual;                                
 				$variable .= "&opcion=esporadica";
+                                $variable .= "&tipoNovedad=" . $valor ['tipoNovedad'];
+				$variable .= "&categoriaConceptos=" . $valor ['categoriaConceptos'];
+                                $variable .= "&nombre=" . $valor ['nombre'];
+				$variable .= "&simbolo=" . $valor ['simbolo'];
+                                $variable .= "&ley=" . $valor ['ley'];
+				$variable .= "&naturaleza=" . $valor ['naturaleza'];
+                                $variable .= "&descripcion=" . $valor ['descripcion'];
                             break;
 			
 		}

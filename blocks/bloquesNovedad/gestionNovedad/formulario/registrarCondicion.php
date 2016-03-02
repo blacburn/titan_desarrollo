@@ -591,8 +591,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 				 
-				if (isset ( $_REQUEST ['nombre'] )) {
-					$atributos ['valor'] = $_REQUEST ['tipoNovedadInfo'];
+				if (isset ( $_REQUEST ['tipoNovedadFor'] )) {
+					$atributos ['valor'] = $_REQUEST ['tipoNovedadFor'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -616,8 +616,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 					
-				if (isset ( $_REQUEST ['simbolo'] )) {
-					$atributos ['valor'] = $_REQUEST ['categoriaConceptosInfo'];
+				if (isset ( $_REQUEST ['categoriaConceptosFor'] )) {
+					$atributos ['valor'] = $_REQUEST ['categoriaConceptosFor'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -642,8 +642,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 				 
-				if (isset ( $_REQUEST ['categoriaConceptos'] )) {
-					$atributos ['valor'] = $_REQUEST ['nombreInfo'];
+				if (isset ( $_REQUEST ['nombreFor'] )) {
+					$atributos ['valor'] = $_REQUEST ['nombreFor'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -668,8 +668,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 					
-				if (isset ( $_REQUEST ['leyRegistros'] )) {
-					$atributos ['valor'] = $_REQUEST ['simboloInfo'];
+				if (isset ( $_REQUEST ['simboloFor'] )) {
+					$atributos ['valor'] = $_REQUEST ['simboloFor'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -694,8 +694,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 				 
-				if (isset ( $_REQUEST ['leyRegistros'] )) {
-					$atributos ['valor'] = $_REQUEST ['leyInfo'];
+				if (isset ( $_REQUEST ['leyFor'] )) {
+					$atributos ['valor'] = $_REQUEST ['leyFor'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -720,8 +720,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 				 
-				if (isset ( $_REQUEST ['naturaleza'] )) {
-					$atributos ['valor'] = $_REQUEST ['naturalezaInfo'];
+				if (isset ( $_REQUEST ['naturalezaFor'] )) {
+					$atributos ['valor'] = $_REQUEST ['naturalezaFor'];
 				} else {
 					$atributos ['valor'] = '';
 				}
@@ -746,8 +746,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 				 
-				if (isset ( $_REQUEST ['descripcion'] )) {
-					$atributos ['valor'] = $_REQUEST ['descripcionInfo'];
+				if (isset ( $_REQUEST ['descripcionFor'] )) {
+					$atributos ['valor'] = $_REQUEST ['descripcionFor'];
 				} else {
 					$atributos ['valor'] = '';
 				}

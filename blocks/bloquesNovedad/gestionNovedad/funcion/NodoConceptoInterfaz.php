@@ -1,4 +1,5 @@
 <?php
+namespace bloquesNovedad\gestionNovedad\funcion;
 
 /**
 *	Interfaz para la construcción de la clase nodoConcepto o de cualquier clase que cumple la misma función de nodoConcepto

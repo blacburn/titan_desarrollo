@@ -237,7 +237,13 @@ class Sql extends \Sql {
 				$cadenaSql .= 'simbolo = ';
 				$cadenaSql .= '\'' . $variable ['simbolo'] . '\'';
 				break;
-				
+			case 'buscarVariables' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id as ID, ';
+				$cadenaSql .= 'simbolo as SIMBOLO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.variable ';
+				break;	
 			case 'modificarConcepto' :
 				$cadenaSql = 'UPDATE ';
 				$cadenaSql .= 'concepto.concepto ';

@@ -1,4 +1,5 @@
 <?php
+namespace bloquesNovedad\gestionNovedad\funcion;
 include 'InterpreteInterfaz.php';
 /**
 *	Interprete

@@ -1,4 +1,6 @@
 <?php
+
+namespace bloquesNovedad\gestionNovedad\funcion;
 include 'NodoConceptoInterfaz.php';
 /**
 *	NodoConcepto
