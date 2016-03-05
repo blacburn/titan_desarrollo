@@ -1,5 +1,5 @@
 <?php 
-namespace bloquesParametro\contenidoCargo\formulario;
+namespace bloquesLiquidacion\tipoNomina\formulario;
 
 
 
@@ -327,12 +327,8 @@ class Formulario {
         $atributos = array_merge ( $atributos, $atributosGlobales );
         echo $this->miFormulario->campoTextArea( $atributos );
         // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-        
-        
-        
        
-        
-        
+       
         
         // ------------------Division para los botones-------------------------
         $atributos ["id"] = "botones";
@@ -340,6 +336,8 @@ class Formulario {
         $atributos ["titulo"] = "Enviar Información";
         echo $this->miFormulario->division ( "inicio", $atributos );
 
+        
+      
         // -----------------CONTROL: Botón ----------------------------------------------------------------
         $esteCampo = 'enviarRegistroNomina';
         $atributos ["id"] = $esteCampo;

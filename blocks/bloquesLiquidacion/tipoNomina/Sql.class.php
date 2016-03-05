@@ -136,6 +136,7 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $variable['periodo'] . '\', ';
                 $cadenaSql .= $variable ['id'] . '';
                 $cadenaSql .= ') ';
+                $cadenaSql .= "RETURNING  codigo; ";
                 break;
               case 'buscarRegistroxLEY' :
                 
@@ -149,7 +150,19 @@ class Sql extends \Sql {
 //                        $cadenaSql .= 'clave=\'' . $claveEncriptada . '\' ';
                 break;
           
-                
+                case 'insertarLeyesNomina' :
+				$cadenaSql = 'INSERT INTO ';
+				$cadenaSql .= 'liquidacion.ldnxnomina ';
+				$cadenaSql .= '( ';
+				$cadenaSql .= 'codigo_nomina,';
+				$cadenaSql .= 'id_ldn';
+				$cadenaSql .= ') ';
+				$cadenaSql .= 'VALUES ';
+				$cadenaSql .= '( ';
+				$cadenaSql .= $variable ['fk_concepto'] . ', ';
+				$cadenaSql .= $variable ['fk_id_ley'];
+				$cadenaSql .= '); ';
+				break;
              case 'buscarRegistroxCargo' :
                 
                 	$cadenaSql = 'SELECT ';
