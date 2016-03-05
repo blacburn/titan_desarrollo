@@ -51,7 +51,7 @@ class Funcion {
         // en la carpeta funcion
         
         // Importante: Es adecuado que sea una variable llamada opcion o action la que guie el procesamiento:
-        
+      
         
         if (isset ( $_REQUEST ['procesarAjax'] )) {
             $this->procesarAjax ();
