@@ -119,27 +119,35 @@ class FormProcessor {
 //       
        
                 
-//        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("insertarRegistroNomina",$datos);
-//        $resultado=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda",$datos,"insertarRegistroNomina");
-//        //Al final se ejecuta la redirección la cual pasará el control a otra página
-//         $arrayLeyes = explode(",", $_REQUEST['leyRegistros']);
-//        $count = 0;
-//       
+        $atributos['cadena_sql'] = $this->miSql->getCadenaSql("insertarRegistroNomina",$datos);
+        $resultado=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "acceso");
+        //Al final se ejecuta la redirección la cual pasará el control a otra página
+
+//        exit;
+        if (!empty($resultado)) {
+            $atributos['cadena_sql'] = $this->miSql->getCadenaSql("buscarNominaAlterno",$datos);
+            $nomina=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
+         
+            
+                     $arrayLeyes = explode(",", $_REQUEST['leyRegistros']);
+                     $count = 0;
+       
 //        
-//        while($count < count($arrayLeyes)){
-//        	
-//        	$datosLeyesConcepto = array(
-//        			'fk_id_ley' => $arrayLeyes[$count],
-//        			'fk_concepto' => $resultado[0][0]
-//        	);
-//        	
-//        	$cadenaSql = $this->miSql->getCadenaSql("insertarLeyesNomina",$datosLeyesConcepto);
-//        	$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
-//        	
-//        	$count++;
-//        
-//        }
-        exit;
+        while($count < count($arrayLeyes)){
+        	
+        	$datosLeyesConcepto = array(
+        			'fk_id_ley' => $arrayLeyes[$count],
+        			'fk_nomina' => $nomina[0][0]
+        	);
+        	
+        	$cadenaSql = $this->miSql->getCadenaSql("insertarLeyesNomina",$datosLeyesConcepto);
+        	$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+        	
+        	$count++;
+        
+        }
+        } 
+       
         if (!empty($resultado)) {
               Redireccionador::redireccionar('inserto',$datos);
             exit();

@@ -61,6 +61,15 @@ class Sql extends \Sql {
                 $cadenaSql .= 'id = ';
                 $cadenaSql .= $variable ['id'] . '';
            break;
+       case 'buscarNominaAlterno':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'codigo_nomina as CODIGO_NOMINA ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'liquidacion.nomina ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'nombre = ';
+                $cadenaSql .= '\'' . $variable['nombreNomina'] .   '\' ';
+           break;
 
        
        case 'buscarNominaxregistro':
@@ -136,7 +145,6 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $variable['periodo'] . '\', ';
                 $cadenaSql .= $variable ['id'] . '';
                 $cadenaSql .= ') ';
-                $cadenaSql .= "RETURNING  codigo; ";
                 break;
               case 'buscarRegistroxLEY' :
                 
@@ -159,7 +167,7 @@ class Sql extends \Sql {
 				$cadenaSql .= ') ';
 				$cadenaSql .= 'VALUES ';
 				$cadenaSql .= '( ';
-				$cadenaSql .= $variable ['fk_concepto'] . ', ';
+				$cadenaSql .= $variable ['fk_nomina'] . ', ';
 				$cadenaSql .= $variable ['fk_id_ley'];
 				$cadenaSql .= '); ';
 				break;
@@ -180,7 +188,14 @@ class Sql extends \Sql {
 //                        $cadenaSql .= 'clave=\'' . $claveEncriptada . '\' ';
                         
                 break;
-                	
+                	case 'eliminarLeyesModificar' :
+				$cadenaSql = 'DELETE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'liquidacion.ldnxnomina ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'codigo_nomina = ' . $variable ['fk_nomina'] . ';';
+				break;
+				
                 case 'buscarModificarxCargo' :
                 
                 	$cadenaSql = 'SELECT ';
@@ -214,7 +229,25 @@ class Sql extends \Sql {
                         $cadenaSql .= 'parametro.cargo';
                         
                 break;
-
+           case 'buscarLey' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_ldn as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.ley_decreto_norma ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'estado != \'Inactivo\';';
+	break;
+    case 'consultarLeyesDeNomina' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_ldn as ID, ';
+				$cadenaSql .= 'codigo_nomina as CODIGO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'liquidacion.ldnxnomina ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'codigo_nomina = ' . $variable . ';';
+				break;
+				
            case 'modificarRegistroxnomina' :
                 $cadenaSql = 'UPDATE ';
                 $cadenaSql .= 'liquidacion.nomina ';
