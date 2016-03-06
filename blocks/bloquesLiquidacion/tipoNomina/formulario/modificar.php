@@ -87,7 +87,7 @@ class Formulario {
 
         // ---------------- SECCION: Controles del Formulario -----------------------------------------------
         
-        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarNominaxregistro",$_REQUEST['vinculacion']);
+        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarNominaxregistroMod",$_REQUEST['vinculacion']);
         $matrizItems=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
        $_identificadorConcepto =  $matrizItems[$_REQUEST['variablei']][0];//Codigo Unico que identifica el Concepto
         
@@ -191,6 +191,7 @@ class Formulario {
                  );
         $atributos['matrizItems'] = $matrizTipo;
         
+        $tipo=0;
         if($matrizItems[$_REQUEST['variablei']][2] == 'Periodica'){$tipo=1;}
         if($matrizItems[$_REQUEST['variablei']][2] == 'Esporadica'){$tipo=2;}
         if($matrizItems[$_REQUEST['variablei']][2] == 'Mixta'){$tipo=3;} 
@@ -237,7 +238,7 @@ class Formulario {
         
                  );
         $atributos['matrizItems'] = $matrizMes;
-        
+        $tipo=0;
         if($matrizItems[$_REQUEST['variablei']][3] == 'Enero'){$tipo=1;}
         if($matrizItems[$_REQUEST['variablei']][3] == 'Febrero'){$tipo=2;}
         if($matrizItems[$_REQUEST['variablei']][3] == 'Marzo'){$tipo=3;}

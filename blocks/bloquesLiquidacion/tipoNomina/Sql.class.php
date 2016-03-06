@@ -86,7 +86,20 @@ class Sql extends \Sql {
                 $cadenaSql .= 'id = ';
                 $cadenaSql .= $variable ['vinculacion'] . '';
            break;
-       
+       case 'buscarNominaxregistroMod':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'codigo_nomina as CODIGO_NOMINA, ';
+                $cadenaSql .= 'nombre as NOMBRE, ';
+                $cadenaSql .= 'tipo_nomina as TIPO_NOMINA, ';
+                $cadenaSql .= 'periodo as PERIODO, ';
+                $cadenaSql .= 'estado as ESTADO, ';
+                $cadenaSql .= 'descripcion as DESCRIPCION ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'liquidacion.nomina ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id = ';
+                $cadenaSql .= $variable . '';
+           break;
        case 'buscarTipoVinculacionDetalle':
                 $cadenaSql = 'SELECT ';
                 $cadenaSql .= 'id as ID, ';
@@ -240,13 +253,13 @@ class Sql extends \Sql {
 	break;
     case 'consultarLeyesDeNomina' :
 				$cadenaSql = 'SELECT ';
-				$cadenaSql .= 'id_ldn as ID, ';
-				$cadenaSql .= 'codigo_nomina as CODIGO ';
+				$cadenaSql .= 'codigo_nomina as CODIGO, ';
+				$cadenaSql .= 'id_ldn as ID ';
 				$cadenaSql .= 'FROM ';
 				$cadenaSql .= 'liquidacion.ldnxnomina ';
 				$cadenaSql .= 'WHERE ';
-				$cadenaSql .= 'codigo_nomina = ' . $variable . ';';
-				break;
+				$cadenaSql .= 'codigo_nomina = ' . $variable . '';
+	 break;
 				
            case 'modificarRegistroxnomina' :
                 $cadenaSql = 'UPDATE ';
@@ -279,14 +292,13 @@ class Sql extends \Sql {
             break;
         
         case 'buscarley' :
-                $cadenaSql = 'UPDATE ';
-                $cadenaSql .= 'liquidacion.nomina ';
-                $cadenaSql .= 'SET ';
-                $cadenaSql .= 'estado = ';
-                $cadenaSql .= '\'' . $variable ['estadoRegistroNomina']  . '\' ';
-                $cadenaSql .= 'WHERE ';
-                $cadenaSql .= 'codigo_nomina = ';
-                $cadenaSql .= '\'' . $variable ['codigoNomina']  . '\'';
+               $cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_ldn as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.ley_decreto_norma ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'estado != \'Inactivo\';';
             break;
         
         }
