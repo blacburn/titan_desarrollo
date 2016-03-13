@@ -1,5 +1,5 @@
    <?php
-namespace bloquesNovedad\contenidoNovedad\formulario;
+
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();

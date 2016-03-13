@@ -31,6 +31,7 @@ class FormProcessor {
             'nombre' => $_REQUEST['nombre'],
             'simbolo' => $_REQUEST['simbolo'],
             'ley' => $_REQUEST['ley'],
+            'leyRegistros' => $_REQUEST['leyRegistros'],
             'naturaleza' => $_REQUEST['naturaleza'],
             'descripcion' => $_REQUEST['descripcion']
         );

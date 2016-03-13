@@ -4,6 +4,8 @@ $this->idioma["noDefinido"]="No definido";
 
 $this->idioma["botonRegistrarCargo"]="Registrar Novedad";
 $this->idioma["botonGuardar"]="Aceptar";
+$this->idioma["botonAceptar"]="Aceptar";
+
 $this->idioma["Aceptar"]="Siguiente";
 $this->idioma["botonModificar"]="Modificar";
 $this->idioma["botonInactivar"]="Inactivar";
@@ -13,6 +15,9 @@ $this->idioma["enviarInactivar"]="Aceptar";
 $this->idioma["cancelarInactivar"]="Cancelar";
 $this->idioma["botonAceptarRegistro"]="Aceptar";
 $this->idioma["botonRegresarConsulta"]="Regresar";
+$this->idioma["VariablesList"]="Variables:";
+
+
 
 
 

@@ -84,6 +84,7 @@ class Redireccionador {
                                 $variable .= "&nombre=" . $valor ['nombre'];
 				$variable .= "&simbolo=" . $valor ['simbolo'];
                                 $variable .= "&ley=" . $valor ['ley'];
+                                $variable .= "&leyRegistros=" . $valor ['leyRegistros'];
 				$variable .= "&naturaleza=" . $valor ['naturaleza'];
                                 $variable .= "&descripcion=" . $valor ['descripcion'];
                             break;

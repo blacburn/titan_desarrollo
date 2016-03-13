@@ -74,11 +74,17 @@ $urlFinal19 = $url . $cadena19;
 ?>
 
 <script>
+     $('#<?php echo $this->campoSeguro('VariablesList')?>').width(240);
+ $("#<?php echo $this->campoSeguro('VariablesList')?>").select2(); 
  $('#<?php echo $this->campoSeguro('categoriaConceptosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").select2();
  $('#<?php echo $this->campoSeguro('categoriaParametrosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").select2();
  
+ 
+$( '#<?php echo $this->campoSeguro('ley')?>' ).change(function() {
+		$("#<?php echo $this->campoSeguro('leyRegistros') ?>").val($("#<?php echo $this->campoSeguro('ley') ?>").val());
+});
 $( '#<?php echo $this->campoSeguro('categoriaConceptosList')?>' ).change(function() {
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').attr("readonly","readonly");
 	$('#<?php echo $this->campoSeguro('valorConcepto')?>').addClass("readOnly");

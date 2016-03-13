@@ -95,10 +95,9 @@ class Formulario {
         echo $this->miFormulario->formulario ( $atributos );
 
         // ---------------- SECCION: Controles del Formulario -----------------------------------------------
-        
-        
+      
        // --------------------------------------------------------------------------------------------------
-        
+      
         $esteCampo = "marcoDatosBasicos";
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
@@ -311,8 +310,8 @@ class Formulario {
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
 				 
-				if (isset ( $_REQUEST ['ley'] )) {
-					$atributos ['valor'] = $_REQUEST ['ley'];
+				if (isset ( $_REQUEST ['leyRegistros'] )) {
+					$atributos ['valor'] = $_REQUEST ['leyRegistros'];
 				} else {
 					$atributos ['valor'] = '';
 				}
