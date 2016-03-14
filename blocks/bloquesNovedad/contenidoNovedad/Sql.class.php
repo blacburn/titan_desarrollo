@@ -29,8 +29,8 @@ class Sql extends \Sql {
         $prefijo = $this->miConfigurador->getVariableConfiguracion("prefijo");
         $idSesion = $this->miConfigurador->getVariableConfiguracion("id_sesion");
         $cadenaSql = '';
-        
-        
+
+
         switch ($tipo) {
 
             /**
@@ -122,7 +122,7 @@ class Sql extends \Sql {
                 $cadenaSql .= $variable ['id'] . ';';
                 break;
             case 'insertarCampos' :
-               $cadenaSql = 'INSERT INTO ';
+                $cadenaSql = 'INSERT INTO ';
                 $cadenaSql .= 'concepto.campo_novedad ';
                 $cadenaSql .= '( ';
                 $cadenaSql .= 'id_formulario, ';
@@ -202,7 +202,7 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $_REQUEST ['tipoSueldoRegistro'] . '\', ';
                 $cadenaSql .= '\'' . 'Activo' . '\' ';
                 $cadenaSql .= ') ';
-                
+
                 break;
 
             case 'actualizarRegistro' :
