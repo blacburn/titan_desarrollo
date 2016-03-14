@@ -249,6 +249,9 @@ $("#confirmarDina").click(function(){
 	$('#<?php echo $this->campoSeguro('botones')?>').show("fast");
 });
 
+$("#confirmarDina2").click(function(){
+	$("#confirmar").hide("fast");
+});
 $("#cancelarDina").click(function(){
 	$("#confirmar").show("fast");
 	$("#cancelar").hide("fast");

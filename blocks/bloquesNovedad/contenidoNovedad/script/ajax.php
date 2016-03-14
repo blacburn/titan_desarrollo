@@ -155,7 +155,7 @@ $(function () {
         }
     });
 });
-var iCnt2 = 0;   
+var iCnt2 = 0;  
 var campos_numero = 0;   
 var container = $(document.createElement('div')).css({
 	padding: '5px'
@@ -188,13 +188,13 @@ $(document).ready(function() {
 					'<div id=lab1'+iCnt2+' class="col-md-2">'+
 						'<label> Nombre del Campo:  </label> ' + 
 					'</div>'+
-                                        '<input type=text class="input" id=nombreCampo'+iCnt2+' size="80"  maxlength="30" value="" required/>'+
+                                        '<input type=text class="input" id=nombreCampo'+ iCnt2 + ' size="80"  maxlength="30" value="" required/>'+
                                         '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt2+' class="col-md-2">'+
 							'<label> Label del Campo: </label> ' + 
 						'</div>'+
-					'<input type=text class="input" id=labelCampo'+iCnt2+' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt2+')"/>'+
+					'<input type=text class="input" id=labelCampo' + iCnt2 + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt2+')"/>'+
                                         '</div>'+
                                         '<br/>'+
 					'<div>'+
@@ -242,14 +242,16 @@ $(document).ready(function() {
                                       ($('#tipoDatoCampo'+num).val()),
                                       ($('#requeridoCampo'+num).val()),
                                       ($('#formulacionCampo'+num).val())] ).draw( false );
-                            $('#panel'+num).remove();     
+                                         
+                                                      
+                            $('#panel'+num).hide();     
                         }
                         }
                         else{
                         iCnt2 = iCnt2 - 1;
-                        }
+                   temp     }
                         
-                        campos_numero=campos_numero+1;
+                        
 	});
         
         
@@ -263,13 +265,21 @@ $(document).ready(function() {
             $(this).addClass('selected');
         }
     } );
-        $('#btRemove').click(function() { // Elimina un panel de condiciones del DOM
+      $('#btEliminar').click(function() { // Elimina un panel de condiciones del DOM
 		
- 
-   
-        t.row('.selected').remove().draw( false );
-    
-	});
+      var data = t.row('.selected').data();
+      var interacion = 0;
+      
+      interacion=interacion+1;
+       while(interacion <= iCnt2){
+       
+       if(($("#nombreCampo"+interacion).val())== data[0] && ($("#labelCampo"+interacion).val())== data[1]){
+            $('#panel'+interacion).remove();  
+       }
+       interacion=interacion+1;
+       }
+       t.row('.selected').remove().draw( false );
+    });
 });
 function consultarParametro(elem, request, response){
 	  $.ajax({
@@ -775,27 +785,38 @@ function GetTextValue() {
 	values = '';
 	 campos = '';
 	var j = 0;
-	var con = 0;
 	while(j < iCnt){
 		j++;
 		values = values + $("#tb1"+j).val() + ',';
 		values = values + $("#tb2"+j).val() + ',';
 	}
         $("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
-        while(con < campos_numero){
-		con++;
-		campos = campos + $("#nombreCampo"+con).val() + ',';
-		campos = campos + $("#labelCampo"+con).val() + ',';
-                campos = campos + $("#tipoDatoCampo"+con).val() + ',';
-                campos = campos + $("#requeridoCampo"+con).val() + ',';
-                campos = campos + $("#formulacionCampo"+con).val() + ',';
-       }
-	$("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
+    
 	condiciones = '';
 	$( "select option:selected" ).each(function() {
 	   condiciones += '['+ this.value + ']';
 	   $("#<?php echo $this->campoSeguro('condicionesRegistros') ?>").val(condiciones);
 	});
+	
+}
+
+function PasoComponente() {
+	
+	
+	
+	var con = 0;
+	
+        while(con < iCnt2-1){
+		con++;
+              
+		campos = campos + $("#nombreCampo"+con).val() + ',';
+		campos = campos + $('#labelCampo'+con).val() + ',';
+                campos = campos + $("#tipoDatoCampo"+con).val() + ',';
+                campos = campos + $("#requeridoCampo"+con).val() + ',';
+                campos = campos + $("#formulacionCampo"+con).val() + ',';
+       }
+	$("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
+	
 	
 }
 </script>

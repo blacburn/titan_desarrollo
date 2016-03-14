@@ -152,7 +152,7 @@ class Formulario {
                             echo $this->miFormulario->division ( "inicio", $atributos );
                             {
                                         echo "<center>";
-					echo "<input type=\"button\" id=\"btRemove\" value=\"Eliminar Campo\" class=\"btn btn-danger btn-block\" />";
+					echo "<input type=\"button\" id=\"btEliminar\" value=\"Eliminar Campo\" class=\"btn btn-danger btn-block\" />";
 					echo "</center>";
 				
 				// ---------------- CONTROL: Select --------------------------------------------------------
@@ -387,7 +387,18 @@ class Formulario {
                         $atributos ["estilo"] = "marcoBotones";
                         echo $this->miFormulario->division ( "inicio", $atributos );
 
-   
+         unset($atributos);
+                // ---------------- CONTROL: Select --------------------------------------------------------
+                $atributos ["id"] = "confirmar";
+                $atributos ["estilo"] = "col-md-4";
+                echo $this->miFormulario->division("inicio", $atributos); {
+                    echo "<center>";
+                    echo "<input type=\"button\" id=\"confirmarDina2\" value=\"Confirmar\" class=\"btn btn-primary btn-block\" onclick=\"PasoComponente()\" />";
+                    echo "</center>";
+                }
+                echo $this->miFormulario->division("fin");
+
+                unset($atributos);
 
         // -----------------CONTROL: Botón ----------------------------------------------------------------
         $esteCampo = 'siguiente';
@@ -398,6 +409,7 @@ class Formulario {
         $atributos ['submit'] = true;
         $atributos ["estiloMarco"] = '';
         $atributos ["estiloBoton"] = 'jqueryui';
+        $atributos ['onclick'] = 'PasoComponente()';
         // verificar: true para verificar el formulario antes de pasarlo al servidor.
         $atributos ["verificar"] = true;
         $atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
