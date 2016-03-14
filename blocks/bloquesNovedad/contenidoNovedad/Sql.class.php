@@ -29,6 +29,8 @@ class Sql extends \Sql {
         $prefijo = $this->miConfigurador->getVariableConfiguracion("prefijo");
         $idSesion = $this->miConfigurador->getVariableConfiguracion("id_sesion");
         $cadenaSql = '';
+        
+        
         switch ($tipo) {
 
             /**
@@ -84,16 +86,16 @@ class Sql extends \Sql {
                 $cadenaSql = 'INSERT INTO ';
                 $cadenaSql .= 'concepto.formulario_novedad ';
                 $cadenaSql .= '( ';
-                $cadenaSql .= 'codigo,';
-                $cadenaSql .= 'nombre_formulario,';
+                $cadenaSql .= 'codigo, ';
+                $cadenaSql .= 'nombre_formulario';
                 $cadenaSql .= ') ';
                 $cadenaSql .= 'VALUES ';
                 $cadenaSql .= '( ';
                 $cadenaSql .= $variable ['fk_id_novedad'] . ', ';
-                $cadenaSql .= $variable ['fk_nombreFormulario'];
+                $cadenaSql .= '\'' . $variable ['fk_nombreFormulario'] . '\' ';
                 $cadenaSql .= ') ';
                 $cadenaSql .= "RETURNING  id_formulario; ";
-            break;
+                break;
             case 'insertarCondicion' :
                 $cadenaSql = 'INSERT INTO ';
                 $cadenaSql .= 'concepto.condicion_novedad ';
@@ -115,14 +117,32 @@ class Sql extends \Sql {
                 $cadenaSql .= "'" . $variable ['codigo_concepto'] . "',";
                 $cadenaSql .= 'tipo_nomina = ';
                 $cadenaSql .= "'" . $variable ['tipo_vinculacion_nomina'] . "'";
-
-
-
                 $cadenaSql .= ' WHERE ';
                 $cadenaSql .= 'id= ';
                 $cadenaSql .= $variable ['id'] . ';';
                 break;
-
+            case 'insertarCampos' :
+               $cadenaSql = 'INSERT INTO ';
+                $cadenaSql .= 'concepto.campo_novedad ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= 'id_formulario, ';
+                $cadenaSql .= 'nombre_campo, ';
+                $cadenaSql .= 'label_campo, ';
+                $cadenaSql .= 'tipo_dato, ';
+                $cadenaSql .= 'requerido, ';
+                $cadenaSql .= 'formulacion';
+                $cadenaSql .= ') ';
+                $cadenaSql .= 'VALUES ';
+                $cadenaSql .= '( ';
+                $foo = (int) $variable ['fk_id_formulario'];
+                $cadenaSql .= $foo . ', ';
+                $cadenaSql .= '\'' . $variable ['fk_nombreCampo'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['fk_labelCampo'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['fk_tipoDatoCampo'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['fk_requeridoCampo'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['fk_formulacionCampo'] . '\' ';
+                $cadenaSql .= '); ';
+                break;
             case 'inactivarRegistro' :
                 $cadenaSql = 'UPDATE ';
                 $cadenaSql .= 'concepto.asociacion_concepto ';
@@ -182,7 +202,7 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $_REQUEST ['tipoSueldoRegistro'] . '\', ';
                 $cadenaSql .= '\'' . 'Activo' . '\' ';
                 $cadenaSql .= ') ';
-                echo $cadenaSql;
+                
                 break;
 
             case 'actualizarRegistro' :
