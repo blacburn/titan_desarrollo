@@ -156,6 +156,7 @@ $(function () {
     });
 });
 var iCnt2 = 0;   
+var campos_numero = 0;   
 var container = $(document.createElement('div')).css({
 	padding: '5px'
 });
@@ -169,11 +170,11 @@ $(document).ready(function() {
 			iCnt2 = iCnt2 + 1;
 	                 if(iCnt2>1){
                              var n=iCnt2-1;
-                            if($('#tb1'+n).val()=='' || $('#tb2'+n).val()==''){
-                                if($('#tb1'+n).val()==''){
+                            if($('#nombreCampo'+n).val()=='' || $('#labelCampo'+n).val()==''){
+                                if($('#nombreCampo'+n).val()==''){
                                     alert('ingese nombre de campo');
                                 }
-                                if($('#tb2'+n).val()==''){
+                                if($('#labelCampo'+n).val()==''){
                                     alert('ingese label del campo');
                                 }    
                                 
@@ -187,20 +188,20 @@ $(document).ready(function() {
 					'<div id=lab1'+iCnt2+' class="col-md-2">'+
 						'<label> Nombre del Campo:  </label> ' + 
 					'</div>'+
-                                        '<input type=text class="input" id=tb1' + iCnt2 + ' size="80"  maxlength="30" value="" required/>'+
+                                        '<input type=text class="input" id=nombreCampo'+iCnt2+' size="80"  maxlength="30" value="" required/>'+
                                         '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt2+' class="col-md-2">'+
 							'<label> Label del Campo: </label> ' + 
 						'</div>'+
-					'<input type=text class="input" id=tb2' + iCnt2 + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt2+')"/>'+
+					'<input type=text class="input" id=labelCampo'+iCnt2+' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt2+')"/>'+
                                         '</div>'+
                                         '<br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt2+' class="col-md-2">'+
 							'<label> Tipo de dato: </label> ' + 
 						'</div>'+
-					'<select id=tipoDato'+iCnt2+'><option value="Alfanumerico">Alfanumérico</option>'+
+					'<select id=tipoDatoCampo'+iCnt2+'><option value="Alfanumerico">Alfanumérico</option>'+
                                         '<option value="Valor">Valor</option>'+
                                         '<option value="Lista">Lista</option>'+
                                         '<option value="Fecha">Fecha</option>'+
@@ -212,7 +213,7 @@ $(document).ready(function() {
 						'<div id=lab2'+iCnt2+' class="col-md-2">'+
 							'<label> Requerido: </label> ' + 
 						'</div>'+
-					'<select id=requerido'+iCnt2+'><option value="No">No</option>'+
+					'<select id=requeridoCampo'+iCnt2+'><option value="No">No</option>'+
                                         '<option value="Si">Si</option>'+
                                         '</select>'+
                                         '</div>'+
@@ -227,19 +228,19 @@ $(document).ready(function() {
                                         '</div>'+ 
 					'</fieldset>');
 			$('#camposDinamicos').after(container);
-			$('#tipoDato'+iCnt2).width(250);
-                        $('#tipoDato'+iCnt2).select2();
-                        $('#requerido'+iCnt2).width(250);
-                        $('#requerido'+iCnt2).select2();
+			$('#tipoDatoCampo'+iCnt2).width(250);
+                        $('#tipoDatoCampo'+iCnt2).select2();
+                        $('#requeridoCampo'+iCnt2).width(250);
+                        $('#requeridoCampo'+iCnt2).select2();
                         $('#formulacionCampo'+iCnt2).width(250);
                         $('#formulacionCampo'+iCnt2).select2(); 
                         
                         if(iCnt2>1){
                             var num=iCnt2-1;
-                            t.row.add( [ ($('#tb1'+num).val()),
-                                      ($('#tb2'+num).val()),
-                                      ($('#tipoDato'+num).val()),
-                                      ($('#requerido'+num).val()),
+                            t.row.add( [ ($('#nombreCampo'+num).val()),
+                                      ($('#labelCampo'+num).val()),
+                                      ($('#tipoDatoCampo'+num).val()),
+                                      ($('#requeridoCampo'+num).val()),
                                       ($('#formulacionCampo'+num).val())] ).draw( false );
                             $('#panel'+num).remove();     
                         }
@@ -247,6 +248,8 @@ $(document).ready(function() {
                         else{
                         iCnt2 = iCnt2 - 1;
                         }
+                        
+                        campos_numero=campos_numero+1;
 	});
         
         
@@ -770,22 +773,22 @@ var values = '', condiciones = '', campos = '', cantidad = 0;
 function GetTextValue() {
 	 
 	values = '';
-	 
+	 campos = '';
 	var j = 0;
-	var l = 0;
+	var con = 0;
 	while(j < iCnt){
 		j++;
 		values = values + $("#tb1"+j).val() + ',';
 		values = values + $("#tb2"+j).val() + ',';
 	}
         $("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
-        while(l < iCnt2){
-		l++;
-		campos = campos + $("#tb1"+l).val() + ',';
-		campos = campos + $("#tb2"+l).val() + ',';
-                campos = campos + $("#tipoDato"+l).val() + ',';
-                campos = campos + $("#requerido"+l).val() + ',';
-                campos = campos + $("#formulacionCampo"+l).val() + ',';
+        while(con < campos_numero){
+		con++;
+		campos = campos + $("#nombreCampo"+con).val() + ',';
+		campos = campos + $("#labelCampo"+con).val() + ',';
+                campos = campos + $("#tipoDatoCampo"+con).val() + ',';
+                campos = campos + $("#requeridoCampo"+con).val() + ',';
+                campos = campos + $("#formulacionCampo"+con).val() + ',';
        }
 	$("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
 	condiciones = '';

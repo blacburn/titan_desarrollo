@@ -25,7 +25,8 @@ class FormProcessor {
     function procesarFormulario() {
 
         //Aquí va la lógica de procesamiento
-
+        var_dump($_REQUEST);
+        exit;
         $conexion = 'estructura';
         $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
@@ -34,7 +35,7 @@ class FormProcessor {
         //-------------------------------------------------------------------------------------------------------
 
         $_entradaFormulaCompilador = $_REQUEST['formulaConcepto'];
-     
+
 //        Interprete::evaluarSentencia($_entradaFormulaCompilador);
         $interprete = new Interprete();
 
@@ -77,9 +78,9 @@ class FormProcessor {
             );
 
             $cadenaSql = $this->miSql->getCadenaSql("insertarConcepto", $datosConcepto);
-            $id_concepto = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda","busqueda", $datosConcepto, "insertarConcepto");
+            $id_concepto = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", "busqueda", $datosConcepto, "insertarConcepto");
 
-            
+
             $arrayLeyes = explode(",", $_REQUEST['leyCon']);
             $count = 0;
 
@@ -94,6 +95,40 @@ class FormProcessor {
                 $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso"); //********************************
 
                 $count++;
+            }
+
+
+            $arrayCampos = explode(",", $_REQUEST['variablesCampo']);
+            $cuentaRegistro = 0;
+
+            $datosFormulario = array(
+                'fk_nombreFormulario' => $_REQUEST['nombreCon'],
+                'fk_id_novedad' => $id_concepto[0][0]
+            );
+
+            //CREACION DE FORMULARIO Y GUARDO EN BD
+            $cadenaSql = $this->miSql->getCadenaSql("insertarFormulario", $datosFormulario);
+            $id_formulario = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", "busqueda", $datosFormulario, "insertarFormulario");
+
+
+            while ($cuentaRegistro < count($arrayCampos)) {
+                $cuentaCampo = 0;
+                while ($cuentaCampo < 5) {
+
+                    $datosCampo = array(
+                        'fk_nombreCampo' => $arrayCampos[$cuentaRegistro],
+                        'fk_labelCampo' => $arrayCampos[$cuentaRegistro++],
+                        'fk_tipoDatoCampo' => $arrayCampos[$cuentaRegistro++],
+                        'fk_requeridoCampo' => $arrayCampos[$cuentaRegistro++],
+                        'fk_formulacionCampo' => $arrayCampos[$cuentaRegistro++]
+                    );
+
+
+                    $cadenaSql = $this->miSql->getCadenaSql("insertarCampos", $datosLeyesConcepto);
+                    $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+
+                    $cuentaCampo++;
+                }
             }
         } else {
 

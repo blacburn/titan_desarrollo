@@ -69,7 +69,7 @@ class Formulario {
         echo $this->miFormulario->formulario($atributos);
         // ---------------- SECCION: Controles del Formulario -----------------------------------------------
         // --------------------------------------------------------------------------------------------------
-        
+       
         $esteCampo = "marcoDatosBasicos";
         $atributos ['id'] = $esteCampo;
         $atributos ["estilo"] = "jqueryui";
@@ -704,6 +704,7 @@ class Formulario {
                 echo $this->miFormulario->campoCuadroTexto($atributos);
                 // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
                 // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+                unset($atributos);
                 $esteCampo = 'descripcionFor';
                 $atributos ['id'] = $esteCampo;
                 $atributos ['nombre'] = $esteCampo;
@@ -726,6 +727,8 @@ class Formulario {
                 // Aplica atributos globales al control
                 $atributos = array_merge($atributos, $atributosGlobales);
                 echo $this->miFormulario->campoCuadroTexto($atributos);
+                unset($atributos);
+           
                 // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
                 //***********************************************************************************************
                 //***********************************************************************************************

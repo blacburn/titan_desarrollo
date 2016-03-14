@@ -80,6 +80,20 @@ class Sql extends \Sql {
                 $cadenaSql .= $variable ['fk_concepto'];
                 $cadenaSql .= '); ';
                 break;
+            case 'insertarFormulario' :
+                $cadenaSql = 'INSERT INTO ';
+                $cadenaSql .= 'concepto.formulario_novedad ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= 'codigo,';
+                $cadenaSql .= 'nombre_formulario,';
+                $cadenaSql .= ') ';
+                $cadenaSql .= 'VALUES ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= $variable ['fk_id_novedad'] . ', ';
+                $cadenaSql .= $variable ['fk_nombreFormulario'];
+                $cadenaSql .= ') ';
+                $cadenaSql .= "RETURNING  id_formulario; ";
+            break;
             case 'insertarCondicion' :
                 $cadenaSql = 'INSERT INTO ';
                 $cadenaSql .= 'concepto.condicion_novedad ';

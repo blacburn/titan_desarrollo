@@ -513,7 +513,7 @@ class Formulario {
 
         unset($atributos);
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-        $esteCampo = 'variablesCampoCon';
+        $esteCampo = 'variablesCampo';
         $atributos ['id'] = $esteCampo;
         $atributos ['nombre'] = $esteCampo;
         $atributos ['tipo'] = 'hidden';
@@ -523,11 +523,6 @@ class Formulario {
         $atributos ['dobleLinea'] = false;
         $atributos ['tabIndex'] = $tab;
         $atributos ['valor'] = '';
-        if (isset($_REQUEST ['nombre'])) {
-            $atributos ['valor'] = $_REQUEST ['variablesCampo'];
-        } else {
-            $atributos ['valor'] = '';
-        }
         $atributos ['deshabilitado'] = false;
         $atributos ['maximoTamanno'] = '';
         $tab++;
@@ -535,6 +530,7 @@ class Formulario {
         // Aplica atributos globales al control
         $atributos = array_merge($atributos, $atributosGlobales);
         echo $this->miFormulario->campoCuadroTexto($atributos);
+        unset($atributos);
         // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
         $esteCampo = 'tipoNovedadCon';
