@@ -168,7 +168,7 @@ class Formulario {
                                 echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
                                 { 
        echo '<table id="tablaCampos" class="display" cellspacing="0" width="100%"> '
-                 . '<thead style="display: table-row-group"><tr><th>'."NOMBRE".'</th><th>'."LABEL".'</th> <th>'."TIPO DATO".'</th><th>'."REQUERIDO".'</th><th>'."FORMULA".'</th></tr></thead>
+                 . '<thead style="display: table-row-group"><tr><th>'."NOMBRE".'</th><th>'."LABEL".'</th> <th>'."TIPO DATO".'</th><th>'."REQUERIDO".'</th><th>'."FORMULA".'</th><th>'."SIMBOLO".'</th></tr></thead>
                     '; 
       echo '</table>';  
                                     
@@ -409,7 +409,6 @@ class Formulario {
         $atributos ['submit'] = true;
         $atributos ["estiloMarco"] = '';
         $atributos ["estiloBoton"] = 'jqueryui';
-        $atributos ['onclick'] = 'PasoComponente()';
         // verificar: true para verificar el formulario antes de pasarlo al servidor.
         $atributos ["verificar"] = true;
         $atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js

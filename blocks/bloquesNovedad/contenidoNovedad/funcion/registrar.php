@@ -119,6 +119,7 @@ class FormProcessor {
                         'fk_tipoDatoCampo' => $arrayCampos[$cuentaRegistro + 2],
                         'fk_requeridoCampo' => $arrayCampos[$cuentaRegistro + 3],
                         'fk_formulacionCampo' => $arrayCampos[$cuentaRegistro + 4],
+                        'fk_simboloCampo' => $arrayCampos[$cuentaRegistro + 5],
                         'fk_id_formulario' => $id_formulario[0][0]
                     );
 
@@ -129,7 +130,7 @@ class FormProcessor {
      
                 }
 
-                $cuentaRegistro = $cuentaRegistro + 5;
+                $cuentaRegistro = $cuentaRegistro + 6;
         
             }
             
@@ -205,7 +206,7 @@ class FormProcessor {
 //
 //            $count++;
 //        }
-
+                 
 
         if (!empty($id_concepto)) {
             Redireccionador::redireccionar('inserto', $datosConcepto);

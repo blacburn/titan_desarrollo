@@ -130,6 +130,7 @@ class Sql extends \Sql {
                 $cadenaSql .= 'label_campo, ';
                 $cadenaSql .= 'tipo_dato, ';
                 $cadenaSql .= 'requerido, ';
+                $cadenaSql .= 'simbolo, ';
                 $cadenaSql .= 'formulacion';
                 $cadenaSql .= ') ';
                 $cadenaSql .= 'VALUES ';
@@ -140,6 +141,7 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $variable ['fk_labelCampo'] . '\', ';
                 $cadenaSql .= '\'' . $variable ['fk_tipoDatoCampo'] . '\', ';
                 $cadenaSql .= '\'' . $variable ['fk_requeridoCampo'] . '\', ';
+                $cadenaSql .= '\'' . $variable ['fk_simboloCampo'] . '\', ';
                 $cadenaSql .= '\'' . $variable ['fk_formulacionCampo'] . '\' ';
                 $cadenaSql .= '); ';
                 break;

@@ -170,7 +170,7 @@ $("#btOper8").click(function(){
 });
 
 $("#btOper9").click(function(){
-	$('#<?php echo $this->campoSeguro('formula')?>').val("");
+	$('#<?php echo $this->campoSeguro('formula')?>').val("");XXXXX
 });
 
 $("#ingresoBotonesConcepto").hide("fast");
@@ -259,3 +259,4 @@ $("#cancelarDina").click(function(){
 	$("#blocBotn").show("slow");
 	$('#<?php echo $this->campoSeguro('botones')?>').hide("fast");
 });
+

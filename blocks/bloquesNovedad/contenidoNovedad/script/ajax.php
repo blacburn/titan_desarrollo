@@ -188,20 +188,20 @@ $(document).ready(function() {
 					'<div id=lab1'+iCnt2+' class="col-md-2">'+
 						'<label> Nombre del Campo:  </label> ' + 
 					'</div>'+
-                                        '<input type=text class="input" id=nombreCampo'+ iCnt2 + ' size="80"  maxlength="30" value="" required/>'+
+                                        '<input type=text class="input" id=nombreCampo'+ iCnt2 + ' size="50"  maxlength="30" value="" required/>'+
                                         '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt2+' class="col-md-2">'+
 							'<label> Label del Campo: </label> ' + 
 						'</div>'+
-					'<input type=text class="input" id=labelCampo' + iCnt2 + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt2+')"/>'+
+					'<input type=text class="input" id=labelCampo' + iCnt2 + ' size="50"  maxlength="500" value=""/>'+
                                         '</div>'+
                                         '<br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt2+' class="col-md-2">'+
 							'<label> Tipo de dato: </label> ' + 
 						'</div>'+
-					'<select id=tipoDatoCampo'+iCnt2+'><option value="Alfanumerico">Alfanumérico</option>'+
+					'<select id=tipoDatoCampo'+iCnt2+' onchange="habilitar(this.value,'+iCnt2+')"><option value="Alfanumerico" >Alfanumérico</option>'+
                                         '<option value="Valor">Valor</option>'+
                                         '<option value="Lista">Lista</option>'+
                                         '<option value="Fecha">Fecha</option>'+
@@ -222,26 +222,32 @@ $(document).ready(function() {
 						'<div id=lab2'+iCnt2+' class="col-md-2">'+
 							'<label> Fórmula: </label> ' + 
 						'</div>'+
-					'<select id=formulacionCampo'+iCnt2+'><option value="No">No</option>'+
+					'<select  disabled id=formulacionCampo'+iCnt2+' onchange="habilitar(this.value,'+iCnt2+')"><option value="No">No</option>'+
                                         '<option value="Si">Si</option>'+
                                         '</select>'+
                                         '</div>'+ 
+                                         '<br/>'+
+					'</div>'+
+                                        '<div>'+
+						'<div id=lab52'+iCnt2+' class="col-md-2">'+
+							'<label> Simbolo : </label> ' + 
+						'</div>'+
+					'<input disabled type=text class="input" id=simboloCampo' + iCnt2 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  value="XXXXX"/>'+
+                                        '</div>'+
 					'</fieldset>');
 			$('#camposDinamicos').after(container);
 			$('#tipoDatoCampo'+iCnt2).width(250);
-                        $('#tipoDatoCampo'+iCnt2).select2();
                         $('#requeridoCampo'+iCnt2).width(250);
-                        $('#requeridoCampo'+iCnt2).select2();
                         $('#formulacionCampo'+iCnt2).width(250);
-                        $('#formulacionCampo'+iCnt2).select2(); 
-                        
                         if(iCnt2>1){
                             var num=iCnt2-1;
                             t.row.add( [ ($('#nombreCampo'+num).val()),
                                       ($('#labelCampo'+num).val()),
                                       ($('#tipoDatoCampo'+num).val()),
                                       ($('#requeridoCampo'+num).val()),
-                                      ($('#formulacionCampo'+num).val())] ).draw( false );
+                                      ($('#formulacionCampo'+num).val()),
+                                      ($('#simboloCampo'+num).val())
+                                      ]).draw( false );
                                          
                                                       
                             $('#panel'+num).hide();     
@@ -249,12 +255,14 @@ $(document).ready(function() {
                         }
                         else{
                         iCnt2 = iCnt2 - 1;
-                   temp     }
+                        }
                         
                         
 	});
         
-        
+              
+         
+
  
           $('#tablaCampos tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
@@ -264,11 +272,14 @@ $(document).ready(function() {
             t.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
+        
+        
     } );
       $('#btEliminar').click(function() { // Elimina un panel de condiciones del DOM
 		
       var data = t.row('.selected').data();
       var interacion = 0;
+      
       
       interacion=interacion+1;
        while(interacion <= iCnt2){
@@ -280,7 +291,23 @@ $(document).ready(function() {
        }
        t.row('.selected').remove().draw( false );
     });
+    
+    
 });
+function habilitar(valor,consecutivo){
+
+if(valor=='Valor')
+{   
+   
+    $('#formulacionCampo'+consecutivo).removeAttr('disabled');
+}
+if(valor=='Si')
+{   
+   
+    $('#simboloCampo'+consecutivo).removeAttr('disabled');
+}
+}
+
 function consultarParametro(elem, request, response){
 	  $.ajax({
 	    url: "<?php echo $urlFinal16?>",
@@ -307,7 +334,7 @@ function consultarParametro(elem, request, response){
 	    }
 		                    
 	   });
-	};
+	}; 
 function consultarValorParametro(elem, request, response){
 			  $.ajax({
 			    url: "<?php echo $urlFinal17?>",
@@ -397,8 +424,14 @@ $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").change(function(
 			}else{
 				$("#<?php echo $this->campoSeguro('valorConcepto')?>").val('');
 			}
-		});               
-                
+		});    
+
+
+
+
+
+             
+                     
 //***********************************************************************************************************
 //***********************************************************************************************************
 //Codigo AGREGAR y QUITAR Campos Dinamicos
@@ -418,7 +451,7 @@ $(container).attr('id', 'pushDina')
 
 $( document ).ready(function() {
     
-    
+
     
 	$("#cancelar").hide("fast");
 //	$('#<?php echo $this->campoSeguro('botones')?>').hide("fast");
@@ -814,6 +847,7 @@ function PasoComponente() {
                 campos = campos + $("#tipoDatoCampo"+con).val() + ',';
                 campos = campos + $("#requeridoCampo"+con).val() + ',';
                 campos = campos + $("#formulacionCampo"+con).val() + ',';
+                campos = campos + $("#simboloCampo"+con).val() + ',';
        }
 	$("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
 	
