@@ -76,6 +76,8 @@ $urlFinal19 = $url . $cadena19;
 <script>
      $('#<?php echo $this->campoSeguro('VariablesList')?>').width(240);
  $("#<?php echo $this->campoSeguro('VariablesList')?>").select2(); 
+ $('#<?php echo $this->campoSeguro('CamposFormulacionList')?>').width(240);
+ $("#<?php echo $this->campoSeguro('CamposFormulacionList')?>").select2(); 
  $('#<?php echo $this->campoSeguro('categoriaConceptosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").select2();
  $('#<?php echo $this->campoSeguro('categoriaParametrosList')?>').width(240);
@@ -104,7 +106,7 @@ $( '#<?php echo $this->campoSeguro('seccionConceptos')?>' ).change(function() {
 $( '#<?php echo $this->campoSeguro('categoriaParametrosList')?>' ).change(function() {
 	$("#<?php echo $this->campoSeguro('seccionParametros')?>").removeAttr('disabled');
     $("#<?php echo $this->campoSeguro('seccionParametros')?>").select2();
-});
+})
 $( '#<?php echo $this->campoSeguro('formula')?>' ).keypress(function(tecla) {
 	 if(tecla.charCode != 0  && tecla.charCode != 42 && tecla.charCode != 43 && 
 	    tecla.charCode != 45 && tecla.charCode != 47 && 
@@ -155,6 +157,44 @@ $(function () {
         }
     });
 });
+$(function () {
+	    $("#variables_lista").draggable({
+	        revert: true,
+	        helper: 'clone',
+	        start: function (event, ui) {
+	            $(this).fadeTo('fast', 1.5);
+	        },
+	        stop: function (event, ui) {
+	            $(this).fadeTo(0, 1);
+	        }
+	    });
+	    $('#<?php echo $this->campoSeguro('formula')?>').droppable({
+	        hoverClass: 'active',
+	        drop: function (event, ui) {
+	            this.value += $(ui.draggable).find('select option:selected').text();
+	        }
+	    });
+});
+$(function () {
+	    $("#formulacion_campos").draggable({
+	        revert: true,
+	        helper: 'clone',
+	        start: function (event, ui) {
+	            $(this).fadeTo('fast', 1.5);
+	        },
+	        stop: function (event, ui) {
+	            $(this).fadeTo(0, 1);
+	        }
+	    });
+	    $('#<?php echo $this->campoSeguro('formula')?>').droppable({
+	        hoverClass: 'active',
+	        drop: function (event, ui) {
+	            this.value += $(ui.draggable).find('select option:selected').text();
+	        }
+	    });
+});
+
+
 var iCnt2 = 0;  
 var campos_numero = 0;   
 var container = $(document.createElement('div')).css({
@@ -850,6 +890,19 @@ function PasoComponente() {
                 campos = campos + $("#simboloCampo"+con).val() + ',';
        }
 	$("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
+	campos='';
+        var con = 0;
+        while(con < iCnt2-1){
+		con++;
+                    if( $("#simboloCampo"+con).val()!='XXXXX'){
+                          campos = campos + $("#simboloCampo"+con).val() + ',';   
+                    }
+                    
+                
+                
+        }
+        $("#<?php echo $this->campoSeguro('camposFormulacion') ?>").val(campos);
+	
 	
 	
 }

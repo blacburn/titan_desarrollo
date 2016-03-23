@@ -107,6 +107,11 @@
                     "regex": /^[0-9a-zA-Z]+$/,
                     "alertText": "* No se permiten caracteres especiales"
                 },
+
+                "onlyLetterBack": {
+                    "regex": /^[_A-Z\ \']+$/,
+                    "alertText": "* Sólo letras Mayusculas y (_)"
+                },
 				// --- CUSTOM RULES -- Those are specific to the demos, they can be removed or changed to your likings
                 "ajaxUserCall": {
                     "url": "ajaxValidateFieldUser",

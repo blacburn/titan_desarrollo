@@ -182,7 +182,7 @@ class Formulario {
         $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
         $atributos ['obligatorio'] = true;
         $atributos ['etiquetaObligatorio'] = true;
-        $atributos ['validar'] = 'required,minSize[2],maxSize[100]';
+        $atributos ['validar'] = 'required,minSize[2],maxSize[100],custom[onlyLetterSp]';
         $atributos ['anchoEtiqueta'] = 230;
 
         if (isset($_REQUEST [$esteCampo])) {
@@ -214,7 +214,7 @@ class Formulario {
 
         $atributos ['obligatorio'] = true;
         $atributos ['etiquetaObligatorio'] = true;
-        $atributos ['validar'] = 'required,minSize[1],maxSize[5]';
+        $atributos ['validar'] = 'required,minSize[1],maxSize[5],custom[onlyLetterBack]';
 
         if (isset($_REQUEST [$esteCampo])) {
             $atributos ['valor'] = $_REQUEST [$esteCampo];

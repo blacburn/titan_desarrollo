@@ -1,6 +1,6 @@
 <?php
 $this->idioma["bloqueContenido"]="Cargo";
-$this->idioma["noDefinido"]="No definido";
+$this->idioma["noDefinido"]="";
 
 $this->idioma["botonRegistrarCargo"]="Registrar Novedad";
 $this->idioma["botonGuardar"]="Aceptar";
@@ -16,6 +16,10 @@ $this->idioma["cancelarInactivar"]="Cancelar";
 $this->idioma["botonAceptarRegistro"]="Aceptar";
 $this->idioma["botonRegresarConsulta"]="Regresar";
 $this->idioma["VariablesList"]="Variables:";
+$this->idioma["CamposFormulacionList"]="Campos Novedad:";
+
+
+
 
 
 
