@@ -17,6 +17,13 @@ $this->idioma["botonAceptarRegistro"]="Aceptar";
 $this->idioma["botonRegresarConsulta"]="Regresar";
 $this->idioma["VariablesList"]="Variables:";
 $this->idioma["CamposFormulacionList"]="Campos Novedad:";
+$this->idioma["id"]="Codigo";
+$this->idioma["idTitulo"]="Codigo: ";
+$this->idioma["estado"]="Estado";
+$this->idioma["estadoTitulo"]="Estado: ";
+
+
+
 
 
 

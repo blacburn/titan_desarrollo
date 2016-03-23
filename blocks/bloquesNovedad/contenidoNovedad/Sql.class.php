@@ -147,12 +147,12 @@ class Sql extends \Sql {
                 break;
             case 'inactivarRegistro' :
                 $cadenaSql = 'UPDATE ';
-                $cadenaSql .= 'concepto.asociacion_concepto ';
+                $cadenaSql .= 'concepto.novedad ';
                 $cadenaSql .= 'SET ';
                 $cadenaSql .= 'estado = ';
                 $cadenaSql .= "'" . $variable ['estadoRegistro'] . "' ";
                 $cadenaSql .= 'WHERE ';
-                $cadenaSql .= 'id = ';
+                $cadenaSql .= 'codigo = ';
                 $cadenaSql .= $variable ['codigoRegistro'] . ";";
                 break;
 
@@ -309,23 +309,19 @@ class Sql extends \Sql {
                 $cadenaSql .= 'concepto.concepto ';
 
                 break;
-            case 'buscarConceptoAso' :
+            case 'buscarNovedadInactivar' :
 
                 $cadenaSql = 'SELECT ';
-                $cadenaSql .= 'd.nombre as CONCEPTO, ';
-                $cadenaSql .= 'a.nombre as TIPO_VINCULACION, ';
-                $cadenaSql .= 'c.nombre as TIPO_NOMINA, ';
-                $cadenaSql .= 'b.estado as ESTADO, ';
-                $cadenaSql .= 'b.id as ID ';
+                $cadenaSql .= 'nombre as NOMBRE, ';
+                $cadenaSql .= 'simbolo as SIMBOLO, ';
+                $cadenaSql .= 'tipo_novedad as TIPO_NOVEDAD, ';
+                $cadenaSql .= 'estado as ESTADO, ';
+                $cadenaSql .= 'codigo as ID ';
                 $cadenaSql .= 'FROM ';
-                $cadenaSql .= 'parametro.tipo_vinculacion a, ';
-                $cadenaSql .= 'concepto.asociacion_concepto b, ';
-                $cadenaSql .= 'liquidacion.nomina c, ';
-                $cadenaSql .= 'concepto.concepto d ';
+                $cadenaSql .= 'concepto.novedad ';
                 $cadenaSql .= 'WHERE ';
-                $cadenaSql .= ' a.id=c.id and  ';
-                $cadenaSql .= 'd.codigo=b.codigo_concepto and   ';
-                $cadenaSql .= 'b.tipo_nomina= c.codigo_nomina ;   ';
+                $cadenaSql .= 'codigo = ';
+                $cadenaSql .= $variable .' ';
 
                 break;
             case 'buscarTipoVinculacion1' :
