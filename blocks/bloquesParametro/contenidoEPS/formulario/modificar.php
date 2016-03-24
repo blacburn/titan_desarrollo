@@ -145,7 +145,7 @@ class Formulario {
                 $atributos ['anchoEtiqueta'] = 200;
         $atributos ['obligatorio'] = true;
         $atributos ['etiquetaObligatorio'] = true;
-        $atributos ['validar'] = 'required, minSize[4], maxSize[25]';
+        $atributos ['validar'] = 'required, minSize[4], maxSize[25],custom[onlyLetterSp]';
         
         if (isset ( $_REQUEST [$esteCampo] )) {
         	$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -422,7 +422,7 @@ class Formulario {
         $atributos ['anchoEtiqueta'] = 200;
         $atributos ['obligatorio'] = true;
         $atributos ['etiquetaObligatorio'] = true;
-        $atributos ['validar'] = 'required, minSize[5], maxSize[40]';
+        $atributos ['validar'] = 'minSize[5], maxSize[40],custom[onlyLetterSp]';
         
         if (isset ( $_REQUEST [$esteCampo] )) {
         	$atributos ['valor'] = $_REQUEST [$esteCampo];
