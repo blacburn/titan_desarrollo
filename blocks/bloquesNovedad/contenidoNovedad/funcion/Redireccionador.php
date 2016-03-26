@@ -88,7 +88,19 @@ class Redireccionador {
 				$variable .= "&naturaleza=" . $valor ['naturaleza'];
                                 $variable .= "&descripcion=" . $valor ['descripcion'];
                             break;
-			
+			case "esporadicaMod" :
+                                
+				$variable = 'pagina='.$miPaginaActual;                                
+				$variable .= "&opcion=esporadicaMod";
+                                $variable .= "&tipoNovedad=" . $valor ['tipoNovedad'];
+				$variable .= "&categoriaConceptos=" . $valor ['categoriaConceptos'];
+                                $variable .= "&nombre=" . $valor ['nombre'];
+				$variable .= "&simbolo=" . $valor ['simbolo'];
+                                $variable .= "&ley=" . $valor ['ley'];
+                                $variable .= "&leyRegistros=" . $valor ['leyRegistros'];
+				$variable .= "&naturaleza=" . $valor ['naturaleza'];
+                                $variable .= "&descripcion=" . $valor ['descripcion'];
+                            break;
 		}
 		foreach ( $_REQUEST as $clave => $valor ) {
 			unset ( $_REQUEST [$clave] );

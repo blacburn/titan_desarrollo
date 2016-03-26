@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-	alert('ingresaaaaaaaaa');
+	
 	var campoFecha = [];
 	var campoFechaInput = [];
 	

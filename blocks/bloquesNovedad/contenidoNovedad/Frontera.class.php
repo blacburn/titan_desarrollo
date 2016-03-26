@@ -56,6 +56,9 @@ class Frontera {
                                 case "esporadica" :
                                         include_once ($this->ruta . "/formulario/registrarEsporadica.php");
 					break;
+                                case "esporadicaMod" :
+                                        include_once ($this->ruta . "/formulario/modificarEsporadica.php");
+					break;
                                 case "formulacion" :
                                         include_once ($this->ruta . "/formulario/registrarFormulacion.php");
 					break;        
@@ -64,7 +67,7 @@ class Frontera {
                                         include_once ($this->ruta . "/formulario/mensaje.php");
 					break;
 				case "modificar":
-					include_once($this->ruta."/formulario/modificar.php");
+					include_once($this->ruta."/formulario/modificarInfoBasica.php");
 					break;	
                                case "condicion" :
                                         include_once ($this->ruta . "/formulario/registrarCondicion.php");

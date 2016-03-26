@@ -80,7 +80,15 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $variable . '\'';
 
                 break;
+            case 'buscarNit' :
 
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'nit as NIT ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'parametro.acto_administrativo ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'nit =' . $variable . ';';
+                break;
             case 'buscarRegistroxtipoActoTotal' :
 
                 $cadenaSql = 'SELECT ';

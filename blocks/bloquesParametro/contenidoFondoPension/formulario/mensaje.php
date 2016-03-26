@@ -171,7 +171,7 @@ class registrarForm {
 				}
 				if ($_REQUEST ['mensaje'] == 'nitRep') {
 					
-					$mensaje = "No Se Pudo Hacer Registro de EPS, Por favor revisar que el nit no se encuentre registrado anteriormente <br> Nit: <h4>" . $_REQUEST ['nitRegistro'] . "</h4>". "<br>Fecha Registro:" . date ( 'Y-m-d' );
+					$mensaje = "No Se Pudo Hacer Registro de Fondo de pensión, Por favor revisar que el nit no se encuentre registrado anteriormente <br> Nit: <h4>" . $_REQUEST ['nitRegistro'] . "</h4>". "<br>Fecha Registro:" . date ( 'Y-m-d' );
 					
 					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 					$esteCampo = 'mensajeRegistro';
