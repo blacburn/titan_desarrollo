@@ -321,7 +321,7 @@ class Sql extends \Sql {
                 $cadenaSql .= 'concepto.novedad ';
                 $cadenaSql .= 'WHERE ';
                 $cadenaSql .= 'codigo = ';
-                $cadenaSql .= $variable .' ';
+                $cadenaSql .= $variable . ' ';
 
                 break;
             case 'buscarTipoVinculacion1' :
@@ -368,6 +368,15 @@ class Sql extends \Sql {
                 $cadenaSql .= 'parametro.ley_decreto_norma ';
                 $cadenaSql .= 'WHERE ';
                 $cadenaSql .= 'estado != \'Inactivo\';';
+                break;
+            case 'consultarLeyesDeNomina' :
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'codigo as CODIGO, ';
+                $cadenaSql .= 'id_ldn as ID ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.novedadxldn ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo = ' . $variable . '';
                 break;
             case 'buscarCategoriaParametro' :
                 $cadenaSql = 'SELECT ';
@@ -577,14 +586,67 @@ class Sql extends \Sql {
                 $cadenaSql .= 'nombre as NOMBRE, ';
                 $cadenaSql .= 'simbolo as SIMBOLO, ';
                 $cadenaSql .= 'descripcion as DESCRIPCION, ';
-                $cadenaSql .= 'simbolo as LEY, ';
+                $cadenaSql .= 'tipo_novedad as TIPO, ';
                 $cadenaSql .= 'naturaleza as NATURALEZA, ';
                 $cadenaSql .= 'estado as ESTADO, ';
                 $cadenaSql .= 'codigo as ID ';
                 $cadenaSql .= 'FROM ';
                 $cadenaSql .= 'concepto.novedad';
                 break;
+            case 'buscarNovedadxReg':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'nombre as NOMBRE, ';
+                $cadenaSql .= 'simbolo as SIMBOLO, ';
+                $cadenaSql .= 'descripcion as DESCRIPCION, ';
+                $cadenaSql .= 'tipo_novedad as TIPO, ';
+                $cadenaSql .= 'naturaleza as NATURALEZA, ';
+                $cadenaSql .= 'estado as ESTADO, ';
+                $cadenaSql .= 'codigo as ID, ';
+                $cadenaSql .= 'id_categoria as ID_CATEGORIA, ';
+                $cadenaSql .= 'formula as FORMULA ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo = ';
+                $cadenaSql .= $variable . '';
+                break;
+            case 'buscarCategoriaxReg':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'nombre as NOMBRE ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.categoria_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id_categoria = ';
+                $cadenaSql .= $variable . '';
+                break;
+            case 'buscarFormularioDeCampos':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id_formulario as ID, ';
+                $cadenaSql .= 'nombre_formulario as NOMBRE ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.formulario_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo = ';
+                $cadenaSql .= $variable . '';
+                break;
+            case 'buscarRegistrosDeCampos':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id_campo as ID, ';
+                $cadenaSql .= 'nombre_campo as NOMBRE, ';
+                $cadenaSql .= 'label_campo as LABEL, ';
+                $cadenaSql .= 'tipo_dato as TIPO, ';
+                $cadenaSql .= 'requerido as REQUERIDO, ';
+                $cadenaSql .= 'formulacion as FORMULACION, ';
+                $cadenaSql .= 'simbolo as SIMBOLO ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.campo_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id_formulario = ';
+                $cadenaSql .= $variable . '';
+                break;
+                
         }
+
 
         return $cadenaSql;
     }

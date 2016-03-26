@@ -35,22 +35,31 @@ $(function() {
 });
 $("#tablaCampos").dataTable().fnDestroy();
 $("#tablaReporte").dataTable().fnDestroy();
+$("#tablaAuxiliar").dataTable().fnDestroy();
+
 $(document).ready(function() {
-    // Setup - add a text input to each footer cell
-    
-    
-//    $('#tablaReporte tfoot th').each( function () {
-//        var title = $(this).text();
-//        
-//        $(this).html( '<input type="text" placeholder="'+title+'" size="15"/>' );
-//    } );
- 
-    // DataTable
-//    var table = $('#tablaReporte').DataTable({
-
-
+   
 
     $('#tablaCampos').DataTable({ 
+    "language": {
+        "sProcessing":     "Procesando...",
+        "sLengthMenu":     "Mostrar _MENU_ registros",
+	"sZeroRecords":    "No se encontraron resultados",
+        "sSearch":         "Buscar:",
+        "sLoadingRecords": "Cargando...",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+	"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+	"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+	"oPaginate": {
+		"sFirst":    "Primero",
+		"sLast":     "Ãšltimo",
+		"sNext":     "Siguiente",
+		"sPrevious": "Anterior"
+	}
+    }
+    });
+    $('#tablaAuxiliar').DataTable({ 
     "language": {
         "sProcessing":     "Procesando...",
         "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -111,14 +120,7 @@ $(document).ready(function() {
 //    } );
 } );
 
-if($('#<?php echo $this->campoSeguro('estadoPagina')?>').val() == 'verDetalle' || $('#<?php echo $this->campoSeguro('estadoPagina')?>').val() == 'modificar'){
-	var values = $('#<?php echo $this->campoSeguro('cargaSelectMultiple')?>').val();
-	$.each(values.split(","), function(i,e){
-	    $("#<?php echo $this->campoSeguro('ley') ?>" + " option[value='" + e + "']").prop("selected", true);
-	    $("#<?php echo $this->campoSeguro('ley')?>").width(250);
-	    $("#<?php echo $this->campoSeguro('ley')?>").select2(); 
-	});
-}
+
 
 
 $("#btOper1").click(function(){

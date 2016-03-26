@@ -81,8 +81,14 @@ class Frontera {
                                 case "detalle":
 					include_once ($this->ruta . "/formulario/detalle.php");
 				 case "verdetalle":
-                                         
-                                        include_once ($this->ruta . "/formulario/verDetalle.php");
+                                        if($_REQUEST['tipo']=='Esporadica'){
+                                        include_once ($this->ruta . "/formulario/verDetalleEsporadica.php");
+                                        }
+                                        else{
+                                        include_once ($this->ruta . "/formulario/verDetallePeriodica.php");
+                                        }
+                                        
+                                        
 					break;
         		}
 		}else{
