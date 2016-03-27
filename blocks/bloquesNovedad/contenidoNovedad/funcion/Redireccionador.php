@@ -63,7 +63,7 @@ class Redireccionador {
                                 $variable .= '&mensaje=modifico';
                                
                             break;    
-                         case "nomodifico" :
+                         case "noModifico" :
                                 
 				$variable = 'pagina='.$miPaginaActual;                                
 				$variable .= "&opcion=mensaje";
@@ -100,6 +100,7 @@ class Redireccionador {
                                 $variable .= "&leyRegistros=" . $valor ['leyRegistros'];
 				$variable .= "&naturaleza=" . $valor ['naturaleza'];
                                 $variable .= "&descripcion=" . $valor ['descripcion'];
+                                $variable .= "&variable=" . $valor ['variable'];
                             break;
 		}
 		foreach ( $_REQUEST as $clave => $valor ) {

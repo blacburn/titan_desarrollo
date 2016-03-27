@@ -88,24 +88,27 @@ class Formulario {
 
         // ---------------- SECCION: Controles del Formulario -----------------------------------------------
         // --------------------------------------------------------------------------------------------------
-
+       
         $esteCampo = "marcoDatosBasicos";
         $atributos ['id'] = $esteCampo;
         $atributos ["estilo"] = "jqueryui";
         $atributos ['tipoEtiqueta'] = 'inicio';
         $atributos ["leyenda"] = "Modificar Formulario y Estructura de la novedad Esporádica";
-        echo $this->miFormulario->marcoAgrupacion('inicio', $atributos); {
+        echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
+        {
             $atributos ["id"] = "blocBotn";
             $atributos ["estilo"] = "col-md-5";
-            echo $this->miFormulario->division("inicio", $atributos); {
+            echo $this->miFormulario->division("inicio", $atributos);
+            {
                 
             }
             echo $this->miFormulario->division("fin");
             $atributos ["id"] = "blocBotn";
             $atributos ["estilo"] = "col-md-2";
-            echo $this->miFormulario->division("inicio", $atributos); {
+            echo $this->miFormulario->division("inicio", $atributos);
+            {
                 echo "<center>";
-                echo "<input type=\"button\" id=\"btAgregar\" value=\"Añadir Campo\" class=\"btn btn-success btn-block\" />";
+                echo "<input type=\"button\" id=\"btAgregarMod\" value=\"Añadir Campo\" class=\"btn btn-success btn-block\" />";
                 echo "</center>";
 
                 // ---------------- CONTROL: Select --------------------------------------------------------
@@ -115,11 +118,13 @@ class Formulario {
             // --------------------------------------------------------------------------------------------------
             $atributos ["id"] = "camposDinamicosCont";
             $atributos ["estilo"] = "col-md-12";
-            echo $this->miFormulario->division("inicio", $atributos); {
+            echo $this->miFormulario->division("inicio", $atributos);
+            {
                 unset($atributos);
                 $atributos ["id"] = "camposDinamicos";
                 $atributos ["estilo"] = "col-md-12";
-                echo $this->miFormulario->division("inicio", $atributos); {
+                echo $this->miFormulario->division("inicio", $atributos);
+                {
                     
                 }
                 echo $this->miFormulario->division("fin");
@@ -127,15 +132,17 @@ class Formulario {
                 unset($atributos);
                 $atributos ["id"] = "blocBotn";
                 $atributos ["estilo"] = "col-md-5";
-                echo $this->miFormulario->division("inicio", $atributos); {
+                echo $this->miFormulario->division("inicio", $atributos);
+                {
                     
                 }
                 echo $this->miFormulario->division("fin");
                 $atributos ["id"] = "blocBotn";
                 $atributos ["estilo"] = "col-md-2";
-                echo $this->miFormulario->division("inicio", $atributos); {
+                echo $this->miFormulario->division("inicio", $atributos);
+                {
                     echo "<center>";
-                    echo "<input type=\"button\" id=\"btEliminar\" value=\"Eliminar Campo\" class=\"btn btn-danger btn-block\" />";
+                    echo "<input type=\"button\" id=\"btEliminarMod\" value=\"Eliminar Campo\" class=\"btn btn-danger btn-block\" />";
                     echo "</center>";
 
                     // ---------------- CONTROL: Select --------------------------------------------------------
@@ -146,11 +153,35 @@ class Formulario {
                 $atributos ['id'] = $esteCampo;
                 $atributos ["estilo"] = "jqueryui";
                 $atributos ["leyenda"] = "Campos Creados";
-                echo $this->miFormulario->marcoAgrupacion('inicio', $atributos); {
-                    echo '<table id="tablaCampos" class="display" cellspacing="0" width="100%"> '
+                echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
+                {
+                    $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarNovedadxReg", $_REQUEST['variable']);
+                    $matrizNovedad = $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
+                    $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarFormularioDeCampos", $matrizNovedad[0][6]);
+                    $matrizFormulario = $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
+
+                    $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarRegistrosDeCampos", $matrizFormulario[0][0]);
+                    $matrizCampos = $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
+                    $longitud = count($matrizCampos);
+
+                    $i = 0;
+
+                    echo '<table id="tablaCamposAux" class="display" cellspacing="0" width="100%"> '
                     . '<thead style="display: table-row-group"><tr><th>' . "NOMBRE" . '</th><th>' . "LABEL" . '</th> <th>' . "TIPO DATO" . '</th><th>' . "REQUERIDO" . '</th><th>' . "FORMULA" . '</th><th>' . "SIMBOLO" . '</th></tr></thead>
-                    ';
-                    echo '</table>';
+                    <tbody>';
+                    if (!empty($matrizCampos)) {
+                        while ($i < $longitud) {
+                            echo "<tr><td>" . $matrizCampos[$i][1] . "</td>";
+                            echo "<td>" . $matrizCampos[$i][2] . "</td>";
+                            echo "<td>" . $matrizCampos[$i][3] . "</td>";
+                            echo "<td>" . $matrizCampos[$i][4] . "</td>";
+                            echo "<td>" . $matrizCampos[$i][5] . "</td>";
+                            echo "<td>" . $matrizCampos[$i][6] . "</td></tr>";
+
+                            $i+=1;
+                        }
+                    }
+                    echo '</tbody></table>';
                 }
                 echo $this->miFormulario->marcoAgrupacion('fin');
 
@@ -345,10 +376,9 @@ class Formulario {
                 // ---------------- CONTROL: Select --------------------------------------------------------
                 $atributos ["id"] = "confirmar";
                 $atributos ["estilo"] = "col-md-4";
-                echo $this->miFormulario->division("inicio", $atributos);
-                {
+                echo $this->miFormulario->division("inicio", $atributos); {
                     echo "<center>";
-                    echo "<input type=\"button\" id=\"confirmarDina2\" value=\"Confirmar\" class=\"btn btn-primary btn-block\" onclick=\"PasoComponente()\" />";
+                    echo "<input type=\"button\" id=\"confirmarDina3\" value=\"Confirmar\" class=\"btn btn-primary btn-block\" onclick=\"PasoComponenteModificar()\" />";
                     echo "</center>";
                 }
                 echo $this->miFormulario->division("fin");
@@ -460,7 +490,9 @@ class Formulario {
         $valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 
         $valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-        $valorCodificado .= "&opcion=formulacion";
+        $valorCodificado .= "&opcion=formulacionM";
+        $valorCodificado .= "&variable=".$_REQUEST['variable'];
+       
         /**
          * SARA permite que los nombres de los campos sean dinámicos.
          * Para ello utiliza la hora en que es creado el formulario para

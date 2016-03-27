@@ -254,6 +254,11 @@ $("#confirmarDina").click(function(){
 $("#confirmarDina2").click(function(){
 	$("#confirmar").hide("fast");
 });
+
+$("#confirmarDina3").click(function(){
+	$("#confirmar").hide("fast");
+});
+
 $("#cancelarDina").click(function(){
 	$("#confirmar").show("fast");
 	$("#cancelar").hide("fast");

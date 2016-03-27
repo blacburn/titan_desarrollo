@@ -220,6 +220,7 @@ class Formulario {
         }
         $cadenaSelectMultiple = substr($cadenaSelectMultiple, 0, -1);
         // ---------------- CONTROL: Select --------------------------------------------------------
+        // ---------------- CONTROL: Select --------------------------------------------------------
         $esteCampo = 'ley';
         $atributos['nombre'] = $esteCampo;
         $atributos['id'] = $esteCampo;
@@ -231,7 +232,7 @@ class Formulario {
         $atributos['limitar'] = 50;
         $atributos['tamanno'] = 4;
         $atributos['columnas'] = 1;
-        $atributos ['anchoEtiqueta'] = 230;
+
         $atributos ['obligatorio'] = true;
         $atributos ['etiquetaObligatorio'] = true;
         $atributos ['validar'] = 'required';
@@ -277,12 +278,12 @@ class Formulario {
         $atributos ['obligatorio'] = true;
         $atributos ['etiquetaObligatorio'] = true;
         $atributos ['validar'] = 'required';
-        $auxNat=0;
-        if($matrizNovedad[0][4]=='Devenga'){
-            $auxNat=1;
+        $auxNat = 0;
+        if ($matrizNovedad[0][4] == 'Devenga') {
+            $auxNat = 1;
         }
-        if($matrizNovedad[0][4]=='Deduce'){
-            $auxNat=2;
+        if ($matrizNovedad[0][4] == 'Deduce') {
+            $auxNat = 2;
         }
         $naturaleza = array(
             array(1, 'Devenga'),
@@ -391,28 +392,7 @@ class Formulario {
         // Aplica atributos globales al control
         $atributos = array_merge($atributos, $atributosGlobales);
         echo $this->miFormulario->campoCuadroTexto($atributos);
-        // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-        // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-        $esteCampo = 'leyRegistros';
-        $atributos ['id'] = $esteCampo;
-        $atributos ['nombre'] = $esteCampo;
-        $atributos ['tipo'] = 'hidden';
-        $atributos ['estilo'] = 'jqueryui';
-        $atributos ['marco'] = true;
-        $atributos ['columnas'] = 1;
-        $atributos ['dobleLinea'] = false;
-        $atributos ['tabIndex'] = $tab;
-
-        $atributos ['valor'] = $cadenaSelectMultiple;
-        $atributos ['deshabilitado'] = false;
-        $atributos ['tamanno'] = 30;
-        $atributos ['maximoTamanno'] = '';
-        $tab++;
-
-        // Aplica atributos globales al control
-        $atributos = array_merge($atributos, $atributosGlobales);
-        echo $this->miFormulario->campoCuadroTexto($atributos);
-        // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+     
 
         unset($atributos);
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------

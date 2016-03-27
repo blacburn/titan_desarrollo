@@ -22,7 +22,6 @@ class FormProcessor {
 
     function procesarFormulario() {
 
-
         //Al final se ejecuta la redirección la cual pasará el control a otra página
 
         $datos = array(
@@ -33,7 +32,8 @@ class FormProcessor {
             'ley' => $_REQUEST['ley'],
             'leyRegistros' => $_REQUEST['leyRegistros'],
             'naturaleza' => $_REQUEST['naturaleza'],
-            'descripcion' => $_REQUEST['descripcion']
+            'descripcion' => $_REQUEST['descripcion'],
+            'variable' => $_REQUEST['variable']
         );
         if ($_REQUEST['tipoNovedad'] == 1) {
 

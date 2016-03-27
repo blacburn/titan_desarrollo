@@ -62,6 +62,30 @@ class Sql extends \Sql {
                 $cadenaSql .= ') ';
                 $cadenaSql .= "RETURNING  codigo; ";
                 break;
+            case 'modificarConcepto' :
+                $cadenaSql = 'UPDATE ';
+                $cadenaSql .= 'concepto.novedad ';
+                $cadenaSql .= 'SET ';
+                $cadenaSql .= 'id_categoria = ';
+                $cadenaSql .= $variable ['categoria'] . ', ';
+                $cadenaSql .= 'estado = ';
+                $cadenaSql .= '\'Activo\', ';
+                $cadenaSql .= 'nombre = ';
+                $cadenaSql .= '\'' . $variable ['nombre'] . '\', ';
+                $cadenaSql .= 'simbolo = ';
+                $cadenaSql .= '\'' . $variable ['simbolo'] . '\', ';
+                $cadenaSql .= 'naturaleza = ';
+                $cadenaSql .= '\'' . $variable ['naturaleza'] . '\', ';
+                $cadenaSql .= 'descripcion = ';
+                $cadenaSql .= '\'' . $variable ['descripcion'] . '\', ';
+                $cadenaSql .= 'tipo_novedad = ';
+                $cadenaSql .= '\'' . $variable ['tipo_novedad'] . '\', ';
+                $cadenaSql .= 'formula = ';
+                $cadenaSql .= '\'' . $variable ['formula'] . '\' ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo = ';
+                $cadenaSql .= $variable ['codigo'] . ';';
+                break;
             case 'buscarVariables' :
                 $cadenaSql = 'SELECT ';
                 $cadenaSql .= 'id as ID, ';
@@ -82,6 +106,14 @@ class Sql extends \Sql {
                 $cadenaSql .= $variable ['fk_concepto'];
                 $cadenaSql .= '); ';
                 break;
+            case 'eliminarLeyesConcepto' :
+                $cadenaSql = 'DELETE ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.novedadxldn ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo = ';
+                $cadenaSql .= $variable ['codigo']. '; ';
+            break;
             case 'insertarFormulario' :
                 $cadenaSql = 'INSERT INTO ';
                 $cadenaSql .= 'concepto.formulario_novedad ';
@@ -95,6 +127,29 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $variable ['fk_nombreFormulario'] . '\' ';
                 $cadenaSql .= ') ';
                 $cadenaSql .= "RETURNING  id_formulario; ";
+                break;
+            case 'insertarFormulario' :
+                $cadenaSql = 'INSERT INTO ';
+                $cadenaSql .= 'concepto.formulario_novedad ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= 'codigo, ';
+                $cadenaSql .= 'nombre_formulario';
+                $cadenaSql .= ') ';
+                $cadenaSql .= 'VALUES ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= $variable ['fk_id_novedad'] . ', ';
+                $cadenaSql .= '\'' . $variable ['fk_nombreFormulario'] . '\' ';
+                $cadenaSql .= ') ';
+                $cadenaSql .= "RETURNING  id_formulario; ";
+                break;
+            case 'buscarFormulario' :
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id_formulario as ID ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.formulario_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo = ';
+                $cadenaSql .= $variable ['fk_id_novedad'] . ';';
                 break;
             case 'insertarCondicion' :
                 $cadenaSql = 'INSERT INTO ';
@@ -145,6 +200,14 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $variable ['fk_formulacionCampo'] . '\' ';
                 $cadenaSql .= '); ';
                 break;
+             case 'eliminarCampos' :
+                $cadenaSql = 'DELETE ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.campo_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id_formulario = ';
+                $cadenaSql .= $variable . ';';
+            break;
             case 'inactivarRegistro' :
                 $cadenaSql = 'UPDATE ';
                 $cadenaSql .= 'concepto.novedad ';
@@ -644,7 +707,6 @@ class Sql extends \Sql {
                 $cadenaSql .= 'id_formulario = ';
                 $cadenaSql .= $variable . '';
                 break;
-                
         }
 
 
