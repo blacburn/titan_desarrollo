@@ -264,16 +264,18 @@ class Formulario {
         $atributos['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
         $atributos['tab'] = $tab;
         $atributos['seleccion'] = -1;
-        $atributos['evento'] = '';
-        $atributos['deshabilitado'] = true;
+        $atributos['evento'] = ' ';
+        $atributos['deshabilitado'] = false;
         $atributos['limitar']= 50;
         $atributos['tamanno']= 1;
         $atributos['columnas']= 1;
         $atributos['multiple']=true;
+        $atributos ['ajax_function'] = "";
+        $atributos ['ajax_control'] = $esteCampo;
         
-        $atributos ['obligatorio'] = false;
-        $atributos ['etiquetaObligatorio'] = false;
-        $atributos ['validar'] = '';
+        $atributos ['obligatorio'] = true;
+        $atributos ['etiquetaObligatorio'] = true;
+        $atributos ['validar'] = 'required';
         
              $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarRegistroxLEY");
         

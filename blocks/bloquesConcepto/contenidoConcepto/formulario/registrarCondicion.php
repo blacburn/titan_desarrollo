@@ -372,30 +372,66 @@ class Formulario {
 					{
 						
 							
-						$atributos ["id"] = "botonesPanel2";
-					$atributos ["estilo"] = "col-md-8 btn-group btn-group-lg";
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
 					echo $this->miFormulario->division ( "inicio", $atributos );
 					{
+						echo "<input type=\"button\" id=\"btOper1C\" value=\"(\" class=\"btn btn-primary btn-block\"/>";
+			
+						echo "<input type=\"button\" id=\"btOper2C\" value=\")\" class=\"btn btn-primary btn-block\" />";
 						
-						echo "<input type=\"button\" id=\"btOper1C\" value=\"(\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper2C\" value=\")\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper3C\" value=\"+\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper4C\" value=\"-\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper5C\" value=\"*\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper6C\" value=\"÷\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper7C\" value=\"√\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper8C\" value=\"^\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper9C\" value=\"<\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper10C\" value=\"<=\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper11C\" value=\">\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper12C\" value=\">=\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper13C\" value=\"=\" class=\"btn btn-primary\"/>";
-						echo "<input type=\"button\" id=\"btOper14C\" value=\"!=\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper15C\" value=\"&&\" class=\"btn btn-primary\" />";
-                                                echo "<input type=\"button\" id=\"btOper16C\" value=\"||\" class=\"btn btn-primary\" />";
-						echo "<input type=\"button\" id=\"btOper17C\" value=\"Borrar\" class=\"btn btn-danger\" />";
+						echo "<input type=\"button\" id=\"btOper3C\" value=\"+\" class=\"btn btn-primary btn-block\"/>";
+						
+						echo "<input type=\"button\" id=\"btOper4C\" value=\"-\" class=\"btn btn-primary btn-block\" />";
+						
+						
 					}
 					echo $this->miFormulario->division ( "fin" );
+					
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					{
+						echo "<input type=\"button\" id=\"btOper5C\" value=\"*\" class=\"btn btn-primary btn-block\"/>";
+						
+						echo "<input type=\"button\" id=\"btOper6C\" value=\"÷\" class=\"btn btn-primary btn-block\" />";
+						echo "<input type=\"button\" id=\"btOper7C\" value=\"√\" class=\"btn btn-primary btn-block\"/>";
+						echo "<input type=\"button\" id=\"btOper8C\" value=\"^\" class=\"btn btn-primary btn-block\" />";
+							
+					}
+					echo $this->miFormulario->division ( "fin" );
+					
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					{
+						echo "<input type=\"button\" id=\"btOper9C\" value=\"<\" class=\"btn btn-primary btn-block\" />";
+						echo "<input type=\"button\" id=\"btOper10C\" value=\"<=\" class=\"btn btn-primary btn-block\"/>";
+						echo "<input type=\"button\" id=\"btOper11C\" value=\">\" class=\"btn btn-primary btn-block\" />";
+						echo "<input type=\"button\" id=\"btOper12C\" value=\">=\" class=\"btn btn-primary btn-block\" />";
+						
+					
+					}
+					echo $this->miFormulario->division ( "fin" );
+					
+					$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-3 btn-group-lg";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					{
+						echo "<input type=\"button\" id=\"btOper13C\" value=\"=\" class=\"btn btn-primary btn-block\"/>";
+						echo "<input type=\"button\" id=\"btOper14C\" value=\"!=\" class=\"btn btn-primary btn-block\" />";
+							
+						echo "<input type=\"button\" id=\"btOper15C\" value=\"&&\" class=\"btn btn-warning btn-block\" />";
+							
+						echo "<input type=\"button\" id=\"btOper16C\" value=\"||\" class=\"btn btn-warning btn-block\" />";
+						
+					
+					}
+					echo $this->miFormulario->division ( "fin" );
+					
+
+					echo "<input type=\"button\" id=\"btOper17C\" value=\"Borrar\" class=\"btn btn-danger btn-block\" />";
+					
 					
 					}
 					echo $this->miFormulario->marcoAgrupacion ( "fin" );
@@ -689,6 +725,7 @@ class Formulario {
         echo $this->miFormulario->campoCuadroTexto ( $atributos );
         // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
         
+
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
         $esteCampo = 'cantidadCondicionesConcepto';
         $atributos ['id'] = $esteCampo;
@@ -745,7 +782,9 @@ class Formulario {
 		}
 		echo $this->miFormulario->division ( "fin" );    
 		
+
         // ------------------- SECCION: Paso de variables ------------------------------------------------
+
         /**
          * En algunas ocasiones es útil pasar variables entre las diferentes páginas.
          * SARA permite realizar esto a través de tres
@@ -756,8 +795,11 @@ class Formulario {
          * formsara, cuyo valor será una cadena codificada que contiene las variables.
          * (c) a través de campos ocultos en los formularios. (deprecated)
         */
+
         // En este formulario se utiliza el mecanismo (b) para pasar las siguientes variables:
+
         // Paso 1: crear el listado de variables
+
         $valorCodificado = "actionBloque=" . $esteBloque ["nombre"]; //Ir pagina Funcionalidad
         $valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );//Frontera mostrar formulario
         $valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
@@ -771,6 +813,7 @@ class Formulario {
         $valorCodificado .= "&campoSeguro=" . $_REQUEST['tiempo'];
         // Paso 2: codificar la cadena resultante
         $valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
+
         $atributos ["id"] = "formSaraData"; // No cambiar este nombre
         $atributos ["tipo"] = "hidden";
         $atributos ['estilo'] = '';
@@ -780,22 +823,33 @@ class Formulario {
         $atributos ["valor"] = $valorCodificado;
         echo $this->miFormulario->campoCuadroTexto ( $atributos );
         unset ( $atributos );
+
         // ----------------FIN SECCION: Paso de variables -------------------------------------------------
+
         // ---------------- FIN SECCION: Controles del Formulario -------------------------------------------
+
         // ----------------FINALIZAR EL FORMULARIO ----------------------------------------------------------
         // Se debe declarar el mismo atributo de marco con que se inició el formulario.
         $atributos ['marco'] = true;
         $atributos ['tipoEtiqueta'] = 'fin';
         echo $this->miFormulario->formulario ( $atributos );
+
         return true;
+
     }
+
     function mensaje() {
+
         // Si existe algun tipo de error en el login aparece el siguiente mensaje
         $mensaje = $this->miConfigurador->getVariableConfiguracion ( 'mostrarMensaje' );
         $this->miConfigurador->setVariableConfiguracion ( 'mostrarMensaje', null );
+
         if ($mensaje) {
+
             $tipoMensaje = $this->miConfigurador->getVariableConfiguracion ( 'tipoMensaje' );
+
             if ($tipoMensaje == 'json') {
+
                 $atributos ['mensaje'] = $mensaje;
                 $atributos ['json'] = true;
             } else {
@@ -810,12 +864,20 @@ class Formulario {
             $atributos ["columnas"] = ''; // El control ocupa 47% del tamaño del formulario
             echo $this->miFormulario->campoMensaje ( $atributos );
             unset ( $atributos );
+
              
         }
+
         return true;
+
     }
+
 }
+
 $miFormulario = new Formulario ( $this->lenguaje, $this->miFormulario, $this->sql );
+
+
 $miFormulario->formulario ();
 $miFormulario->mensaje ();
+
 ?>

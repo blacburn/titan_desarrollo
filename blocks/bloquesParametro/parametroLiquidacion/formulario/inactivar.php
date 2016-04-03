@@ -79,11 +79,11 @@ class Formulario {
        
         
        
-       $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarParametroLiquidacion2");
+       $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarParametroLiquidacion");
         $matrizItems=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
-     
        
-        if($matrizItems[$_REQUEST['variable']][2]=='Inactivo'){
+       
+        if($matrizItems[$_REQUEST['variable']][5]=='Inactivo'){
             $opcion='Activo';
         }
         else{
@@ -97,15 +97,15 @@ class Formulario {
         $esteCampo = 'id';
         $atributos ['id'] = $esteCampo;
         $atributos ['nombre'] = $esteCampo;
-        $atributos ['tipo'] = 'text';
+        $atributos ['tipo'] = 'hidden';
         $atributos ['estilo'] = 'jqueryui';
         $atributos ['columnas'] = 1;
         $atributos ['marco'] = true;
         $atributos ['dobleLinea'] = false;
         $atributos ['tabIndex'] = $tab;
-        $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-        $atributos ['valor'] = $matrizItems[$_REQUEST['variable']][0];       
-        $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+       
+        $atributos ['valor'] = $matrizItems[$_REQUEST['variable']][6];       
+        
         $atributos ['deshabilitado'] = true;
         $atributos ['tamanno'] = 20;
         $atributos ['maximoTamanno'] = '';
@@ -127,7 +127,7 @@ class Formulario {
         $atributos ['dobleLinea'] = false;
         $atributos ['tabIndex'] = $tab;
         $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-        $atributos ['valor'] = $matrizItems[$_REQUEST['variable']][1];       
+        $atributos ['valor'] = $matrizItems[$_REQUEST['variable']][0];       
         $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
         $atributos ['deshabilitado'] = true;
         $atributos ['tamanno'] = 20;
@@ -151,7 +151,7 @@ class Formulario {
         $atributos ['tabIndex'] = $tab;
         $atributos ['marco'] = true;
         $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-        $atributos ['valor'] = $matrizItems[$_REQUEST['variable']][6];       
+        $atributos ['valor'] = $matrizItems[$_REQUEST['variable']][5];       
         $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
         $atributos ['deshabilitado'] = true;
         $atributos ['tamanno'] = 20;

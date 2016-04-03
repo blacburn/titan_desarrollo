@@ -274,7 +274,7 @@ class Formulario {
 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 				unset($atributos);
 				$esteCampo = 'valorParametro';
-				$atributos ['id'] = $estwfsdfsfsfeCampo;
+				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
 				$atributos ['estilo'] = '';
 				$atributos ['marco'] = false;

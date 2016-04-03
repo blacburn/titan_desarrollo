@@ -142,7 +142,7 @@ class FormProcessor {
         	);
         if($count==0){
             	 $cadenaSql = $this->miSql->getCadenaSql("eliminarLeyesModificar",$datosLeyesConcepto);
-                 $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+        $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
         }
         	
         $cadenaSql = $this->miSql->getCadenaSql("insertarLeyesNomina",$datosLeyesConcepto);

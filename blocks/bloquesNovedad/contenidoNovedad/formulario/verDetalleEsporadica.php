@@ -75,8 +75,7 @@ class Formulario {
         $atributos ["estilo"] = "jqueryui";
         $atributos ['tipoEtiqueta'] = 'inicio';
         $atributos ["leyenda"] = "DETALLE NOVEDAD";
-        echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
-        {
+        echo $this->miFormulario->marcoAgrupacion('inicio', $atributos); {
 
             //Codigo Unico que identifica el Concepto
 
@@ -85,8 +84,7 @@ class Formulario {
             $atributos ["estilo"] = "jqueryui";
             $atributos ['tipoEtiqueta'] = 'sub';
             $atributos ["leyenda"] = "Información Básica";
-            echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
-            {
+            echo $this->miFormulario->marcoAgrupacion('inicio', $atributos); {
                 $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarNovedadxReg", $_REQUEST['variable']);
                 $matrizNovedad = $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
                 $_identificadorConcepto = $matrizNovedad[0][6];
@@ -297,7 +295,8 @@ class Formulario {
             $atributos ["estilo"] = "jqueryui";
             $atributos ['tipoEtiqueta'] = 'campos';
             $atributos ["leyenda"] = "Información Campos";
-            echo $this->miFormulario->marcoAgrupacion('inicio', $atributos); {
+            echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
+            {
                 $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarFormularioDeCampos", $matrizNovedad[0][6]);
                 $matrizFormulario = $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
 
@@ -325,32 +324,58 @@ class Formulario {
                 echo '</tbody></table>';
             }
             echo $this->miFormulario->marcoAgrupacion('fin');
-          
-                // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-                $esteCampo = 'formula';
-                $atributos ['id'] = $esteCampo;
-                $atributos ['nombre'] = $esteCampo;
-                $atributos ['tipo'] = 'text';
-                $atributos ['estilo'] = 'jqueryui';
-                $atributos ['columnas'] = 50;
-                $atributos ['dobleLinea'] = false;
-                $atributos ['tabIndex'] = $tab;
-                $atributos ['marco'] = true;
-                $atributos ['anchoEtiqueta'] = 200;
-                $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
-                $atributos ['valor'] = $matrizNovedad[0][8];
-                $atributos ['titulo'] = $this->lenguaje->getCadena($esteCampo . 'Titulo');
-                $atributos ['deshabilitado'] = true;
-                $atributos ['tamanno'] = 20;
-                $atributos ['maximoTamanno'] = '';
 
-                $tab++;
+            // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+            $esteCampo = 'formula';
+            $atributos ['id'] = $esteCampo;
+            $atributos ['nombre'] = $esteCampo;
+            $atributos ['tipo'] = 'text';
+            $atributos ['estilo'] = 'jqueryui';
+            $atributos ['columnas'] = 50;
+            $atributos ['dobleLinea'] = false;
+            $atributos ['tabIndex'] = $tab;
+            $atributos ['marco'] = true;
+            $atributos ['anchoEtiqueta'] = 200;
+            $atributos ['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
+            $atributos ['valor'] = $matrizNovedad[0][8];
+            $atributos ['titulo'] = $this->lenguaje->getCadena($esteCampo . 'Titulo');
+            $atributos ['deshabilitado'] = true;
+            $atributos ['tamanno'] = 20;
+            $atributos ['maximoTamanno'] = '';
 
-                // Aplica atributos globales al control
-                $atributos = array_merge($atributos, $atributosGlobales);
-                echo $this->miFormulario->campoTextArea($atributos);
-                unset($atributos);
-                
+            $tab++;
+
+            // Aplica atributos globales al control
+            $atributos = array_merge($atributos, $atributosGlobales);
+            echo $this->miFormulario->campoTextArea($atributos);
+            unset($atributos);
+
+
+            // ------------------Division para los botones-------------------------
+            $atributos ["id"] = "botonesInfo";
+            $atributos ["estilo"] = "marcoBotones";
+            $atributos ["titulo"] = "Enviar Información";
+            echo $this->miFormulario->division("inicio", $atributos);
+
+            // -----------------CONTROL: Botón ----------------------------------------------------------------
+            $esteCampo = 'botonRegresarConsulta';
+            $atributos ["id"] = $esteCampo;
+            $atributos ["tabIndex"] = $tab;
+            $atributos ["tipo"] = 'boton';
+            // submit: no se coloca si se desea un tipo button genérico
+            $atributos ['submit'] = true;
+            $atributos ["estiloMarco"] = '';
+            $atributos ["estiloBoton"] = 'jqueryui';
+            // verificar: true para verificar el formulario antes de pasarlo al servidor.
+            $atributos ["verificar"] = true;
+            $atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+            $atributos ["valor"] = $this->lenguaje->getCadena($esteCampo);
+            $atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+            $tab++;
+
+            // Aplica atributos globales al control
+            $atributos = array_merge($atributos, $atributosGlobales);
+            echo $this->miFormulario->campoBoton($atributos);
         }
         echo $this->miFormulario->marcoAgrupacion('fin');
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
