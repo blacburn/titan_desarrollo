@@ -3,6 +3,8 @@
 namespace bloquesNovedad\contenidoNovedad\funcion;
 
 include_once('Redireccionador.php');
+include_once('Interprete.php');
+include_once('NodoConcepto.php');
 
 class FormProcessor {
 
@@ -22,26 +24,20 @@ class FormProcessor {
 
     function procesarFormulario() {
 
+        //Aquí va la lógica de procesamiento
 
-        //Al final se ejecuta la redirección la cual pasará el control a otra página
+        $conexion = 'estructura';
+        $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-        $datos = array(
-            'tipoNovedad' => $_REQUEST['tipoNovedad'],
-            'categoriaConceptos' => $_REQUEST['categoriaConceptos'],
-            'nombre' => $_REQUEST['nombre'],
-            'simbolo' => $_REQUEST['simbolo'],
-            'ley' => $_REQUEST['ley'],
-            'leyRegistros' => $_REQUEST['leyRegistros'],
-            'naturaleza' => $_REQUEST['naturaleza'],
-            'descripcion' => $_REQUEST['descripcion']
-        );
-        if ($_REQUEST['tipoNovedad'] == 1) {
+        
+        
 
-            Redireccionador::redireccionar('periodica', $datos);
+        if (!empty($id_concepto)) {
+            Redireccionador::redireccionar('inserto', $datosConcepto);
+            exit();
         } else {
-
-
-            Redireccionador::redireccionar('esporadica', $datos);
+            Redireccionador::redireccionar('noInserto', $datosConcepto);
+            exit();
         }
     }
 
@@ -57,4 +53,6 @@ class FormProcessor {
 }
 
 $miProcesador = new FormProcessor($this->lenguaje, $this->sql);
+
 $resultado = $miProcesador->procesarFormulario();
+

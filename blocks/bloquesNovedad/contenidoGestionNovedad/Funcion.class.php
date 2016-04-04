@@ -57,24 +57,10 @@ class Funcion {
 
             switch ($_REQUEST['opcion']) {
 
-                case "mostrar":
-                    include_once ($this->ruta . "funcion/registrar.php");
+                case "seguienteUno":
+                    include_once ($this->ruta . "funcion/asociarNovedad.php");
                     break;
-                case "registrar":
-                    include_once ($this->ruta . "funcion/registrar.php");
-                    break;
-                case "opt":
-                    include_once ($this->ruta . "funcion/opcion.php");
-                    break;
-                case "optMod":
-                    include_once ($this->ruta . "funcion/opcionModificar.php");
-                    break;
-                case "modificar":
-                    include_once ($this->ruta . "funcion/modificar.php");
-                    break;
-                case "inactivar":
-                    include_once ($this->ruta . "funcion/inactivar.php");
-                    break;
+                    
             }
 
 //            $resultado = $this->procesarFormulario ();

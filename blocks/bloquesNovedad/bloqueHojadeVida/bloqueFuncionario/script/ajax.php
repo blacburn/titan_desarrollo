@@ -406,7 +406,7 @@ $(document).ready(function(){
 		$("#novedadesDatosPersonales").hide("fast");
 	});
 
-	$("#ocultarb2").click(function(){
+	$("#ocultarb2").click(function(){$usuario
 		$("#novedadesDatosCiudadania").show("fast");
 		$("#novedadesDatosPersonales").hide("fast");
 	});
@@ -627,7 +627,7 @@ $(document).ready(function(){
     var iCntInf = 0;
     var LimiteInformal = 20;//Tener Presente
 
-    while(iCntInf < LimiteInformal){
+    while(iCntInf < LimiteInformal){$usuario
         $("#novedadesDatosCantidadEduacionInformal_"+iCntInf).hide("fast");
         iCntInf = iCntInf + 1;
     }
@@ -962,7 +962,7 @@ $(document).ready(function(){
         }
      
         if (iCntRef == 0) { 
-
++
             $('#btAddRe').removeAttr('disabled');
      
         }

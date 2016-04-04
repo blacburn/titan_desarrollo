@@ -104,7 +104,7 @@ class Formulario {
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
 		$atributos ["leyenda"] = "NOVEDADES";
-		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+		echo $this->miFormulario->marcoAgrupacion( 'inicio', $atributos );
         // --------------------------------------------------------------------------------------------------
         
         // ------------------Division para los botones-------------------------

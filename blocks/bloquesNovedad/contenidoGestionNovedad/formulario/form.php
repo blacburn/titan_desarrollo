@@ -95,6 +95,7 @@ class Formulario {
         $atributos ['tipoEtiqueta'] = 'inicio';
         $atributos ["leyenda"] = "GESTIÓN DE NOVEDADES";
         echo $this->miFormulario->marcoAgrupacion('inicio', $atributos);
+        {
         // --------------------------------------------------------------------------------------------------
         // ------------------Division para los botones-------------------------
         unset($atributos);
@@ -139,17 +140,20 @@ class Formulario {
         // ---------------- CONTROL: Tabla Cargos sin Sara -----------------------------------------------            
         $atributos ["id"] = "blocBotn";
         $atributos ["estilo"] = "col-md-5";
-        echo $this->miFormulario->division("inicio", $atributos);
-        {
+        echo $this->miFormulario->division("inicio", $atributos); {
             
         }
         echo $this->miFormulario->division("fin");
         $atributos ["id"] = "botones";
         $atributos ["estilo"] = "marcoBotones";
         echo $this->miFormulario->division("inicio", $atributos);
+        {
+            
+        
         $atributos ["id"] = "blocBotn";
         $atributos ["estilo"] = "col-md-2";
-        echo $this->miFormulario->division("inicio", $atributos); {
+        echo $this->miFormulario->division("inicio", $atributos);
+        {
             echo "<center>";
             echo "<input type=\"button\" id=\"btGestionar\" value=\"Gestionar Novedad\" class=\"btn btn-success btn-block\" />";
             echo "</center>";
@@ -157,9 +161,10 @@ class Formulario {
             // ---------------- CONTROL: Select --------------------------------------------------------
         }
         echo $this->miFormulario->division("fin");
+        }
         echo '<br>';
-        echo $this->miFormulario->division("fin", $atributos);
-        unset($atributos);
+        echo $this->miFormulario->division("fin");
+        }
 
 
 //        $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarPersonaVinculadaDetalle",38);
@@ -176,10 +181,40 @@ class Formulario {
  
                   .  <tbody></tbody></table>';
 
+        
+        
 
+       
         unset($atributos);
+        echo '<br>';
 
-        // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+        $atributos ["id"] = "botones";
+        $atributos ["estilo"] = "marcoBotones";
+        echo $this->miFormulario->division("inicio", $atributos);
+        {
+        // -----------------CONTROL: Botón ----------------------------------------------------------------
+        $esteCampo = 'botonSiguiente';
+        $atributos ["id"] = $esteCampo;
+        $atributos ["tabIndex"] = $tab;
+        $atributos ["tipo"] = 'boton';
+        // submit: no se coloca si se desea un tipo button genérico
+        $atributos ['submit'] = true;
+        $atributos ["estiloMarco"] = '';
+        $atributos ["estiloBoton"] = 'jqueryui';
+        // verificar: true para verificar el formulario antes de pasarlo al servidor.
+        $atributos ["verificar"] = '';
+        $atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+        $atributos ["valor"] = $this->lenguaje->getCadena($esteCampo);
+        $atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+        $tab ++;
+
+        // Aplica atributos globales al control
+        $atributos = array_merge($atributos, $atributosGlobales);
+        echo $this->miFormulario->campoBoton($atributos);
+        }
+        
+        echo $this->miFormulario->division("fin", $atributos);
+         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
         $esteCampo = 'id';
         $atributos ['id'] = $esteCampo;
         $atributos ['nombre'] = $esteCampo;
@@ -313,6 +348,12 @@ class Formulario {
         $atributos = array_merge($atributos, $atributosGlobales);
         echo $this->miFormulario->campoCuadroTexto($atributos);
         /**
+         * 
+         * 
+
+         */
+
+
 
 
           // ---------------- CONTROL: Tabla Cargos -----------------------------------------------
@@ -338,12 +379,12 @@ class Formulario {
          */
         // En este formulario se utiliza el mecanismo (b) para pasar las siguientes variables:
         // Paso 1: crear el listado de variables
-        //$valorCodificado = "actionBloque=" . $esteBloque ["nombre"]; //Ir pagina Funcionalidad
+       // $valorCodificado = "actionBloque=" . $esteBloque ["nombre"]; //Ir pagina Funcionalidad
         $valorCodificado = "&pagina=" . $this->miConfigurador->getVariableConfiguracion('pagina'); //Frontera mostrar formulario
         $valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 //        $valorCodificado .= "&tamaño=" . $longitud;
         $valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-        $valorCodificado .= "&opcion=registrarInfo";
+        $valorCodificado .= "&opcion=siguienteUno";
         /**
          * SARA permite que los nombres de los campos sean dinámicos.
          * Para ello utiliza la hora en que es creado el formulario para
@@ -361,6 +402,8 @@ class Formulario {
         $atributos ["etiqueta"] = "";
         $atributos ["valor"] = $valorCodificado;
         echo $this->miFormulario->campoCuadroTexto($atributos);
+        unset($atributos);
+
         unset($atributos);
 
         // ----------------FIN SECCION: Paso de variables -------------------------------------------------

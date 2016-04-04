@@ -60,6 +60,7 @@ class Sql extends \Sql {
                 $cadenaSql .= "j.nombre as NOMBRE_TIPO_VINCULACION, ";
                 $cadenaSql .= 'j.estado as ESTADO_VINCULACION, ';
                 $cadenaSql .= 'c.tipo_cargo as CARGO, ';
+                $cadenaSql .= 'f.id_funcionario as ID_FUNCIONARIO, ';
                 $cadenaSql .= 'p.documento as DOCUMENTO ';
 
                 $cadenaSql .= 'FROM ';
@@ -69,7 +70,7 @@ class Sql extends \Sql {
                 $cadenaSql .= 'novedad.cargoxfuncionario l, ';
                 $cadenaSql .= 'parametro.cargo c, ';
                 $cadenaSql .= 'persona.vinculacion_persona_natural d ';
-                
+
                 $cadenaSql .= 'where d.documento = p.documento';
                 $cadenaSql .= ' and d.id_tipo_vinculacion = j.id ';
                 $cadenaSql .= ' and d.documento=f.documento ';
@@ -79,9 +80,55 @@ class Sql extends \Sql {
                 $cadenaSql .= ' and d.estado_vinculacion!= \'Inactivo\' ';
                 $cadenaSql .= ' and j.id = ';
                 $cadenaSql .= $variable;
-
-
                 break;
+            case 'buscarRegistrosDeNovedades':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'n.nombre as NOMBRE, ';
+                $cadenaSql .= 'n.simbolo as SIMBOLO, ';
+                $cadenaSql .= 'n.descripcion as DESCRIPCION, ';
+                $cadenaSql .= 'n.tipo_novedad as TIPO, ';
+                $cadenaSql .= 'n.naturaleza as NATURALEZA, ';
+                $cadenaSql .= 'n.estado as ESTADO, ';
+                $cadenaSql .= 'n.codigo as ID ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.novedad n, ';
+                $cadenaSql .= 'concepto.novedadxfuncionario c ';
+                $cadenaSql .= 'where n.codigo = c.codigo';
+                $cadenaSql .= ' and c.id_funcionario = ';
+                $cadenaSql .= $variable;
+                
+                break;
+             case 'buscarIdFuncionario':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id_funcionario as ID_FUNCIONARIO ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'novedad.funcionario ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'documento= ';
+                $cadenaSql .= $variable;
+                
+                break;
+            case 'buscarNovedades':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'codigo as CODIGO, ';
+                $cadenaSql .= 'nombre as NOMBRE ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.novedad ';
+            break;
+            case 'buscarNovedadesAjax':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'codigo as CODIGO, ';
+                $cadenaSql .= 'nombre as NOMBRE, ';
+                $cadenaSql .= 'tipo_novedad as TIPO_NOVEDAD ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo= ';
+                $cadenaSql .=  $variable;
+            
+            
+            
+            
         }
 
 

@@ -7,8 +7,8 @@ if ($_REQUEST ['funcion'] == 'consultarTipoVinculacionAjax') {
 	$resultado = json_encode ( $resultado);
 	echo $resultado;
 }
-if ($_REQUEST ['funcion'] == 'consultarValorParametroAjax') {
-	$cadenaSql = $this->sql->getCadenaSql ( 'buscarValorParametroAjax', $_REQUEST['valor'] );
+if ($_REQUEST ['funcion'] == 'consultarNovedadAjax') {
+	$cadenaSql = $this->sql->getCadenaSql ( 'buscarNovedadesAjax', $_REQUEST['valor'] );
 	$resultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 	$resultado = json_encode ( $resultado);
 	echo $resultado;
