@@ -44,7 +44,7 @@ class Sql extends \Sql {
                 $cadenaSql .= 'parametro.tipo_vinculacion ';
                 $cadenaSql .= 'WHERE ';
                 $cadenaSql .= 'estado != \'Inactivo\';';
-            break;    
+                break;
 
             case 'buscarPersonaVinculadaDetalle':
                 $cadenaSql = 'SELECT ';
@@ -56,27 +56,32 @@ class Sql extends \Sql {
                 $cadenaSql .= "fecha_inicio as FECHA_INICIO, ";
                 $cadenaSql .= "fecha_final as FECHA_FINAL, ";
                 $cadenaSql .= "d.id as ID_VINCULACION, ";
-
                 $cadenaSql .= "j.id as ID_TIPO_VINCULACION, ";
                 $cadenaSql .= "j.nombre as NOMBRE_TIPO_VINCULACION, ";
-                $cadenaSql .= 'estado_vinculacion as ESTADO_VINCULACION, ';
+                $cadenaSql .= 'j.estado as ESTADO_VINCULACION, ';
+                $cadenaSql .= 'c.tipo_cargo as CARGO, ';
                 $cadenaSql .= 'p.documento as DOCUMENTO ';
 
                 $cadenaSql .= 'FROM ';
                 $cadenaSql .= 'persona.persona_natural p, ';
                 $cadenaSql .= 'parametro.tipo_vinculacion j, ';
                 $cadenaSql .= 'novedad.funcionario f, ';
+                $cadenaSql .= 'novedad.cargoxfuncionario l, ';
+                $cadenaSql .= 'parametro.cargo c, ';
                 $cadenaSql .= 'persona.vinculacion_persona_natural d ';
+                
                 $cadenaSql .= 'where d.documento = p.documento';
                 $cadenaSql .= ' and d.id_tipo_vinculacion = j.id ';
                 $cadenaSql .= ' and d.documento=f.documento ';
+                $cadenaSql .= ' and l.id_funcionario=f.id_funcionario ';
+                $cadenaSql .= ' and c.codigo_cargo=l.codigo_cargo ';
                 $cadenaSql .= ' and f.estado_funcionario!= \'Inactivo\' ';
                 $cadenaSql .= ' and d.estado_vinculacion!= \'Inactivo\' ';
-                $cadenaSql .= ' and j.id = '; 
+                $cadenaSql .= ' and j.id = ';
                 $cadenaSql .= $variable;
-                
-                
-            break;    
+
+
+                break;
         }
 
 
