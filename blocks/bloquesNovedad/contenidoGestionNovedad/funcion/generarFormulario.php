@@ -1,10 +1,8 @@
 <?php
 
-namespace bloquesNovedad\contenidoNovedad\funcion;
+namespace bloquesNovedad\contenidoGestionNovedad\funcion;
 
 include_once('Redireccionador.php');
-include_once('Interprete.php');
-include_once('NodoConcepto.php');
 
 class FormProcessor {
 
@@ -28,15 +26,36 @@ class FormProcessor {
 
         $conexion = 'estructura';
         $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
+        $opcion=0;
 
-        
-        
 
-        if (!empty($id_concepto)) {
-            Redireccionador::redireccionar('inserto', $datosConcepto);
+        if($_REQUEST['tipoNovedad']=='Esporadica'){
+            $opcion=1;
+        }
+        else{
+            $opcion=2;
+        }
+         if($_REQUEST['estado']==1){
+            $_REQUEST['estado']='Activo';
+        }
+        else{
+            $_REQUEST['estado']='Inactivo';
+        }
+        
+        $datosConcepto = array(
+                'eleccionNovedad' => $_REQUEST['fdpNovedades'],
+                'tipoNovedad' => $_REQUEST['tipoNovedad'],
+                'estado' => $_REQUEST['estado']
+            );
+
+
+
+
+        if ($opcion==1) {
+            Redireccionador::redireccionar('Esporadica', $datosConcepto);
             exit();
         } else {
-            Redireccionador::redireccionar('noInserto', $datosConcepto);
+            Redireccionador::redireccionar('Periodica', $datosConcepto);
             exit();
         }
     }

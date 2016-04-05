@@ -1,6 +1,6 @@
 <?php
 
-namespace bloquesNovedad\contenidoNovedad\funcion;
+namespace bloquesNovedad\contenidoGestionNovedad\funcion;
                         
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");
@@ -64,29 +64,27 @@ class Redireccionador {
                                
                             break;    
                          case "noModifico" :
-                                
-				$variable = 'pagina='.$miPaginaActual;                                
+                                $variable = 'pagina='.$miPaginaActual;                                
 				$variable .= "&opcion=mensaje";
                                 $variable .= '&mensaje=nomodifico';
                             break;
-                         case "periodica" :
+                         case "Periodica" :
                                 
 				$variable = 'pagina='.$miPaginaActual;                                
 				$variable .= "&opcion=periodica";
+                                $variable .= "&eleccionNovedad=" . $valor ['eleccionNovedad'];
+				$variable .= "&tipoNovedad=" . $valor ['tipoNovedad'];
+                                $variable .= "&estado=" . $valor ['estado'];
                               
                             break;    
-                         case "esporadica" :
+                         case "Esporadica" :
                                 
 				$variable = 'pagina='.$miPaginaActual;                                
 				$variable .= "&opcion=esporadica";
-                                $variable .= "&tipoNovedad=" . $valor ['tipoNovedad'];
-				$variable .= "&categoriaConceptos=" . $valor ['categoriaConceptos'];
-                                $variable .= "&nombre=" . $valor ['nombre'];
-				$variable .= "&simbolo=" . $valor ['simbolo'];
-                                $variable .= "&ley=" . $valor ['ley'];
-                                $variable .= "&leyRegistros=" . $valor ['leyRegistros'];
-				$variable .= "&naturaleza=" . $valor ['naturaleza'];
-                                $variable .= "&descripcion=" . $valor ['descripcion'];
+                                $variable .= "&eleccionNovedad=" . $valor ['eleccionNovedad'];
+				$variable .= "&tipoNovedad=" . $valor ['tipoNovedad'];
+                                $variable .= "&estado=" . $valor ['estado'];
+                               
                             break;
 			case "esporadicaMod" :
                                 

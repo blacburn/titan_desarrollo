@@ -34,6 +34,23 @@ $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena18 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar18, $enlace);
 // URL definitiva
 $urlFinal18 = $url . $cadena18;
+
+$url = $this->miConfigurador->getVariableConfiguracion("host");
+$url .= $this->miConfigurador->getVariableConfiguracion("site");
+$url .= "/index.php?";
+//Variables
+$cadenaACodificar19 = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
+$cadenaACodificar19 .= "&procesarAjax=true";
+$cadenaACodificar19 .= "&action=index.php";
+$cadenaACodificar19 .= "&bloqueNombre=" . $esteBloque ["nombre"];
+$cadenaACodificar19 .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+$cadenaACodificar19 .= $cadenaACodificar19 . "&funcion=consultarValorConceptoAjax";
+$cadenaACodificar19 .= "&tiempo=" . $_REQUEST ['tiempo'];
+// Codificar las variables
+$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
+$cadena19 = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar19, $enlace);
+// URL definitiva
+$urlFinal19 = $url . $cadena19;
 ?>
 
 <script>
@@ -78,25 +95,22 @@ $urlFinal18 = $url . $cadena18;
             dataType: "json",
             data: {valor: $("#<?php echo $this->campoSeguro('fdpNovedades') ?>").val()},
             success: function (data) {
-                if (data[0] != " ") {
+                if (data[0] != " -") {
 
-                    
+
                     $.each(data, function (indice, valor) {
                         $("#<?php echo $this->campoSeguro('tipoNovedad') ?>").val(data[ indice ].tipo_novedad)
                     });
 
-                    }
                 }
-            
+            }
+
         });
-        
-        }
-        
-        function ArmarFormularioEsporadica(elem, request, response) {
-             
-        
-        }
+
+    }
+
     
+
 
     $(function () {
         $("#<?php echo $this->campoSeguro('fdpTipoVinculacion') ?>").change(function () {
@@ -110,12 +124,7 @@ $urlFinal18 = $url . $cadena18;
                 consultarTipoNovedad();
             }
         });
-        $("#<?php echo $this->campoSeguro('tipoNovedad') ?>").change(function () {
-            if ($("#<?php echo $this->campoSeguro('tipoNovedad') ?>").val() == 'Esporadica') {
-                ArmarFormularioEsporadica();
-            }
-        });
-
+       
 
 
     });

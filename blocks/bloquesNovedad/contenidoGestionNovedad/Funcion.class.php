@@ -57,8 +57,8 @@ class Funcion {
 
             switch ($_REQUEST['opcion']) {
 
-                case "seguienteUno":
-                    include_once ($this->ruta . "funcion/asociarNovedad.php");
+                case "generarFormulario":
+                    include_once ($this->ruta . "funcion/generarFormulario.php");
                     break;
                     
             }

@@ -96,9 +96,9 @@ class Sql extends \Sql {
                 $cadenaSql .= 'where n.codigo = c.codigo';
                 $cadenaSql .= ' and c.id_funcionario = ';
                 $cadenaSql .= $variable;
-                
+
                 break;
-             case 'buscarIdFuncionario':
+            case 'buscarIdFuncionario':
                 $cadenaSql = 'SELECT ';
                 $cadenaSql .= 'id_funcionario as ID_FUNCIONARIO ';
                 $cadenaSql .= 'FROM ';
@@ -106,7 +106,7 @@ class Sql extends \Sql {
                 $cadenaSql .= 'WHERE ';
                 $cadenaSql .= 'documento= ';
                 $cadenaSql .= $variable;
-                
+
                 break;
             case 'buscarNovedades':
                 $cadenaSql = 'SELECT ';
@@ -114,7 +114,7 @@ class Sql extends \Sql {
                 $cadenaSql .= 'nombre as NOMBRE ';
                 $cadenaSql .= 'FROM ';
                 $cadenaSql .= 'concepto.novedad ';
-            break;
+                break;
             case 'buscarNovedadesAjax':
                 $cadenaSql = 'SELECT ';
                 $cadenaSql .= 'codigo as CODIGO, ';
@@ -124,11 +124,34 @@ class Sql extends \Sql {
                 $cadenaSql .= 'concepto.novedad ';
                 $cadenaSql .= 'WHERE ';
                 $cadenaSql .= 'codigo= ';
-                $cadenaSql .=  $variable;
-            
-            
-            
-            
+                $cadenaSql .= $variable;
+                break;
+            case 'buscarFormularioDeCampos':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id_formulario as ID, ';
+                $cadenaSql .= 'nombre_formulario as NOMBRE ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.formulario_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'codigo = ';
+                $cadenaSql .= $variable . '';
+                break;
+
+            case 'buscarRegistrosDeCampos':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id_campo as ID, ';
+                $cadenaSql .= 'nombre_campo as NOMBRE, ';
+                $cadenaSql .= 'label_campo as LABEL, ';
+                $cadenaSql .= 'tipo_dato as TIPO, ';
+                $cadenaSql .= 'requerido as REQUERIDO, ';
+                $cadenaSql .= 'formulacion as FORMULACION, ';
+                $cadenaSql .= 'simbolo as SIMBOLO ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.campo_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id_formulario = ';
+                $cadenaSql .= $variable . '';
+                break;
         }
 
 

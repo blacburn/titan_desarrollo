@@ -1,6 +1,6 @@
 
 
-$("#contenidoNovedad").validationEngine({
+$("#contenidoGestionNovedad").validationEngine({
 	promptPosition : "centerRight",
 	scroll: false,
 	autoHidePrompt: true,

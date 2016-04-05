@@ -55,7 +55,10 @@ class Frontera {
 					break;
                                 case "asociacionUsuario" :
                                         include_once ($this->ruta . "/formulario/asociarNovedadUsuario.php");
-					break;        
+					break;  
+                                case "esporadica" :
+                                        include_once ($this->ruta . "/formulario/formularioEsporadica.php");
+					break;  
                                         
                                         
                                         
