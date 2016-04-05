@@ -243,90 +243,87 @@ $urlFinal19 = $url . $cadena19;
             if (validacion == 0) {
                 $(container).append('<fieldset id=panel' + iCnt2 + ' class="ui-widget ui-widget-content">' +
                         '<legend class="ui-state-default ui-corner-all"> CAMPO</legend>' +
-                        '<div id=lab1' + iCnt2 + ' class="col-md-2">' +
+                        '<div id=nombreDiv' + iCnt2 + ' class="col-md-8">' +
+                        '<div id=nombreDiv2' + iCnt2 + ' class="col-md-2">' +
                         '<label> Nombre del Campo:  </label> ' +
                         '</div>' +
                         '<input type=text class="input" id=nombreCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
                         '<br/><br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt2 + ' class="col-md-2">' +
+                        '</div>' +
+                        '<div id=labelDiv' + iCnt2 + ' class="col-md-8">' +
+                        '<div id=labelDiv' + iCnt2 + ' class="col-md-2">' +
                         '<label> Label del Campo: </label> ' +
                         '</div>' +
                         '<input type=text class="input" id=labelCampo' + iCnt2 + ' size="50"  maxlength="500" value=""/>' +
-                        '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Tipo de dato: </label> ' +
-                        '</div>' +
-                        '<select id=tipoDatoCampo' + iCnt2 + ' onchange="habilitar(this.value,' + iCnt2 + ')"><option value="Alfanumerico" >Alfanumérico</option>' +
-                        '<option value="Valor">Valor</option>' +
-                        '<option value="Lista">Lista</option>' +
-                        '<option value="Fecha">Fecha</option>' +
-                        '<option value="Tabla">Tabla</option>' +
-                        '</select>' +
-                        '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab1' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Longitud del Campo:  </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=longitudCampo' + iCnt2 + ' size="50"  maxlength="30" value="" style="background-color:#cccccc" required/>' +
-                        '<br/>' +
-                        '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab1' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Opciones del Campo:  </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=listaCampo' + iCnt2 + ' size="50"  maxlength="30" value="" style="background-color:#cccccc" required/>' +
-                        '<br/>' +
-                        '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab1' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Filas de Tabla:  </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=filaCampo' + iCnt2 + ' size="50"  maxlength="30" value="" style="background-color:#cccccc" required/>' +
-                        '<br/>' +
-                        '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab1' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Columnas de Tabla:  </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=columnaCampo' + iCnt2 + ' size="50"  maxlength="30" value="" style="background-color:#cccccc" required/>' +
-                        '<br/>' +
-                        '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab1' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Titulos de Tabla:  </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=tituloCampo' + iCnt2 + ' size="50"  maxlength="30" value="" style="background-color:#cccccc" required/>' +
                         '<br/><br/>' +
                         '</div>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt2 + ' class="col-md-2">' +
+                        '<div id=tipoDiv' + iCnt2 + ' class="col-md-8">' +
+                        '<div id=tipoDiv2' + iCnt2 + ' class="col-md-2">' +
+                        '<label> Tipo de dato: </label> ' +
+                        '</div>' +
+                        '<select id=tipoDatoCampo' + iCnt2 + ' onchange="habilitar(this.value,' + iCnt2 + ')"><option value="Fecha">Fecha</option>' +
+                        '<option value="Valor">Valor</option>' +
+                        '<option value="Lista">Lista</option>' +
+                        '<option value="Alfanumerico" >Alfanumérico</option>' +
+                        '<option value="Tabla">Tabla</option>' +  
+                        '</select>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=longitudDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                        '<div id=longitudDiv2' + iCnt2 + ' class="col-md-2">' +
+                        '<label> Longitud del Campo:  </label> ' +
+                        '</div>' +
+                        '<input tclass="input" id=longitudCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=OpcDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                        '<div id=OpcDiv2' + iCnt2 + ' class="col-md-2">' +
+                        '<label> Opciones :  </label> ' +
+                        '</div>' +
+                        '<input  class="input" id=listaCampo' + iCnt2 + ' size="50"  maxlength="30" value=""  required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=filasDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                        '<div id=filasDiv2' + iCnt2 + ' class="col-md-2">' +
+                        '<label> Filas de Tabla:  </label> ' +
+                        '</div>' +
+                        '<input  class="input" id=filaCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=columDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                        '<div id=columDiv2' + iCnt2 + ' class="col-md-2">' +
+                        '<label> Columnas de Tabla:  </label> ' +
+                        '</div>' +
+                        '<input  class="input" id=columnaCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=tituDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                        '<div id=tituDiv2' + iCnt2 + ' class="col-md-2">' +
+                        '<label> Titulos de Tabla:  </label> ' +
+                        '</div>' +
+                        '<input class="input" id=tituloCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=requeDiv' + iCnt2 + ' class="col-md-8">' +
+                        '<div id=requeDiv2' + iCnt2 + ' class="col-md-2">' +
                         '<label> Requerido: </label> ' +
                         '</div>' +
                         '<select id=requeridoCampo' + iCnt2 + '><option value="No">No</option>' +
                         '<option value="Si">Si</option>' +
                         '</select>' +
+                        '<br/><br/>' +
                         '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt2 + ' class="col-md-2">' +
+                        '<div id=formuDiv' + iCnt2 + ' class="col-md-8">' +
+                        '<div id=formuDiv2' + iCnt2 + ' class="col-md-2">' +
                         '<label> Fórmula: </label> ' +
                         '</div>' +
                         '<select  disabled id=formulacionCampo' + iCnt2 + ' onchange="habilitar(this.value,' + iCnt2 + ')"><option value="No">No</option>' +
                         '<option value="Si">Si</option>' +
                         '</select>' +
+                        '<br/><br/>' +
                         '</div>' +
-                        '<br/>' +
-                        '</div>' +
-                        '<div>' +
-                        '<div id=lab52' + iCnt2 + ' class="col-md-2">' +
+                        '<div id=simDiv' + iCnt2 + ' class="col-md-8">' +
+                        '<div id=simDiv2' + iCnt2 + ' class="col-md-2">' +
                         '<label> Simbolo : </label> ' +
                         '</div>' +
                         '<input disabled type=text class="input" id=simboloCampo' + iCnt2 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  style="background-color:#cccccc" value="XXXXX"/>' +
@@ -399,60 +396,13 @@ $urlFinal19 = $url . $cadena19;
         }
         if (valor == 'Valor' || valor == 'Alfanumerico')
         {
-            $('#listaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#listaCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#filaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#filaCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#columnaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#columnaCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#tituloCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#tituloCampo' + consecutivo).css("background-color", "#cccccc")
-
-            $('#longitudCampo' + consecutivo).removeAttr('disabled');
-            $('#longitudCampo' + consecutivo).css("background-color", "#FFF")
+            $('#longitudDiv' + consecutivo).show();
         }
         if (valor == 'Lista')
         {
-            $('#listaCampo' + consecutivo).removeAttr('disabled');
-            $('#listaCampo' + consecutivo).css("background-color", "#FFF")
-
-            $('#filaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#filaCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#columnaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#columnaCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#tituloCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#tituloCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#longitudCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#longitudCampo' + consecutivo).css("background-color", "#cccccc")
+            $('#longitudDiv' + consecutivo).hide();
         }
-        if (valor == 'Tabla')
-        {
-            $('#filaCampo' + consecutivo).removeAttr('disabled');
-            $('#filaCampo' + consecutivo).css("background-color", "#FFF")
-            $('#columnaCampo' + consecutivo).removeAttr('disabled');
-            $('#columnaCampo' + consecutivo).css("background-color", "#FFF")
-            $('#tituloCampo' + consecutivo).removeAttr('disabled');
-            $('#tituloCampo' + consecutivo).css("background-color", "#FFF")
-
-            $('#longitudCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#longitudCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#listaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#listaCampo' + consecutivo).css("background-color", "#cccccc")
-        }
-         if (valor == 'Fecha')
-        {
-             $('#filaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#filaCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#columnaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#columnaCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#tituloCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#tituloCampo' + consecutivo).css("background-color", "#cccccc")
-
-            $('#longitudCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#longitudCampo' + consecutivo).css("background-color", "#cccccc")
-            $('#listaCampo' + consecutivo).attr('disabled', 'disabled');
-            $('#listaCampo' + consecutivo).css("background-color", "#cccccc")
-        }
+        
         if (valor == 'Si')
         {
 
