@@ -401,6 +401,7 @@ $urlFinal19 = $url . $cadena19;
         if (valor == 'Lista')
         {
             $('#longitudDiv' + consecutivo).hide();
+            $('#longitudDiv' + consecutivo).hide();
         }
         
         if (valor == 'Si')
