@@ -198,8 +198,24 @@ class Sql extends \Sql {
                 $cadenaSql .= '\'' . $variable ['fk_requeridoCampo'] . '\', ';
                 $cadenaSql .= '\'' . $variable ['fk_simboloCampo'] . '\', ';
                 $cadenaSql .= '\'' . $variable ['fk_formulacionCampo'] . '\' ';
+                $cadenaSql .= ') ';
+                $cadenaSql .= "RETURNING  id_campo; ";
+                break;
+            case 'insertarInfoCampos' :
+                $cadenaSql = 'INSERT INTO ';
+                $cadenaSql .= 'concepto.datos_campo ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= 'id_campo, ';
+                $cadenaSql .= 'valor ';
+                $cadenaSql .= ') ';
+                $cadenaSql .= 'VALUES ';
+                $cadenaSql .= '( ';
+                $cadenaSql .= '\'' . $variable ['fk_infoCampo'] . '\', ';
+                $cadenaSql .=  $variable ['fk_id_campo'] ;
                 $cadenaSql .= '); ';
                 break;
+            
+            
              case 'eliminarCampos' :
                 $cadenaSql = 'DELETE ';
                 $cadenaSql .= 'FROM ';

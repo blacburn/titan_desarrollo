@@ -234,6 +234,24 @@ $urlFinal19 = $url . $cadena19;
                     if ($('#labelCampo' + n).val() == '') {
                         alert('ingese label del campo');
                     }
+                    if ($('#tipoDatoCampo' + n).val() != 'Fecha') {
+                        if ($('#tipoDatoCampo' + n).val() == 'Tabla') {
+                            if ($('#tituloCampo' + n).val() == '') {
+                                alert('ingrese titulos de la tabla separados por comas');
+                            }
+                        }
+                        if ($('#tipoDatoCampo' + n).val() == 'Lista') {
+                            if ($('#listaCampo' + n).val() == '') {
+                                alert('ingrese opciones de lista separados por comas');
+                            }
+
+                        }
+                        if (($('#tipoDatoCampo' + n).val() == 'Alfanumerico') || ($('#tipoDatoCampo' + n).val() == 'Valor')) {
+                            if ($('#longitudCampo' + n).val() == '') {
+                                alert('ingrese longitud del campo tipo valor o alfanumerico');
+                            }
+                        }
+                    }
 
 
                     validacion = 1;
@@ -265,7 +283,7 @@ $urlFinal19 = $url . $cadena19;
                         '<option value="Valor">Valor</option>' +
                         '<option value="Lista">Lista</option>' +
                         '<option value="Alfanumerico" >Alfanumérico</option>' +
-                        '<option value="Tabla">Tabla</option>' +  
+                        '<option value="Tabla">Tabla</option>' +
                         '</select>' +
                         '<br/><br/>' +
                         '</div>' +
@@ -281,20 +299,6 @@ $urlFinal19 = $url . $cadena19;
                         '<label> Opciones :  </label> ' +
                         '</div>' +
                         '<input  class="input" id=listaCampo' + iCnt2 + ' size="50"  maxlength="30" value=""  required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=filasDiv' + iCnt2 + ' class="col-md-8" hidden>' +
-                        '<div id=filasDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Filas de Tabla:  </label> ' +
-                        '</div>' +
-                        '<input  class="input" id=filaCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=columDiv' + iCnt2 + ' class="col-md-8" hidden>' +
-                        '<div id=columDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Columnas de Tabla:  </label> ' +
-                        '</div>' +
-                        '<input  class="input" id=columnaCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
                         '<br/><br/>' +
                         '</div>' +
                         '<div id=tituDiv' + iCnt2 + ' class="col-md-8" hidden>' +
@@ -337,12 +341,24 @@ $urlFinal19 = $url . $cadena19;
                 $('#formulacionCampo' + iCnt2).width(250);
                 if (iCnt2 > 1) {
                     var num = iCnt2 - 1;
+                    var opcionAux = '';
+                    if ($('#tituloCampo' + n).val() != '') {
+                        opcionAux = $('#tituloCampo' + n).val();
+                    }
+                    if ($('#listaCampo' + n).val() != '') {
+                        opcionAux = $('#listaCampo' + n).val();
+                    }
+                    if ($('#longitudCampo' + n).val() != '') {
+                        opcionAux = $('#longitudCampo' + n).val();
+                    }
+
                     t.row.add([($('#nombreCampo' + num).val()),
                         ($('#labelCampo' + num).val()),
                         ($('#tipoDatoCampo' + num).val()),
                         ($('#requeridoCampo' + num).val()),
                         ($('#formulacionCampo' + num).val()),
-                        ($('#simboloCampo' + num).val())
+                        ($('#simboloCampo' + num).val()),
+                        opcionAux
                     ]).draw(false);
 
 
@@ -396,14 +412,23 @@ $urlFinal19 = $url . $cadena19;
         }
         if (valor == 'Valor' || valor == 'Alfanumerico')
         {
+            $('#OpcDiv' + consecutivo).hide();
+            $('#tituDiv' + consecutivo).hide();
             $('#longitudDiv' + consecutivo).show();
         }
         if (valor == 'Lista')
         {
             $('#longitudDiv' + consecutivo).hide();
-            $('#longitudDiv' + consecutivo).hide();
+            $('#tituDiv' + consecutivo).hide();
+            $('#OpcDiv' + consecutivo).show();
         }
-        
+        if (valor == 'Tabla')
+        {
+            $('#longitudDiv' + consecutivo).hide();
+            $('#OpcDiv' + consecutivo).hide();
+            $('#tituDiv' + consecutivo).show();
+        }
+
         if (valor == 'Si')
         {
 
@@ -1129,6 +1154,7 @@ $urlFinal19 = $url . $cadena19;
             campos = campos + $("#simboloCampo" + con).val() + ',';
         }
         $("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
+
         campos = '';
         var con = 0;
         while (con < iCnt2 - 1) {
@@ -1136,20 +1162,41 @@ $urlFinal19 = $url . $cadena19;
             if ($("#simboloCampo" + con).val() != 'XXXXX') {
                 campos = campos + $("#simboloCampo" + con).val() + ',';
             }
-
-
-
         }
         $("#<?php echo $this->campoSeguro('camposFormulacion') ?>").val(campos);
+
+        campos = '';
+        var con = 0;
+        while (con < iCnt2 - 1) {
+            aux=0;
+            con++;
+            if ($("#tituloCampo" + con).val() != '') {
+                campos = campos + '|T' + ',';
+                campos = campos + $("#tituloCampo" + con).val() + ',';
+                aux=1;
+            }
+            if ($('#listaCampo' + con).val() != '') {
+                campos = campos + '|L' + ',';
+                campos = campos + $("#listaCampo" + con).val() + ',';
+                aux=1;
+            }
+            if ($('#longitudCampo' + con).val() != '') {
+                campos = campos + '|V' + ',';
+                campos = campos + $("#longitudCampo" + con).val() + ',';
+                aux=1;
+            }
+            if(aux==0){
+                campos = campos + '|O' + ',';
+            }
+            
+        }
+        $("#<?php echo $this->campoSeguro('camposInfoExtra') ?>").val(campos);
 
 
 
     }
 
     function PasoComponenteModificar() {
-
-
-
         table.rows().every(function (rowIdx, tableLoop, rowLoop) {
             var data = this.data();
 
@@ -1162,6 +1209,7 @@ $urlFinal19 = $url . $cadena19;
             // ... do something with data(), or this.node(), etc
         });
         $("#<?php echo $this->campoSeguro('variablesCampo') ?>").val(campos);
+
         campos = '';
         table.rows().every(function (rowIdx, tableLoop, rowLoop) {
             var data = this.data();
@@ -1170,6 +1218,8 @@ $urlFinal19 = $url . $cadena19;
             }
         });
         $("#<?php echo $this->campoSeguro('camposFormulacion') ?>").val(campos);
+
+
 
 
 

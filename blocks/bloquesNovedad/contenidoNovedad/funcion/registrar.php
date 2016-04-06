@@ -38,6 +38,8 @@ class FormProcessor {
 //        Interprete::evaluarSentencia($_entradaFormulaCompilador);
         $interprete = new Interprete();
 
+        
+
 //    $sentencia = 'IVAAA+((2+3)*RESRD)/+4-5';
 
         $aceptado = $interprete->evaluarSentencia($_entradaFormulaCompilador);
@@ -108,10 +110,16 @@ class FormProcessor {
             //CREACION DE FORMULARIO Y GUARDO EN BD
             $cadenaSql = $this->miSql->getCadenaSql("insertarFormulario", $datosFormulario);
             $id_formulario = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosFormulario, "insertarFormulario");
-      
-            while ($cuentaRegistro < (count($arrayCampos)-1)) {
 
-                
+
+            $arrayInfoCampos = explode(",", $_REQUEST['camposInfoExtraCon']);
+            $cuentaInfoCampos = 0;
+            
+           
+
+            while ($cuentaRegistro < (count($arrayCampos) - 1)) {
+
+
                 if ($arrayCampos[$cuentaRegistro] != 'undefined') {
                     $datosCampo = array(
                         'fk_nombreCampo' => $arrayCampos[$cuentaRegistro],
@@ -125,16 +133,33 @@ class FormProcessor {
 
 
                     $cadenaSql = $this->miSql->getCadenaSql("insertarCampos", $datosCampo);
-                    $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+                    $id_campo = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosCampo, "insertarCampos");
                     
-     
+                    $verificar=0;
+                    
+                    while ( ($cuentaInfoCampos < (count($arrayInfoCampos) - 1)) && $verificar<2) {
+
+                        if (($arrayCampos[$cuentaInfoCampos] != '|T' || $arrayCampos[$cuentaInfoCampos] != '|L' || $arrayCampos[$cuentaInfoCampos] != '|V' || $arrayCampos[$cuentaInfoCampos] != '|O')) {
+                            $datosInfoCampo = array(
+                                'fk_infoCampo' => $arrayInfoCampos[$cuentaInfoCampos],
+                                'fk_id_campo' => $id_campo[0][0]
+                            );
+                            $cadenaSql = $this->miSql->getCadenaSql("insertarInfoCampos", $datosInfoCampo);
+                            $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+                        }
+                        else{
+                            $verificar++;
+                            if($verificar==2){
+                                $cuentaInfoCampos--;
+                            }
+                        }
+                        $cuentaInfoCampos++;
+                    }
                 }
 
                 $cuentaRegistro = $cuentaRegistro + 6;
-        
             }
             
-           
         } else {
 
             $datosConcepto = array(
@@ -206,7 +231,7 @@ class FormProcessor {
 //
 //            $count++;
 //        }
-                 
+
 
         if (!empty($id_concepto)) {
             Redireccionador::redireccionar('inserto', $datosConcepto);
