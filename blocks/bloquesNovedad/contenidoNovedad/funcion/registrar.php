@@ -111,11 +111,11 @@ class FormProcessor {
             $cadenaSql = $this->miSql->getCadenaSql("insertarFormulario", $datosFormulario);
             $id_formulario = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosFormulario, "insertarFormulario");
 
-
+           
             $arrayInfoCampos = explode(",", $_REQUEST['camposInfoExtraCon']);
             $cuentaInfoCampos = 0;
             
-           
+            
 
             while ($cuentaRegistro < (count($arrayCampos) - 1)) {
 
@@ -139,11 +139,12 @@ class FormProcessor {
                     
                     while ( ($cuentaInfoCampos < (count($arrayInfoCampos) - 1)) && $verificar<2) {
 
-                        if (($arrayCampos[$cuentaInfoCampos] != '|T' || $arrayCampos[$cuentaInfoCampos] != '|L' || $arrayCampos[$cuentaInfoCampos] != '|V' || $arrayCampos[$cuentaInfoCampos] != '|O')) {
+                        if (($arrayInfoCampos[$cuentaInfoCampos] != '|T' && $arrayInfoCampos[$cuentaInfoCampos] != '|L' && $arrayInfoCampos[$cuentaInfoCampos] != '|V' && $arrayInfoCampos[$cuentaInfoCampos] != '|O')) {
                             $datosInfoCampo = array(
                                 'fk_infoCampo' => $arrayInfoCampos[$cuentaInfoCampos],
-                                'fk_id_campo' => $id_campo[0][0]
+                                'fk_id_campo' => (int)$id_campo[0][0]
                             );
+                            
                             $cadenaSql = $this->miSql->getCadenaSql("insertarInfoCampos", $datosInfoCampo);
                             $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
                         }
@@ -159,6 +160,7 @@ class FormProcessor {
 
                 $cuentaRegistro = $cuentaRegistro + 6;
             }
+            
             
         } else {
 

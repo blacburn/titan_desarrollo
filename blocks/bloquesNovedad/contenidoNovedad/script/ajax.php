@@ -428,6 +428,13 @@ $urlFinal19 = $url . $cadena19;
             $('#OpcDiv' + consecutivo).hide();
             $('#tituDiv' + consecutivo).show();
         }
+         if (valor == 'Fecha')
+        {
+            $('#longitudDiv' + consecutivo).hide();
+            $('#OpcDiv' + consecutivo).hide();
+            $('#tituDiv' + consecutivo).hide();
+        }
+
 
         if (valor == 'Si')
         {

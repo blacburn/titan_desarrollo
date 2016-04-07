@@ -112,8 +112,8 @@ class Sql extends \Sql {
                 $cadenaSql .= 'concepto.novedadxldn ';
                 $cadenaSql .= 'WHERE ';
                 $cadenaSql .= 'codigo = ';
-                $cadenaSql .= $variable ['codigo']. '; ';
-            break;
+                $cadenaSql .= $variable ['codigo'] . '; ';
+                break;
             case 'insertarFormulario' :
                 $cadenaSql = 'INSERT INTO ';
                 $cadenaSql .= 'concepto.formulario_novedad ';
@@ -210,20 +210,19 @@ class Sql extends \Sql {
                 $cadenaSql .= ') ';
                 $cadenaSql .= 'VALUES ';
                 $cadenaSql .= '( ';
-                $cadenaSql .= '\'' . $variable ['fk_infoCampo'] . '\', ';
-                $cadenaSql .=  $variable ['fk_id_campo'] ;
+                $cadenaSql .= $variable ['fk_id_campo'] . ', ';
+                $cadenaSql .= '\'' . $variable ['fk_infoCampo'] . '\'';
                 $cadenaSql .= '); ';
                 break;
-            
-            
-             case 'eliminarCampos' :
+
+            case 'eliminarCampos' :
                 $cadenaSql = 'DELETE ';
                 $cadenaSql .= 'FROM ';
                 $cadenaSql .= 'concepto.campo_novedad ';
                 $cadenaSql .= 'WHERE ';
                 $cadenaSql .= 'id_formulario = ';
                 $cadenaSql .= $variable . ';';
-            break;
+                break;
             case 'inactivarRegistro' :
                 $cadenaSql = 'UPDATE ';
                 $cadenaSql .= 'concepto.novedad ';
