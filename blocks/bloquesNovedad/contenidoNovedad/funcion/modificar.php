@@ -108,14 +108,13 @@ class FormProcessor {
             $id_camposTrae = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
             $cuentainfocampos = 0;
-            while ($cuentainfocampos < count($id_camposTrae) - 1) {
-                $cadenaSql = $this->miSql->getCadenaSql("eliminarInfoCampos", $id_camposTrae[$cuentainfocampos][0]);
+            while ($cuentainfocampos < count($id_camposTrae)) {
+                $cadenaSql = $this->miSql->getCadenaSql("eliminarInfoCampos", (int)$id_camposTrae[$cuentainfocampos][0]);
                 $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
-                var_dump('eliminarInfoCampo: ' . $id_camposTrae[$cuentainfocampos][0]);
                 $cuentainfocampos++;
             }
 
-            $cadenaSql = $this->miSql->getCadenaSql("eliminarCampos", $id_formulario[0][0]);
+            $cadenaSql = $this->miSql->getCadenaSql("eliminarCampos", (int)$id_formulario[0][0]);
             $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
             var_dump('eliminarCampo: ' . $id_formulario[0][0]);
             $arrayInfoCampos = explode(",", $_REQUEST['camposInfoExtraCon']);
