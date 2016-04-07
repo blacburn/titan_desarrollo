@@ -76,6 +76,8 @@ $urlFinal19 = $url . $cadena19;
 <script>
     $('#<?php echo $this->campoSeguro('VariablesList') ?>').width(240);
     $("#<?php echo $this->campoSeguro('VariablesList') ?>").select2();
+    $('#<?php echo $this->campoSeguro('tipoNovedad') ?>').width(240);
+    $("#<?php echo $this->campoSeguro('tipoNovedad') ?>").select2();
     $('#<?php echo $this->campoSeguro('CamposFormulacionList') ?>').width(240);
     $("#<?php echo $this->campoSeguro('CamposFormulacionList') ?>").select2();
     $('#<?php echo $this->campoSeguro('categoriaConceptosList') ?>').width(240);
