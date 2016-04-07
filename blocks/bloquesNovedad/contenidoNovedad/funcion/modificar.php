@@ -37,6 +37,7 @@ class FormProcessor {
 //        Interprete::evaluarSentencia($_entradaFormulaCompilador);
         $interprete = new Interprete();
 
+
 //    $sentencia = 'IVAAA+((2+3)*RESRD)/+4-5';
         $ingresomod = 0;
         $aceptado = $interprete->evaluarSentencia($_entradaFormulaCompilador);
@@ -109,12 +110,14 @@ class FormProcessor {
             $cuentainfocampos = 0;
             while ($cuentainfocampos < count($id_camposTrae) - 1) {
                 $cadenaSql = $this->miSql->getCadenaSql("eliminarInfoCampos", $id_camposTrae[$cuentainfocampos][0]);
-                $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+                $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+                var_dump('eliminarInfoCampo: ' . $id_camposTrae[$cuentainfocampos][0]);
                 $cuentainfocampos++;
             }
+
             $cadenaSql = $this->miSql->getCadenaSql("eliminarCampos", $id_formulario[0][0]);
             $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
-
+            var_dump('eliminarCampo: ' . $id_formulario[0][0]);
             $arrayInfoCampos = explode(",", $_REQUEST['camposInfoExtraCon']);
             $cuentaInfoCampos = 0;
 
@@ -159,6 +162,7 @@ class FormProcessor {
 
                 $cuentaRegistro = $cuentaRegistro + 6;
             }
+            exit;
         } else {
 
             $datosConcepto = array(

@@ -161,7 +161,7 @@ class Formulario {
                     $i = 0;
 
                     echo '<table id="tablaCamposAux" class="display" cellspacing="0" width="100%"> '
-                    . '<thead style="display: table-row-group"><tr><th>' . "NOMBRE" . '</th><th>' . "LABEL" . '</th> <th>' . "TIPO DATO" . '</th><th>' . "REQUERIDO" . '</th><th>' . "FORMULA" . '</th><th>' . "SIMBOLO" . '</th><th>' . "INFO CAMPO" . '</th></tr></thead>
+                    . '<thead style="display: table-row-group"><tr><th>' . "NOMBRE" . '</th><th>' . "LABEL" . '</th> <th>' . "TIPO DATO" . '</th><th>' . "REQUERIDO" . '</th><th>' . "FORMULA" . '</th><th>' . "SIMBOLO" . '</th><th>' . "INFO_CAMPO" . '</th></tr></thead>
                     <tbody>';
                     if (!empty($matrizCampos)) {
                         while ($i < $longitud) {
@@ -175,7 +175,7 @@ class Formulario {
                             echo "<td>" . $matrizCampos[$i][3] . "</td>";
                             echo "<td>" . $matrizCampos[$i][4] . "</td>";
                             echo "<td>" . $matrizCampos[$i][5] . "</td>";
-                            echo "<td>" . $matrizCampos[$i][5] . "</td>";
+                            echo "<td>" . $matrizCampos[$i][6] . "</td>";
                             echo "<td>" . $matrizInfoCampos[0][0] . "</td></tr>";
                             $i+=1;
                         }

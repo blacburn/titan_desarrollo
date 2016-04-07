@@ -581,6 +581,7 @@ $urlFinal19 = $url . $cadena19;
                 if (iCnt3 > 1) {
                     var num = iCnt3 - 1;
                     var opcionAux = '';
+                  
                     if ($('#tituloCampoM' + n).val() != '') {
                         opcionAux = $('#tituloCampoM' + n).val();
                     }
@@ -590,8 +591,8 @@ $urlFinal19 = $url . $cadena19;
                     if ($('#longitudCampoM' + n).val() != '') {
                         opcionAux = $('#longitudCampoM' + n).val();
                     }
-
-                    t.row.add([($('#nombreCampoM' + num).val()),
+                    
+                    table.row.add([($('#nombreCampoM' + num).val()),
                         ($('#labelCampoM' + num).val()),
                         ($('#tipoDatoCampoM' + num).val()),
                         ($('#requeridoCampoM' + num).val()),
@@ -600,14 +601,11 @@ $urlFinal19 = $url . $cadena19;
                         opcionAux
                     ]).draw(false);
 
-
-                    $('#panelM' + num).hide();
+                    $('#panelM'+num).hide();
                 }
             } else {
                 iCnt3 = iCnt3 - 1;
             }
-
-
         });
 
 
@@ -634,7 +632,7 @@ $urlFinal19 = $url . $cadena19;
             while (interacion <= iCnt3) {
 
                 if (($("#nombreCampoM" + interacion).val()) == data[0] && ($("#labelCampoM" + interacion).val()) == data[1]) {
-                    $('#panelM' + interacion).remove();
+                    $('#panelM' + interacion).remove();  alert($('#tituloCampoM' + n).val());
                 }
                 interacion = interacion + 1;
             }
@@ -1298,7 +1296,6 @@ $urlFinal19 = $url . $cadena19;
 
     function PasoComponenteModificar() {
         table.rows().every(function (rowIdx, tableLoop, rowLoop) {
-            $('#formulacionCampo' + consecutivo).removeAttr('disabled');
             var data = this.data();
 
             campos = campos + data[0] + ',';
@@ -1319,9 +1316,7 @@ $urlFinal19 = $url . $cadena19;
             }
         });
         $("#<?php echo $this->campoSeguro('camposFormulacion') ?>").val(campos);
-
-
-
+        
         campos = '';
         table.rows().every(function (rowIdx, tableLoop, rowLoop) {
             var data = this.data();
@@ -1333,15 +1328,15 @@ $urlFinal19 = $url . $cadena19;
                 campos = campos + '|L' + ',';
                 campos = campos + data[6] + ',';
             }
-            if ((data[2] == 'Valor' || data[2] == 'Alfanumerico' ) && data[6] != '') {
+            if ((data[2] == 'Valor' || data[2] == 'Alfanumerico') &&  data[6] != '') {
                 campos = campos + '|V' + ',';
                 campos = campos + data[6] + ',';
             }
         });
         $("#<?php echo $this->campoSeguro('camposInfoExtra') ?>").val(campos);
-        
-       
-       
+
+
+
 
     }
 </script>
