@@ -151,6 +151,15 @@ class Sql extends \Sql {
                 $cadenaSql .= 'codigo = ';
                 $cadenaSql .= $variable ['fk_id_novedad'] . ';';
                 break;
+            case 'buscarCampos' :
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'id_campo as ID_CAMPO ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.campo_novedad ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id_formulario = ';
+                $cadenaSql .= $variable . ';';
+                break;
             case 'insertarCondicion' :
                 $cadenaSql = 'INSERT INTO ';
                 $cadenaSql .= 'concepto.condicion_novedad ';
@@ -223,6 +232,15 @@ class Sql extends \Sql {
                 $cadenaSql .= 'id_formulario = ';
                 $cadenaSql .= $variable . ';';
                 break;
+            case 'eliminarInfoCampos' :
+                $cadenaSql = 'DELETE ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.datos_campo ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id_campo = ';
+                $cadenaSql .= $variable . ';';
+                break;
+            
             case 'inactivarRegistro' :
                 $cadenaSql = 'UPDATE ';
                 $cadenaSql .= 'concepto.novedad ';

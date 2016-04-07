@@ -38,12 +38,12 @@ class FormProcessor {
         $interprete = new Interprete();
 
 //    $sentencia = 'IVAAA+((2+3)*RESRD)/+4-5';
-        $ingresomod=0;
+        $ingresomod = 0;
         $aceptado = $interprete->evaluarSentencia($_entradaFormulaCompilador);
- 
+
         if ($aceptado == "true") {
-            
-            $ingresomod=1;
+
+            $ingresomod = 1;
             if (isset($_REQUEST['naturalezaCon'])) {
                 switch ($_REQUEST['naturalezaCon']) {
                     case 1 :
@@ -68,7 +68,7 @@ class FormProcessor {
 
             $cadenaSql = $this->miSql->getCadenaSql("modificarConcepto", $datosConcepto);
             $id_concepto = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", "busqueda", $datosConcepto, "modificarConcepto");
-            
+
             unset($cadenaSql);
             $cadenaSql = $this->miSql->getCadenaSql("eliminarLeyesConcepto", $datosConcepto);
             $accedo = $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
@@ -103,8 +103,21 @@ class FormProcessor {
             //CREACION DE FORMULARIO Y GUARDO EN BD
             $cadenaSql = $this->miSql->getCadenaSql("buscarFormulario", $datosFormulario);
             $id_formulario = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+            $cadenaSql = $this->miSql->getCadenaSql("buscarCampos", $id_formulario[0][0]);
+            $id_camposTrae = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+            $cuentainfocampos = 0;
+            while ($cuentainfocampos < count($id_camposTrae) - 1) {
+                $cadenaSql = $this->miSql->getCadenaSql("eliminarInfoCampos", $id_camposTrae[$cuentainfocampos][0]);
+                $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+                $cuentainfocampos++;
+            }
             $cadenaSql = $this->miSql->getCadenaSql("eliminarCampos", $id_formulario[0][0]);
             $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+
+            $arrayInfoCampos = explode(",", $_REQUEST['camposInfoExtraCon']);
+            $cuentaInfoCampos = 0;
+
             while ($cuentaRegistro < (count($arrayCampos) - 1)) {
 
 
@@ -121,7 +134,27 @@ class FormProcessor {
 
                     unset($cadenaSql);
                     $cadenaSql = $this->miSql->getCadenaSql("insertarCampos", $datosCampo);
-                    $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+                    $id_campo = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosCampo, "insertarCampos");
+                    $verificar = 0;
+
+                    while (($cuentaInfoCampos < (count($arrayInfoCampos) - 1)) && $verificar < 2) {
+
+                        if (($arrayInfoCampos[$cuentaInfoCampos] != '|T' && $arrayInfoCampos[$cuentaInfoCampos] != '|L' && $arrayInfoCampos[$cuentaInfoCampos] != '|V' && $arrayInfoCampos[$cuentaInfoCampos] != '|O')) {
+                            $datosInfoCampo = array(
+                                'fk_infoCampo' => $arrayInfoCampos[$cuentaInfoCampos],
+                                'fk_id_campo' => (int) $id_campo[0][0]
+                            );
+
+                            $cadenaSql = $this->miSql->getCadenaSql("insertarInfoCampos", $datosInfoCampo);
+                            $primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+                        } else {
+                            $verificar++;
+                            if ($verificar == 2) {
+                                $cuentaInfoCampos--;
+                            }
+                        }
+                        $cuentaInfoCampos++;
+                    }
                 }
 
                 $cuentaRegistro = $cuentaRegistro + 6;
@@ -198,7 +231,7 @@ class FormProcessor {
 //            $count++;
 //        }
 
-        if ($ingresomod==1) {
+        if ($ingresomod == 1) {
             Redireccionador::redireccionar('modifico', $datosConcepto);
             exit();
         } else {

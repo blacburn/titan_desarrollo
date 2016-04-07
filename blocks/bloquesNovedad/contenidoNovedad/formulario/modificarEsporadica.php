@@ -456,6 +456,25 @@ class Formulario {
         $atributos = array_merge($atributos, $atributosGlobales);
         echo $this->miFormulario->campoCuadroTexto($atributos);
         unset($atributos);
+         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+        $esteCampo = 'camposInfoExtra';
+        $atributos ['id'] = $esteCampo;
+        $atributos ['nombre'] = $esteCampo;
+        $atributos ['tipo'] = 'hidden';
+        $atributos ['estilo'] = 'jqueryui';
+        $atributos ['marco'] = true;
+        $atributos ['columnas'] = 1;
+        $atributos ['dobleLinea'] = false;
+        $atributos ['tabIndex'] = $tab;
+        $atributos ['valor'] = '';
+        $atributos ['deshabilitado'] = false;
+        $atributos ['maximoTamanno'] = '';
+        $tab++;
+
+        // Aplica atributos globales al control
+        $atributos = array_merge($atributos, $atributosGlobales);
+        echo $this->miFormulario->campoCuadroTexto($atributos);
+        unset($atributos);
 
 
 
