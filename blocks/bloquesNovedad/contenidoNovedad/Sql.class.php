@@ -722,6 +722,15 @@ class Sql extends \Sql {
                 $cadenaSql .= 'id_formulario = ';
                 $cadenaSql .= $variable . '';
                 break;
+            case 'buscarInformacionDeCamposMod':
+                $cadenaSql = 'SELECT ';
+                $cadenaSql .= 'valor as VALOR ';
+                $cadenaSql .= 'FROM ';
+                $cadenaSql .= 'concepto.datos_campo ';
+                $cadenaSql .= 'WHERE ';
+                $cadenaSql .= 'id_campo = ';
+                $cadenaSql .= $variable . '';
+                break;
         }
 
 

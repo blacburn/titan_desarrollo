@@ -260,7 +260,7 @@ $urlFinal19 = $url . $cadena19;
             // Añadir elementos Dinamicos en el DOM
             if (validacion == 0) {
                 $(container).append('<fieldset id=panel' + iCnt2 + ' class="ui-widget ui-widget-content">' +
-                        '<legend class="ui-state-default ui-corner-all"> CAMPO</legend>' +
+                        '<legend class="ui-state-default ui-corner-oall"> CAMPO</legend>' +
                         '<div id=nombreDiv' + iCnt2 + ' class="col-md-8">' +
                         '<div id=nombreDiv2' + iCnt2 + ' class="col-md-2">' +
                         '<label> Nombre del Campo:  </label> ' +
@@ -410,6 +410,10 @@ $urlFinal19 = $url . $cadena19;
         {
             $('#formulacionCampo' + consecutivo).removeAttr('disabled');
         }
+        if (valor == 'Alfanumerico')
+        {
+            $('#formulacionCampo' + consecutivo).attr('disabled', 'disabled');
+        }
         if (valor == 'Valor' || valor == 'Alfanumerico')
         {
             $('#OpcDiv' + consecutivo).hide();
@@ -421,18 +425,21 @@ $urlFinal19 = $url . $cadena19;
             $('#longitudDiv' + consecutivo).hide();
             $('#tituDiv' + consecutivo).hide();
             $('#OpcDiv' + consecutivo).show();
+            $('#formulacionCampo' + consecutivo).attr('disabled', 'disabled');
         }
         if (valor == 'Tabla')
         {
             $('#longitudDiv' + consecutivo).hide();
             $('#OpcDiv' + consecutivo).hide();
             $('#tituDiv' + consecutivo).show();
+            $('#formulacionCampo' + consecutivo).attr('disabled', 'disabled');
         }
-         if (valor == 'Fecha')
+        if (valor == 'Fecha')
         {
             $('#longitudDiv' + consecutivo).hide();
             $('#OpcDiv' + consecutivo).hide();
             $('#tituDiv' + consecutivo).hide();
+            $('#formulacionCampo' + consecutivo).attr('disabled', 'disabled');
         }
 
 
@@ -443,6 +450,7 @@ $urlFinal19 = $url . $cadena19;
             $('#simboloCampo' + consecutivo).css("background-color", "#FFF")
         }
     }
+
 
 
     var iCnt3 = 0;
@@ -468,6 +476,24 @@ $urlFinal19 = $url . $cadena19;
                     if ($('#labelCampoM' + n).val() == '') {
                         alert('ingese label del campo');
                     }
+                    if ($('#tipoDatoCampoM' + n).val() != 'Fecha') {
+                        if ($('#tipoDatoCampoM' + n).val() == 'Tabla') {
+                            if ($('#tituloCampoM' + n).val() == '') {
+                                alert('ingrese titulos de la tabla separados por comas');
+                            }
+                        }
+                        if ($('#tipoDatoCampoM' + n).val() == 'Lista') {
+                            if ($('#listaCampoM' + n).val() == '') {
+                                alert('ingrese opciones de lista separados por comas');
+                            }
+
+                        }
+                        if (($('#tipoDatoCampoM' + n).val() == 'Alfanumerico') || ($('#tipoDatoCampoM' + n).val() == 'Valor')) {
+                            if ($('#longitudCampoM' + n).val() == '') {
+                                alert('ingrese longitud del campo tipo valor o alfanumerico');
+                            }
+                        }
+                    }
 
                     validacion2 = 1;
                 }
@@ -475,55 +501,77 @@ $urlFinal19 = $url . $cadena19;
             // Añadir elementos Dinamicos en el DOM
             if (validacion2 == 0) {
                 $(container).append('<fieldset id=panelM' + iCnt3 + ' class="ui-widget ui-widget-content">' +
-                        '<legend class="ui-state-default ui-corner-all"> CAMPO' + iCnt3 + '</legend>' +
-                        '<div id=lab1' + iCnt3 + ' class="col-md-2">' +
+                        '<legend class="ui-state-default ui-corner-oall"> CAMPO</legend>' +
+                        '<div id=nombreDivM' + iCnt3 + ' class="col-md-8">' +
+                        '<div id=nombreDivM2' + iCnt3 + ' class="col-md-2">' +
                         '<label> Nombre del Campo:  </label> ' +
                         '</div>' +
                         '<input type=text class="input" id=nombreCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
                         '<br/><br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt3 + ' class="col-md-2">' +
+                        '</div>' +
+                        '<div id=labelDivM' + iCnt3 + ' class="col-md-8">' +
+                        '<div id=labelDivM' + iCnt3 + ' class="col-md-2">' +
                         '<label> Label del Campo: </label> ' +
                         '</div>' +
                         '<input type=text class="input" id=labelCampoM' + iCnt3 + ' size="50"  maxlength="500" value=""/>' +
+                        '<br/><br/>' +
                         '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt3 + ' class="col-md-2">' +
+                        '<div id=tipoDivM' + iCnt3 + ' class="col-md-8">' +
+                        '<div id=tipoDivM2' + iCnt3 + ' class="col-md-2">' +
                         '<label> Tipo de dato: </label> ' +
                         '</div>' +
-                        '<select id=tipoDatoCampoM' + iCnt3 + ' onchange="habilitarM(this.value,' + iCnt3 + ')"><option value="Alfanumerico" >Alfanumérico</option>' +
+                        '<select id=tipoDatoCampoM' + iCnt3 + ' onchange="habilitarM(this.value,' + iCnt3 + ')"><option value="Fecha">Fecha</option>' +
                         '<option value="Valor">Valor</option>' +
                         '<option value="Lista">Lista</option>' +
-                        '<option value="Fecha">Fecha</option>' +
+                        '<option value="Alfanumerico" >Alfanumérico</option>' +
                         '<option value="Tabla">Tabla</option>' +
                         '</select>' +
+                        '<br/><br/>' +
                         '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt3 + ' class="col-md-2">' +
+                        '<div id=longitudDivM' + iCnt3 + ' class="col-md-8" hidden>' +
+                        '<div id=longitudDivM2' + iCnt3 + ' class="col-md-2">' +
+                        '<label> Longitud del Campo:  </label> ' +
+                        '</div>' +
+                        '<input tclass="input" id=longitudCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=OpcDivM' + iCnt3 + ' class="col-md-8" hidden>' +
+                        '<div id=OpcDivM2' + iCnt3 + ' class="col-md-2">' +
+                        '<label> Opciones :  </label> ' +
+                        '</div>' +
+                        '<input  class="input" id=listaCampoM' + iCnt3 + ' size="50"  maxlength="30" value=""  required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=tituDivM' + iCnt3 + ' class="col-md-8" hidden>' +
+                        '<div id=tituDivM2' + iCnt3 + ' class="col-md-2">' +
+                        '<label> Titulos de Tabla:  </label> ' +
+                        '</div>' +
+                        '<input class="input" id=tituloCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
+                        '<br/><br/>' +
+                        '</div>' +
+                        '<div id=requeDivM' + iCnt3 + ' class="col-md-8">' +
+                        '<div id=requeDivM2' + iCnt3 + ' class="col-md-2">' +
                         '<label> Requerido: </label> ' +
                         '</div>' +
                         '<select id=requeridoCampoM' + iCnt3 + '><option value="No">No</option>' +
                         '<option value="Si">Si</option>' +
                         '</select>' +
+                        '<br/><br/>' +
                         '</div>' +
-                        '<br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt3 + ' class="col-md-2">' +
+                        '<div id=formuDivM' + iCnt3 + ' class="col-md-8">' +
+                        '<div id=formuDivM2' + iCnt3 + ' class="col-md-2">' +
                         '<label> Fórmula: </label> ' +
                         '</div>' +
                         '<select  disabled id=formulacionCampoM' + iCnt3 + ' onchange="habilitarM(this.value,' + iCnt3 + ')"><option value="No">No</option>' +
                         '<option value="Si">Si</option>' +
                         '</select>' +
+                        '<br/><br/>' +
                         '</div>' +
-                        '<br/>' +
-                        '</div>' +
-                        '<div>' +
-                        '<div id=lab52' + iCnt3 + ' class="col-md-2">' +
+                        '<div id=simDivM' + iCnt3 + ' class="col-md-8">' +
+                        '<div id=simDivM2' + iCnt3 + ' class="col-md-2">' +
                         '<label> Simbolo : </label> ' +
                         '</div>' +
-                        '<input disabled type=text class="input" id=simboloCampoM' + iCnt3 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  value="XXXXX"/>' +
+                        '<input disabled type=text class="input" id=simboloCampoM' + iCnt3 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  style="background-color:#cccccc" value="XXXXX"/>' +
                         '</div>' +
                         '</fieldset>');
                 $('#camposDinamicos').after(container);
@@ -532,12 +580,24 @@ $urlFinal19 = $url . $cadena19;
                 $('#formulacionCampoM' + iCnt3).width(250);
                 if (iCnt3 > 1) {
                     var num = iCnt3 - 1;
-                    table.row.add([($('#nombreCampoM' + num).val()),
+                    var opcionAux = '';
+                    if ($('#tituloCampoM' + n).val() != '') {
+                        opcionAux = $('#tituloCampoM' + n).val();
+                    }
+                    if ($('#listaCampoM' + n).val() != '') {
+                        opcionAux = $('#listaCampoM' + n).val();
+                    }
+                    if ($('#longitudCampoM' + n).val() != '') {
+                        opcionAux = $('#longitudCampoM' + n).val();
+                    }
+
+                    t.row.add([($('#nombreCampoM' + num).val()),
                         ($('#labelCampoM' + num).val()),
                         ($('#tipoDatoCampoM' + num).val()),
                         ($('#requeridoCampoM' + num).val()),
                         ($('#formulacionCampoM' + num).val()),
-                        ($('#simboloCampoM' + num).val())
+                        ($('#simboloCampoM' + num).val()),
+                        opcionAux
                     ]).draw(false);
 
 
@@ -587,13 +647,46 @@ $urlFinal19 = $url . $cadena19;
 
         if (valor == 'Valor')
         {
-
             $('#formulacionCampoM' + consecutivo).removeAttr('disabled');
         }
+        if (valor == 'Alfanumerico')
+        {
+            $('#formulacionCampoM' + consecutivo).attr('disabled', 'disabled');
+        }
+        if (valor == 'Valor' || valor == 'Alfanumerico')
+        {
+            $('#OpcDivM' + consecutivo).hide();
+            $('#tituDivM' + consecutivo).hide();
+            $('#longitudDivM' + consecutivo).show();
+        }
+        if (valor == 'Lista')
+        {
+            $('#longitudDivM' + consecutivo).hide();
+            $('#tituDivM' + consecutivo).hide();
+            $('#OpcDivM' + consecutivo).show();
+            $('#formulacionCampoM' + consecutivo).attr('disabled', 'disabled');
+        }
+        if (valor == 'Tabla')
+        {
+            $('#longitudDivM' + consecutivo).hide();
+            $('#OpcDivM' + consecutivo).hide();
+            $('#tituDivM' + consecutivo).show();
+            $('#formulacionCampoM' + consecutivo).attr('disabled', 'disabled');
+        }
+        if (valor == 'Fecha')
+        {
+            $('#longitudDivM' + consecutivo).hide();
+            $('#OpcDivM' + consecutivo).hide();
+            $('#tituDivM' + consecutivo).hide();
+            $('#formulacionCampoM' + consecutivo).attr('disabled', 'disabled');
+        }
+
+
         if (valor == 'Si')
         {
 
             $('#simboloCampoM' + consecutivo).removeAttr('disabled');
+            $('#simboloCampoM' + consecutivo).css("background-color", "#FFF")
         }
     }
     function consultarParametro(elem, request, response) {
@@ -1175,27 +1268,27 @@ $urlFinal19 = $url . $cadena19;
         campos = '';
         var con = 0;
         while (con < iCnt2 - 1) {
-            aux=0;
+            aux = 0;
             con++;
             if ($("#tituloCampo" + con).val() != '') {
                 campos = campos + '|T' + ',';
                 campos = campos + $("#tituloCampo" + con).val() + ',';
-                aux=1;
+                aux = 1;
             }
             if ($('#listaCampo' + con).val() != '') {
                 campos = campos + '|L' + ',';
                 campos = campos + $("#listaCampo" + con).val() + ',';
-                aux=1;
+                aux = 1;
             }
             if ($('#longitudCampo' + con).val() != '') {
                 campos = campos + '|V' + ',';
                 campos = campos + $("#longitudCampo" + con).val() + ',';
-                aux=1;
+                aux = 1;
             }
-            if(aux==0){
+            if (aux == 0) {
                 campos = campos + '|O' + ',';
             }
-            
+
         }
         $("#<?php echo $this->campoSeguro('camposInfoExtra') ?>").val(campos);
 
@@ -1205,6 +1298,7 @@ $urlFinal19 = $url . $cadena19;
 
     function PasoComponenteModificar() {
         table.rows().every(function (rowIdx, tableLoop, rowLoop) {
+            $('#formulacionCampo' + consecutivo).removeAttr('disabled');
             var data = this.data();
 
             campos = campos + data[0] + ',';
@@ -1228,7 +1322,26 @@ $urlFinal19 = $url . $cadena19;
 
 
 
-
+        campos = '';
+        table.rows().every(function (rowIdx, tableLoop, rowLoop) {
+            var data = this.data();
+            if (data[2] == 'Tabla' && data[6] != '') {
+                campos = campos + '|T' + ',';
+                campos = campos + data[6] + ',';
+            }
+            if (data[2] == 'Lista' && data[6] != '') {
+                campos = campos + '|L' + ',';
+                campos = campos + data[6] + ',';
+            }
+            if ((data[2] == 'Valor' || data[2] == 'Alfanumerico' ) && data[6] != '') {
+                campos = campos + '|V' + ',';
+                campos = campos + data[6] + ',';
+            }
+        });
+        $("#<?php echo $this->campoSeguro('camposInfoExtra') ?>").val(campos);
+        
+       
+       
 
     }
 </script>
