@@ -131,6 +131,7 @@ class Formulario {
         // Aplica atributos globales al control
         $atributos = array_merge($atributos, $atributosGlobales);
         echo $this->miFormulario->campoCuadroLista($atributos);
+        unset($atributos);
         // --------------- FIN CONTROL : Select --------------------------------------------------
         // ---------------- CONTROL: Select --------------------------------------------------------
         $esteCampo = 'categoriaConceptos';

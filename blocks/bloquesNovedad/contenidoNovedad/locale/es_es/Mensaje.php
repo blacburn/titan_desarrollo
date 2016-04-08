@@ -59,6 +59,9 @@ $this->idioma["formula"]="Fórmula =";
 $this->idioma["nombre"]="Nombre: ";
 $this->idioma["ley"]="Ley: ";
 $this->idioma["tipoNovedad"]="Tipo novedad: ";
+$this->idioma["tipoNovedadM"]="Tipo novedad: ";
+
+
 $this->idioma["naturaleza"]="Naturaleza: ";
 $this->idioma["descripcion"]="Descripción: ";
 $this->idioma["simbolo"]="Simbolo: ";

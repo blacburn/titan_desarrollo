@@ -74,10 +74,27 @@ $urlFinal19 = $url . $cadena19;
 ?>
 
 <script>
-    $('#<?php echo $this->campoSeguro('VariablesList') ?>').width(240);
-    $("#<?php echo $this->campoSeguro('VariablesList') ?>").select2();
+    
     $('#<?php echo $this->campoSeguro('tipoNovedad') ?>').width(240);
     $("#<?php echo $this->campoSeguro('tipoNovedad') ?>").select2();
+    $('#<?php echo $this->campoSeguro('categoriaConceptos') ?>').width(240);
+    $("#<?php echo $this->campoSeguro('categoriaConceptos') ?>").select2();
+    $('#<?php echo $this->campoSeguro('ley') ?>').width(240);
+    $("#<?php echo $this->campoSeguro('ley') ?>").select2();
+    $('#<?php echo $this->campoSeguro('naturaleza') ?>').width(240); 
+    $("#<?php echo $this->campoSeguro('naturaleza') ?>").select2();
+    $('#<?php echo $this->campoSeguro('concepto') ?>').width(200); 
+    $("#<?php echo $this->campoSeguro('concepto') ?>").select2();
+    
+    $('#<?php echo $this->campoSeguro('tipoNovedadM') ?>').width(240);
+    $("#<?php echo $this->campoSeguro('tipoNovedadM') ?>").select2();
+    
+    $('#<?php echo $this->campoSeguro('VariablesList') ?>').width(240);
+    $("#<?php echo $this->campoSeguro('VariablesList') ?>").select2();
+    
+ 
+   
+    
     $('#<?php echo $this->campoSeguro('CamposFormulacionList') ?>').width(240);
     $("#<?php echo $this->campoSeguro('CamposFormulacionList') ?>").select2();
     $('#<?php echo $this->campoSeguro('categoriaConceptosList') ?>').width(240);
@@ -125,18 +142,18 @@ $urlFinal19 = $url . $cadena19;
     })
     $('#<?php echo $this->campoSeguro('formula') ?>').keypress(function (tecla) {
         if (tecla.charCode != 0 && tecla.charCode != 42 && tecla.charCode != 43 &&
-                tecla.charCode != 45 && tecla.charCode != 47 &&
-                tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179 &&
-                tecla.charCode != 60 && tecla.charCode != 61 && tecla.charCode != 62 && tecla.charCode != 33 &&
-                tecla.charCode != 48 && tecla.charCode != 49 && tecla.charCode != 50 && tecla.charCode != 51 &&
-                tecla.charCode != 52 && tecla.charCode != 53 && tecla.charCode != 54 && tecla.charCode != 55 &&
-                tecla.charCode != 56 && tecla.charCode != 57)
+            tecla.charCode != 45 && tecla.charCode != 47 &&
+            tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179 &&
+            tecla.charCode != 60 && tecla.charCode != 61 && tecla.charCode != 62 && tecla.charCode != 33 &&
+            tecla.charCode != 48 && tecla.charCode != 49 && tecla.charCode != 50 && tecla.charCode != 51 &&
+            tecla.charCode != 52 && tecla.charCode != 53 && tecla.charCode != 54 && tecla.charCode != 55 &&
+            tecla.charCode != 56 && tecla.charCode != 57)
             return false;
     });
     $('#<?php echo $this->campoSeguro('valorConcepto') ?>').keypress(function (tecla) {
         if (tecla.charCode != 0 && tecla.charCode != 42 && tecla.charCode != 43 &&
-                tecla.charCode != 45 && tecla.charCode != 47 &&
-                tecla.charCode != 40 && tecla.charCode != 41)
+            tecla.charCode != 45 && tecla.charCode != 47 &&
+            tecla.charCode != 40 && tecla.charCode != 41)
             return false;
     });
     $(function () {
@@ -262,79 +279,79 @@ $urlFinal19 = $url . $cadena19;
             // Añadir elementos Dinamicos en el DOM
             if (validacion == 0) {
                 $(container).append('<fieldset id=panel' + iCnt2 + ' class="ui-widget ui-widget-content">' +
-                        '<legend class="ui-state-default ui-corner-oall"> CAMPO</legend>' +
-                        '<div id=nombreDiv' + iCnt2 + ' class="col-md-8">' +
-                        '<div id=nombreDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Nombre del Campo:  </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=nombreCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=labelDiv' + iCnt2 + ' class="col-md-8">' +
-                        '<div id=labelDiv' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Label del Campo: </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=labelCampo' + iCnt2 + ' size="50"  maxlength="500" value=""/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=tipoDiv' + iCnt2 + ' class="col-md-8">' +
-                        '<div id=tipoDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Tipo de dato: </label> ' +
-                        '</div>' +
-                        '<select id=tipoDatoCampo' + iCnt2 + ' onchange="habilitar(this.value,' + iCnt2 + ')"><option value="Fecha">Fecha</option>' +
-                        '<option value="Valor">Valor</option>' +
-                        '<option value="Lista">Lista</option>' +
-                        '<option value="Alfanumerico" >Alfanumérico</option>' +
-                        '<option value="Tabla">Tabla</option>' +
-                        '</select>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=longitudDiv' + iCnt2 + ' class="col-md-8" hidden>' +
-                        '<div id=longitudDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Longitud del Campo:  </label> ' +
-                        '</div>' +
-                        '<input tclass="input" id=longitudCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=OpcDiv' + iCnt2 + ' class="col-md-8" hidden>' +
-                        '<div id=OpcDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Opciones :  </label> ' +
-                        '</div>' +
-                        '<input  class="input" id=listaCampo' + iCnt2 + ' size="50"  maxlength="30" value=""  required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=tituDiv' + iCnt2 + ' class="col-md-8" hidden>' +
-                        '<div id=tituDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Titulos de Tabla:  </label> ' +
-                        '</div>' +
-                        '<input class="input" id=tituloCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=requeDiv' + iCnt2 + ' class="col-md-8">' +
-                        '<div id=requeDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Requerido: </label> ' +
-                        '</div>' +
-                        '<select id=requeridoCampo' + iCnt2 + '><option value="No">No</option>' +
-                        '<option value="Si">Si</option>' +
-                        '</select>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=formuDiv' + iCnt2 + ' class="col-md-8">' +
-                        '<div id=formuDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Fórmula: </label> ' +
-                        '</div>' +
-                        '<select  disabled id=formulacionCampo' + iCnt2 + ' onchange="habilitar(this.value,' + iCnt2 + ')"><option value="No">No</option>' +
-                        '<option value="Si">Si</option>' +
-                        '</select>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=simDiv' + iCnt2 + ' class="col-md-8">' +
-                        '<div id=simDiv2' + iCnt2 + ' class="col-md-2">' +
-                        '<label> Simbolo : </label> ' +
-                        '</div>' +
-                        '<input disabled type=text class="input" id=simboloCampo' + iCnt2 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  style="background-color:#cccccc" value="XXXXX"/>' +
-                        '</div>' +
-                        '</fieldset>');
+                    '<legend class="ui-state-default ui-corner-oall"> CAMPO</legend>' +
+                    '<div id=nombreDiv' + iCnt2 + ' class="col-md-8">' +
+                    '<div id=nombreDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Nombre del Campo:  </label> ' +
+                    '</div>' +
+                    '<input type=text class="input" id=nombreCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=labelDiv' + iCnt2 + ' class="col-md-8">' +
+                    '<div id=labelDiv' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Label del Campo: </label> ' +
+                    '</div>' +
+                    '<input type=text class="input" id=labelCampo' + iCnt2 + ' size="50"  maxlength="500" value=""/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=tipoDiv' + iCnt2 + ' class="col-md-8">' +
+                    '<div id=tipoDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Tipo de dato: </label> ' +
+                    '</div>' +
+                    '<select id=tipoDatoCampo' + iCnt2 + ' onchange="habilitar(this.value,' + iCnt2 + ')"><option value="Fecha">Fecha</option>' +
+                    '<option value="Valor">Valor</option>' +
+                    '<option value="Lista">Lista</option>' +
+                    '<option value="Alfanumerico" >Alfanumérico</option>' +
+                    '<option value="Tabla">Tabla</option>' +
+                    '</select>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=longitudDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                    '<div id=longitudDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Longitud del Campo:  </label> ' +
+                    '</div>' +
+                    '<input tclass="input" id=longitudCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=OpcDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                    '<div id=OpcDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Opciones :  </label> ' +
+                    '</div>' +
+                    '<input  class="input" id=listaCampo' + iCnt2 + ' size="50"  maxlength="30" value=""  required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=tituDiv' + iCnt2 + ' class="col-md-8" hidden>' +
+                    '<div id=tituDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Titulos de Tabla:  </label> ' +
+                    '</div>' +
+                    '<input class="input" id=tituloCampo' + iCnt2 + ' size="50"  maxlength="30" value="" required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=requeDiv' + iCnt2 + ' class="col-md-8">' +
+                    '<div id=requeDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Requerido: </label> ' +
+                    '</div>' +
+                    '<select id=requeridoCampo' + iCnt2 + '><option value="No">No</option>' +
+                    '<option value="Si">Si</option>' +
+                    '</select>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=formuDiv' + iCnt2 + ' class="col-md-8">' +
+                    '<div id=formuDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Fórmula: </label> ' +
+                    '</div>' +
+                    '<select  disabled id=formulacionCampo' + iCnt2 + ' onchange="habilitar(this.value,' + iCnt2 + ')"><option value="No">No</option>' +
+                    '<option value="Si">Si</option>' +
+                    '</select>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=simDiv' + iCnt2 + ' class="col-md-8">' +
+                    '<div id=simDiv2' + iCnt2 + ' class="col-md-2">' +
+                    '<label> Simbolo : </label> ' +
+                    '</div>' +
+                    '<input disabled type=text class="input" id=simboloCampo' + iCnt2 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  style="background-color:#cccccc" value="XXXXX"/>' +
+                    '</div>' +
+                    '</fieldset>');
 
 
                 $('#camposDinamicos').after(container);
@@ -503,79 +520,79 @@ $urlFinal19 = $url . $cadena19;
             // Añadir elementos Dinamicos en el DOM
             if (validacion2 == 0) {
                 $(container).append('<fieldset id=panelM' + iCnt3 + ' class="ui-widget ui-widget-content">' +
-                        '<legend class="ui-state-default ui-corner-oall"> CAMPO</legend>' +
-                        '<div id=nombreDivM' + iCnt3 + ' class="col-md-8">' +
-                        '<div id=nombreDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Nombre del Campo:  </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=nombreCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=labelDivM' + iCnt3 + ' class="col-md-8">' +
-                        '<div id=labelDivM' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Label del Campo: </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=labelCampoM' + iCnt3 + ' size="50"  maxlength="500" value=""/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=tipoDivM' + iCnt3 + ' class="col-md-8">' +
-                        '<div id=tipoDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Tipo de dato: </label> ' +
-                        '</div>' +
-                        '<select id=tipoDatoCampoM' + iCnt3 + ' onchange="habilitarM(this.value,' + iCnt3 + ')"><option value="Fecha">Fecha</option>' +
-                        '<option value="Valor">Valor</option>' +
-                        '<option value="Lista">Lista</option>' +
-                        '<option value="Alfanumerico" >Alfanumérico</option>' +
-                        '<option value="Tabla">Tabla</option>' +
-                        '</select>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=longitudDivM' + iCnt3 + ' class="col-md-8" hidden>' +
-                        '<div id=longitudDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Longitud del Campo:  </label> ' +
-                        '</div>' +
-                        '<input tclass="input" id=longitudCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=OpcDivM' + iCnt3 + ' class="col-md-8" hidden>' +
-                        '<div id=OpcDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Opciones :  </label> ' +
-                        '</div>' +
-                        '<input  class="input" id=listaCampoM' + iCnt3 + ' size="50"  maxlength="30" value=""  required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=tituDivM' + iCnt3 + ' class="col-md-8" hidden>' +
-                        '<div id=tituDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Titulos de Tabla:  </label> ' +
-                        '</div>' +
-                        '<input class="input" id=tituloCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=requeDivM' + iCnt3 + ' class="col-md-8">' +
-                        '<div id=requeDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Requerido: </label> ' +
-                        '</div>' +
-                        '<select id=requeridoCampoM' + iCnt3 + '><option value="No">No</option>' +
-                        '<option value="Si">Si</option>' +
-                        '</select>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=formuDivM' + iCnt3 + ' class="col-md-8">' +
-                        '<div id=formuDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Fórmula: </label> ' +
-                        '</div>' +
-                        '<select  disabled id=formulacionCampoM' + iCnt3 + ' onchange="habilitarM(this.value,' + iCnt3 + ')"><option value="No">No</option>' +
-                        '<option value="Si">Si</option>' +
-                        '</select>' +
-                        '<br/><br/>' +
-                        '</div>' +
-                        '<div id=simDivM' + iCnt3 + ' class="col-md-8">' +
-                        '<div id=simDivM2' + iCnt3 + ' class="col-md-2">' +
-                        '<label> Simbolo : </label> ' +
-                        '</div>' +
-                        '<input disabled type=text class="input" id=simboloCampoM' + iCnt3 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  style="background-color:#cccccc" value="XXXXX"/>' +
-                        '</div>' +
-                        '</fieldset>');
+                    '<legend class="ui-state-default ui-corner-oall"> CAMPO</legend>' +
+                    '<div id=nombreDivM' + iCnt3 + ' class="col-md-8">' +
+                    '<div id=nombreDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Nombre del Campo:  </label> ' +
+                    '</div>' +
+                    '<input type=text class="input" id=nombreCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=labelDivM' + iCnt3 + ' class="col-md-8">' +
+                    '<div id=labelDivM' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Label del Campo: </label> ' +
+                    '</div>' +
+                    '<input type=text class="input" id=labelCampoM' + iCnt3 + ' size="50"  maxlength="500" value=""/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=tipoDivM' + iCnt3 + ' class="col-md-8">' +
+                    '<div id=tipoDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Tipo de dato: </label> ' +
+                    '</div>' +
+                    '<select id=tipoDatoCampoM' + iCnt3 + ' onchange="habilitarM(this.value,' + iCnt3 + ')"><option value="Fecha">Fecha</option>' +
+                    '<option value="Valor">Valor</option>' +
+                    '<option value="Lista">Lista</option>' +
+                    '<option value="Alfanumerico" >Alfanumérico</option>' +
+                    '<option value="Tabla">Tabla</option>' +
+                    '</select>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=longitudDivM' + iCnt3 + ' class="col-md-8" hidden>' +
+                    '<div id=longitudDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Longitud del Campo:  </label> ' +
+                    '</div>' +
+                    '<input tclass="input" id=longitudCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=OpcDivM' + iCnt3 + ' class="col-md-8" hidden>' +
+                    '<div id=OpcDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Opciones :  </label> ' +
+                    '</div>' +
+                    '<input  class="input" id=listaCampoM' + iCnt3 + ' size="50"  maxlength="30" value=""  required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=tituDivM' + iCnt3 + ' class="col-md-8" hidden>' +
+                    '<div id=tituDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Titulos de Tabla:  </label> ' +
+                    '</div>' +
+                    '<input class="input" id=tituloCampoM' + iCnt3 + ' size="50"  maxlength="30" value="" required/>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=requeDivM' + iCnt3 + ' class="col-md-8">' +
+                    '<div id=requeDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Requerido: </label> ' +
+                    '</div>' +
+                    '<select id=requeridoCampoM' + iCnt3 + '><option value="No">No</option>' +
+                    '<option value="Si">Si</option>' +
+                    '</select>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=formuDivM' + iCnt3 + ' class="col-md-8">' +
+                    '<div id=formuDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Fórmula: </label> ' +
+                    '</div>' +
+                    '<select  disabled id=formulacionCampoM' + iCnt3 + ' onchange="habilitarM(this.value,' + iCnt3 + ')"><option value="No">No</option>' +
+                    '<option value="Si">Si</option>' +
+                    '</select>' +
+                    '<br/><br/>' +
+                    '</div>' +
+                    '<div id=simDivM' + iCnt3 + ' class="col-md-8">' +
+                    '<div id=simDivM2' + iCnt3 + ' class="col-md-2">' +
+                    '<label> Simbolo : </label> ' +
+                    '</div>' +
+                    '<input disabled type=text class="input" id=simboloCampoM' + iCnt3 + ' onkeyup = "this.value=this.value.toUpperCase()" size="50"  maxlength="5" minlength="5"  style="background-color:#cccccc" value="XXXXX"/>' +
+                    '</div>' +
+                    '</fieldset>');
                 $('#camposDinamicos').after(container);
                 $('#tipoDatoCampoM' + iCnt3).width(250);
                 $('#requeridoCampoM' + iCnt3).width(250);
@@ -854,20 +871,20 @@ $urlFinal19 = $url . $cadena19;
                 // Añadir elementos Dinamicos en el DOM
 
                 $(container).append('<fieldset id=panel' + iCnt + ' class="ui-widget ui-widget-content">' +
-                        '<legend class="ui-state-default ui-corner-all"> CONDICIÓN #' + iCnt + '</legend>' +
-                        '<div id=lab1' + iCnt + ' class="col-md-2">' +
-                        '<label> Si </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos(' + iCnt + ')"/>' +
-                        '<br/><br/>' +
-                        '<div>' +
-                        '<div id=lab2' + iCnt + ' class="col-md-2">' +
-                        '<label> Entonces </label> ' +
-                        '</div>' +
-                        '<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos2(' + iCnt + ')"/>' +
-                        '</textarea>' +
-                        '</div>' +
-                        '</fieldset>');
+                    '<legend class="ui-state-default ui-corner-all"> CONDICIÓN #' + iCnt + '</legend>' +
+                    '<div id=lab1' + iCnt + ' class="col-md-2">' +
+                    '<label> Si </label> ' +
+                    '</div>' +
+                    '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos(' + iCnt + ')"/>' +
+                    '<br/><br/>' +
+                    '<div>' +
+                    '<div id=lab2' + iCnt + ' class="col-md-2">' +
+                    '<label> Entonces </label> ' +
+                    '</div>' +
+                    '<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos2(' + iCnt + ')"/>' +
+                    '</textarea>' +
+                    '</div>' +
+                    '</fieldset>');
 
                 $('#camposDinamicos').after(container);
                 $('#sel1' + iCnt).width(120);
@@ -1165,12 +1182,12 @@ $urlFinal19 = $url . $cadena19;
     function arrastreParametro(nombre) {
         $('#' + nombre).keypress(function (tecla) {
             if (tecla.charCode != 0 && tecla.charCode != 42 && tecla.charCode != 43 &&
-                    tecla.charCode != 45 && tecla.charCode != 47 && tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179 &&
-                    tecla.charCode != 60 && tecla.charCode != 61 && tecla.charCode != 62 && tecla.charCode != 33 &&
-                    tecla.charCode != 48 && tecla.charCode != 49 && tecla.charCode != 50 && tecla.charCode != 51 &&
-                    tecla.charCode != 52 && tecla.charCode != 53 && tecla.charCode != 54 && tecla.charCode != 55 &&
-                    tecla.charCode != 56 && tecla.charCode != 57
-                    )
+                tecla.charCode != 45 && tecla.charCode != 47 && tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179 &&
+                tecla.charCode != 60 && tecla.charCode != 61 && tecla.charCode != 62 && tecla.charCode != 33 &&
+                tecla.charCode != 48 && tecla.charCode != 49 && tecla.charCode != 50 && tecla.charCode != 51 &&
+                tecla.charCode != 52 && tecla.charCode != 53 && tecla.charCode != 54 && tecla.charCode != 55 &&
+                tecla.charCode != 56 && tecla.charCode != 57
+        )
                 return false;
         });
 

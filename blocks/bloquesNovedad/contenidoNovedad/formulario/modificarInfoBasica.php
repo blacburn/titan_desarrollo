@@ -86,7 +86,7 @@ class Formulario {
         $_identificadorConcepto = $matrizNovedad[0][6];
         unset($atributos);
         // ---------------- CONTROL: Select --------------------------------------------------------
-        $esteCampo = 'tipoNovedad';
+        $esteCampo = 'tipoNovedadM';
         $atributos ['id'] = $esteCampo;
         $atributos ['nombre'] = $esteCampo;
         $atributos ['tipo'] = 'text';
@@ -232,7 +232,7 @@ class Formulario {
         $atributos['limitar'] = 50;
         $atributos['tamanno'] = 4;
         $atributos['columnas'] = 1;
-
+        $atributos ['anchoEtiqueta'] = 230;
         $atributos ['obligatorio'] = true;
         $atributos ['etiquetaObligatorio'] = true;
         $atributos ['validar'] = 'required';
@@ -302,6 +302,7 @@ class Formulario {
         // Aplica atributos globales al control
         $atributos = array_merge($atributos, $atributosGlobales);
         echo $this->miFormulario->campoCuadroLista($atributos);
+        unset($atributos);
         // --------------- FIN CONTROL : Select --------------------------------------------------
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
         $esteCampo = 'descripcion';
@@ -392,7 +393,7 @@ class Formulario {
         // Aplica atributos globales al control
         $atributos = array_merge($atributos, $atributosGlobales);
         echo $this->miFormulario->campoCuadroTexto($atributos);
-     
+
 
         unset($atributos);
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------

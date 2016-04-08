@@ -207,8 +207,8 @@ class Formulario {
                 $atributos ['dobleLinea'] = false;
                 $atributos ['tabIndex'] = $tab;
 
-                if (isset($_REQUEST ['tipoNovedad'])) {
-                    $atributos ['valor'] = $_REQUEST ['tipoNovedad'];
+                if (isset($_REQUEST ['tipoNovedadM'])) {
+                    $atributos ['valor'] = $_REQUEST ['tipoNovedadM'];
                 } else {
                     $atributos ['valor'] = '';
                 }
